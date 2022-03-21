@@ -20,4 +20,4 @@ function Impressum() {
   );
 }
 
-export default Impressum;
+export default Impressum

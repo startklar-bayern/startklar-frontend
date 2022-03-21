@@ -8,9 +8,12 @@ import reportWebVitals from './reportWebVitals';
 import {
   Header,
   Footer,
+} from "./layouts";
+
+import {
   Home,
   Impressum,
-} from "./components";
+} from "./pages";
 
 ReactDOM.render(
   <Router>

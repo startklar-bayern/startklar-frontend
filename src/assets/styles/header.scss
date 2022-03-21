@@ -1,5 +1,8 @@
-header svg {
-    height: 200px;
-    display: block;
+.navbar-brand {
     margin: 0 auto;
+
+    svg {
+        max-width: 200px;
+        width: 100%;
+    }
 }
