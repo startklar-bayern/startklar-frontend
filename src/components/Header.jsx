@@ -1,6 +1,6 @@
 import React from "react";
-import { ReactComponent as Logo } from './../logo.svg';
-import './../styles/header.scss';
+import { ReactComponent as Logo } from './../assets/images/logo.svg';
+import './../assets/styles/header.scss';
 
 function Header() {
   return (
