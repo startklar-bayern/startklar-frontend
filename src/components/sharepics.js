@@ -11,7 +11,7 @@ const Sharepics = ({sharepics}) => {
                 {sharepics.map((sharepics) => (
                     <Col xs={6} lg={3}>
                         <p>{sharepics.body}</p>
-                        <img src={sharepics.imageUrl} alt={sharepics.altText} />
+                        <img src={sharepics.imagePreviewUrl} alt={sharepics.altText} />
                     </Col>
                 ))}
             </Row>
