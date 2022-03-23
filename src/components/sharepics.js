@@ -6,11 +6,11 @@ import Col from 'react-bootstrap/Col'
 const Sharepics = ({sharepics}) => {
     return (
         <div>
-            <center><h1>Spread the world</h1></center>
+            <center><h1>Spread the word</h1></center>
             <Row>
                 {sharepics.map((sharepic) => (
                     <Col xs={6} lg={3} key={'sharepic-' + sharepic.id}>
-                        <p>{sharepic.body}</p>
+                        <div dangerouslySetInnerHTML={{__html: sharepic.body}}/>
                         <img src={sharepic.imagePreviewUrl} alt={sharepic.altText} />
                     </Col>
                 ))}

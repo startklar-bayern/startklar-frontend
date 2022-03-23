@@ -9,7 +9,7 @@ export default class Page extends Component {
                     <div className="row align-items-center my-5">
                         <div className="col">
                             <h1 className="font-weight-light">{this.props.page.title}</h1>
-                            {this.props.page.body}
+                            <div dangerouslySetInnerHTML={{__html: this.props.page.body}}/>
                         </div>
                     </div>
                 </div>

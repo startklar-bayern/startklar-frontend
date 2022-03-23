@@ -13,8 +13,7 @@ const FaqAccordion = ({faqs}) => {
                     {faqs.map((faq) => (
                         <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id} className="col-12 col-md-6">
                             <Accordion.Header>{faq.question}</Accordion.Header>
-                            <Accordion.Body>
-                                {faq.answer}
+                            <Accordion.Body dangerouslySetInnerHTML={{__html: faq.answer}}>
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
