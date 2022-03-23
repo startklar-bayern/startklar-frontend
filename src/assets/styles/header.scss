@@ -1,8 +1,17 @@
-.navbar-brand {
-    margin: 0 auto;
+@import "bootstrap-variables";
 
-    svg {
-        max-width: 200px;
-        width: 100%;
+.navbar {
+    padding-top: 0 !important;
+
+    .navbar-brand {
+        margin: 0 auto;
+        background: $white;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+
+        svg {
+            max-width: 400px;
+            width: 100%;
+        }
     }
 }

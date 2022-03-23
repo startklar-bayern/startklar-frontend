@@ -1,0 +1,12 @@
+@import "bootstrap-variables";
+
+section.home {
+    background-image: url('./../images/mountain-silhoutte-background__1x.png');
+    @media (min-width: 1921px) {
+      background-image: url('./../images/mountain-silhoutte-background__2x.png');
+    }
+    background-position: bottom;
+    background-size: cover;
+    color: $black;
+    flex-direction: column;
+  }

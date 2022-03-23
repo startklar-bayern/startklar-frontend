@@ -1,18 +1,22 @@
 import React from 'react'
+import './../assets/styles/sharepics.scss';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const Sharepics = ({sharepics}) => {
     return (
         <div>
-            <center><h1>Sharepics</h1></center>
-            {sharepics.map((sharepics) => (
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Sharepic 1</h5>
-                        <p class="card-text">{sharepics.body}</p>
-                    </div>
-                </div>
-            ))}
+            <center><h1>Spread the world</h1></center>
+            <Row>
+                {sharepics.map((sharepics) => (
+                    <Col xs={6} lg={3}>
+                        <p>{sharepics.body}</p>
+                        <img src={sharepics.imageUrl} alt={sharepics.altText} />
+                    </Col>
+                ))}
+            </Row>
         </div>
+
     )
 };
 
