@@ -1,32 +1,35 @@
-
 import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/styles/index.scss";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import {
-  Header,
-  Footer,
+    Header,
+    Footer,
 } from "./layouts";
 
-import {
-  Home,
-  Impressum,
-} from "./pages";
+import {Home} from "./pages";
+import Page from "./pages/page";
 
-ReactDOM.render(
-  <Router>
-    <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/impressum" element={<Impressum />} />
-    </Routes>
-    <Footer />
-  </Router>,
+fetch('https://backend.startklar.bayern/api/pages')
+    .then(response => response.json())
+    .then(pages => {
+        ReactDOM.render(
+            <Router>
+                <Header/>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    {pages.map(page => {
+                        return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
+                    })}
 
-  document.getElementById("root")
-);
+                </Routes>
+                <Footer pages={pages}/>
+            </Router>,
+            document.getElementById("root")
+        );
+    })
 
 serviceWorker.unregister();
 
