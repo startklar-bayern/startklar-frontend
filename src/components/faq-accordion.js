@@ -9,9 +9,9 @@ const FaqAccordion = ({faqs}) => {
         <Row>
             <Col>
                 <center><h1>Häufig gestellte Fragen</h1></center>
-                <Accordion>
+                <Accordion className="row">
                     {faqs.map((faqs) => (
-                        <Accordion.Item eventKey={faqs.id}>
+                        <Accordion.Item eventKey={faqs.id} className="col-12 col-md-6">
                             <Accordion.Header>{faqs.question}</Accordion.Header>
                             <Accordion.Body>
                                 {faqs.answer}
