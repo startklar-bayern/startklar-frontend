@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 
 const Newsletter = () => {
     return (
-        <div class="newsletter">
+        <div className="newsletter">
             <Button variant="primary">Zum Kalender hinzufügen</Button>{' '}
         </div>
     )

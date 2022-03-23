@@ -1,0 +1,35 @@
+@keyframes bounce {
+  50% {
+    transform: scale(2) rotate(25deg);
+    font-weight: bold;
+  }
+}
+
+@keyframes scale-fade {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    transform: scale(2);
+    font-weight: bold;
+    opacity: 0;
+  }
+}
+
+.animation-bounce {
+  animation: bounce .5s ease-in-out;
+  display: inline-block;
+  position: relative;
+}
+
+.animation-bounce:after {
+  content: "+";
+  position: absolute;
+  top: -0.6em;
+  right: -0.65em;
+  animation: scale-fade 1s 0.3s ease-in-out forwards;
+  opacity: 0;
+}

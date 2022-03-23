@@ -8,10 +8,10 @@ const Sharepics = ({sharepics}) => {
         <div>
             <center><h1>Spread the world</h1></center>
             <Row>
-                {sharepics.map((sharepics) => (
-                    <Col xs={6} lg={3}>
-                        <p>{sharepics.body}</p>
-                        <img src={sharepics.imagePreviewUrl} alt={sharepics.altText} />
+                {sharepics.map((sharepic) => (
+                    <Col xs={6} lg={3} key={'sharepic-' + sharepic.id}>
+                        <p>{sharepic.body}</p>
+                        <img src={sharepic.imagePreviewUrl} alt={sharepic.altText} />
                     </Col>
                 ))}
             </Row>

@@ -10,11 +10,11 @@ const FaqAccordion = ({faqs}) => {
             <Col>
                 <center><h1>Häufig gestellte Fragen</h1></center>
                 <Accordion className="row">
-                    {faqs.map((faqs) => (
-                        <Accordion.Item eventKey={faqs.id} className="col-12 col-md-6">
-                            <Accordion.Header>{faqs.question}</Accordion.Header>
+                    {faqs.map((faq) => (
+                        <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id} className="col-12 col-md-6">
+                            <Accordion.Header>{faq.question}</Accordion.Header>
                             <Accordion.Body>
-                                {faqs.answer}
+                                {faq.answer}
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}

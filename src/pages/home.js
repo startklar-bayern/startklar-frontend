@@ -5,44 +5,77 @@ import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
+import {Toast} from "react-bootstrap";
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.closeToast = this.closeToast.bind(this);
+    }
+
     render() {
         return (
             <div>
-                <section class="home fullscreen container-fluid">
-                    <Calendar />
-                    <Newsletter />
+                <section className="home fullscreen container-fluid">
+                    <Calendar/>
+                    <Newsletter/>
                 </section>
-                <section class="faqs container">
-                    <FaqAccordion faqs={this.state.faqs} />
-                    <FaqQuestion />
+                <section className="faqs container">
+                    <FaqAccordion faqs={this.state.faqs}/>
+                    <FaqQuestion/>
                 </section>
-                <section class="sharepics container">
-                    <Sharepics sharepics={this.state.sharepics} />
+                <section className="sharepics container">
+                    <Sharepics sharepics={this.state.sharepics}/>
                 </section>
+
+                <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>
+                    <Toast.Header>
+                        <strong className="me-auto">E-Mail bestätigt</strong>
+                    </Toast.Header>
+                    <Toast.Body>
+                        Du erhältst in Zukunft alle Neuigkeiten zu STARTKLAR.
+                    </Toast.Body>
+                </Toast>
             </div>
         )
     }
 
     state = {
-      sharepics: [],
-      faqs: [],
+        sharepics: [],
+        faqs: [],
+        showEmailConfirmed: false,
     };
 
     componentDidMount() {
         fetch('https://backend.startklar.bayern/api/sharepics')
             .then(res => res.json())
             .then((data) => {
-                this.setState({ sharepics: data })
+                this.setState({sharepics: data})
             })
             .catch(console.log)
         fetch('https://backend.startklar.bayern/api/faqs')
             .then(res => res.json())
             .then((data) => {
-                this.setState({ faqs: data })
+                this.setState({faqs: data})
             })
             .catch(console.log)
+
+        // Display toast when email was confirmed.
+        const currentUrl = new URL(window.location);
+        if (currentUrl.search.indexOf('emailConfirmed') !== -1) {
+            this.setState({
+                showEmailConfirmed: true,
+            });
+        }
+    }
+
+    closeToast() {
+        this.setState({showEmailConfirmed: false});
+
+        const url = new URL(window.location);
+        url.searchParams.delete('emailConfirmed');
+
+        window.history.pushState({}, document.title, url.toString());
     }
 }
 
