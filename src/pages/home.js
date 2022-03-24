@@ -5,6 +5,9 @@ import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
+import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
 import {Toast} from "react-bootstrap";
 
 class Home extends Component {
@@ -16,9 +19,15 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <section className="home fullscreen container-fluid">
-                    <Calendar/>
-                    <Newsletter/>
+                <section className="home container-fluid">
+                    <Container>
+                        <Row>
+                            <Col lg={{ span: 8, offset: 2 }}>
+                                <Calendar/>
+                                <Newsletter/>
+                            </Col>
+                        </Row>
+                    </Container>
                 </section>
                 <section className="faqs container">
                     <FaqAccordion faqs={this.state.faqs}/>
@@ -27,7 +36,6 @@ class Home extends Component {
                 <section className="sharepics container">
                     <Sharepics sharepics={this.state.sharepics}/>
                 </section>
-
                 <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>
                     <Toast.Header>
                         <strong className="me-auto">E-Mail bestätigt</strong>

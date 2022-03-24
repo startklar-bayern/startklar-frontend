@@ -3,5 +3,34 @@ $white: #ffffff;
 $primary: #FF8C00;
 $body-bg: $black;
 $body-color: $white;
+$input-bg: $white;
+$input-border-width: 0;
+
+$font-size-base: 1.125rem; // 18px
+$font-family-base: "omnes-narrow";
+$headings-font-weight: 600;
+$accordion-border-color: #3b3b3b;
+
+$accordion-bg: transparent;
+$accordion-border-width: 0;
+$accordion-button-focus-border-color: transparent;
+$accordion-button-focus-box-shadow: none;
+$accordion-button-active-bg: transparent;
+$accordion-button-active-color: unset;
+
+$h1-font-size: $font-size-base * 4.33;
+$h2-font-size: $font-size-base * 3;
+$h3-font-size: $font-size-base * 2;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base * 1.33;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1280px
+) !default;
 
 @import "~bootstrap/scss/bootstrap";

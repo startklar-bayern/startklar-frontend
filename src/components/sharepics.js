@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 const Sharepics = ({sharepics}) => {
     return (
         <div>
-            <center><h1>Spread the word</h1></center>
+            <center><h2>Spread the word</h2></center>
             <Row>
                 {sharepics.map((sharepic) => (
                     <Col xs={6} lg={3} key={'sharepic-' + sharepic.id}>

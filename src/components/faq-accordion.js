@@ -6,9 +6,9 @@ import './../assets/styles/faq.scss';
 
 const FaqAccordion = ({faqs}) => {
     return (
-        <Row>
+        <Row className="mb-4">
             <Col>
-                <center><h1>Häufig gestellte Fragen</h1></center>
+                <center><h2>Häufig gestellte Fragen</h2></center>
                 <Accordion className="row">
                     {faqs.map((faq) => (
                         <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id} className="col-12 col-md-6">

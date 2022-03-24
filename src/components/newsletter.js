@@ -47,9 +47,11 @@ class Newsletter extends React.Component {
 
         return (
             <div className="newsletter">
-                <h6>Bleib immer auf dem Laufenden</h6>
-                <p>Lorem Ipsum dolor sit amet et consetutor, sadipscing elitr, sed diam nonumy eirmod empor ividunt ut
+                <div className="text-center">
+                    <h6>Bleib immer auf dem Laufenden</h6>
+                    <p>Lorem Ipsum dolor sit amet et consetutor, sadipscing elitr, sed diam nonumy eirmod empor ividunt ut
                     labore et dolore magna aliquyam. </p>
+                </div>
 
                 {isSubmitting &&
                     <Spinner animation="border"/>}
@@ -86,7 +88,6 @@ class Newsletter extends React.Component {
 
                             <Button
                                 type="submit"
-                                variant="outline-secondary"
                                 disabled={!isValid}
                             >Anmelden</Button>
 
@@ -124,7 +125,7 @@ class Newsletter extends React.Component {
                     </Collapse>
                 </Form>}
 
-                <p><span className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen sind schon STARTKLAR!</p>
+                <p className="text-center"><span className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen sind schon STARTKLAR!</p>
             </div>
         );
     }
