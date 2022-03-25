@@ -50,7 +50,7 @@ export default class Footer extends Component {
                         <div class="small"></div>
                         <div class="xsmall"></div>
                     </div>
-                    <div class="danai">
+                    <div class="navigation-container">
                         <div className="text-light">&reg;Kolpingjugend - Kolpingwerk Bayern {currentYear}</div>
                         <div className="navigation">
                             <nav className="navbar navbar-expand">
