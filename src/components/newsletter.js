@@ -105,7 +105,6 @@ class Newsletter extends React.Component {
                                     required
                                     type="checkbox"
                                     name="privacyAccepted"
-                                    label="Ich habe die <a href=''>Datenschutzerklärung</a> gelesen und akzeptiere sie"
                                     id="privacyAccepted"
                                     key="checkbox-privacyAccepted"
                                 >
@@ -116,7 +115,7 @@ class Newsletter extends React.Component {
                                         onBlur={handleBlur}
                                     />
                                     <Form.Check.Label>
-                                        Ich habe die <a href="">Datenschutzerklärung</a> gelesen und akzeptiere sie
+                                        Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere sie
                                     </Form.Check.Label>
 
                                     <Form.Control.Feedback type="invalid">
@@ -131,7 +130,7 @@ class Newsletter extends React.Component {
                     className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen
                     sind schon STARTKLAR!</p>
 
-                <div class="text-center"><FontAwesomeIcon icon={faArrowDown}/></div>
+                <div className="text-center"><FontAwesomeIcon icon={faArrowDown}/></div>
             </div>
         );
     }

@@ -43,21 +43,21 @@ export default class Footer extends Component {
         return (
             <div className="footer container">
                 <footer>
-                    <div class="footer-border">
-                        <div class="xsmall"></div>
-                        <div class="small"></div>
-                        <div class="large"></div>
-                        <div class="small"></div>
-                        <div class="xsmall"></div>
+                    <div className="footer-border">
+                        <div className="xsmall"/>
+                        <div className="small"/>
+                        <div className="large"/>
+                        <div className="small"/>
+                        <div className="xsmall"/>
                     </div>
-                    <div class="navigation-container">
+                    <div className="navigation-container">
                         <div className="text-light">&reg;Kolpingjugend - Kolpingwerk Bayern {currentYear}</div>
                         <div className="navigation">
                             <nav className="navbar navbar-expand">
                                 <ul className="navbar-nav ml-auto">
                                     {links.map(link => {
-                                        return ( <li className="nav-item">
-                                            <NavLink className="nav-link" to={link.path} key={'menu-link-' + link.id}>
+                                        return ( <li className="nav-item" key={'menu-link-' + link.id}>
+                                            <NavLink className="nav-link" to={link.path}>
                                                 {link.title}
                                             </NavLink>
                                         </li>)
