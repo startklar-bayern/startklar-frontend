@@ -2,10 +2,9 @@ import React from 'react'
 import './../assets/styles/sharepics.scss';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShare } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import ShareButton from "./shareButton";
 
 const Sharepics = ({sharepics}) => {
     return (
@@ -16,10 +15,13 @@ const Sharepics = ({sharepics}) => {
                 {sharepics.map((sharepic) => (
                     <Col xs={6} lg={3} key={'sharepic-' + sharepic.id}>
                         <img src={sharepic.imagePreviewUrl} alt={sharepic.altText} />
-                        <a href={sharepic.imageShareUrl} target="_blank" rel="noreferrer">
-                            <Button className="share-button" variant="primary">Teilen <FontAwesomeIcon icon={faShare} /></Button>{' '}
-                        </a>
-                        <div dangerouslySetInnerHTML={{__html: sharepic.body}}/>
+                        <ShareButton
+                            image={sharepic.imageShareUrl}
+                            previewImage={sharepic.imagePreviewUrl}
+                            text={sharepic.body}
+                            title="Ich bin Startklar!"
+                            id={sharepic.id}
+                            altText={sharepic.altText} />
                     </Col>
                 ))}
             </Row>

@@ -52,6 +52,10 @@ h1, .h1 {
   }
 }
 
+.btn-sm {
+  padding: .3rem 2rem !important;
+}
+
 .btn-outline-dark {
   &:hover {
     background-color: $primary !important;
