@@ -183,5 +183,14 @@ export default withFormik({
                 }
 
             })
+            .catch(e => {
+                console.error(e);
+
+                setSubmitting(false);
+                setStatus({
+                    success: false,
+                    error: true,
+                });
+            })
     }
 })(Newsletter);
