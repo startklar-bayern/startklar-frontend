@@ -37,6 +37,12 @@ export default class Countdown extends Component {
         const separator = <span key="separator"> und </span>;
         let parts = this.state.parts.map(part => { return (<span key={part.key}><span className="h1">{part.value}</span> {part.label}</span>)});
 
+        if (parts.length === 0) {
+            return (
+                <h2><span className="h1">START</span>KLAR!</h2>
+            )
+        }
+
         if (parts.length > 1) {
             parts.splice(1,0, separator);
         }
@@ -53,7 +59,7 @@ export default class Countdown extends Component {
 
         const parts = [];
 
-        if (duration.asDays() > 0) {
+        if (Math.floor(duration.asDays()) > 0) {
             parts.push({
                 key: 'day',
                 value: Math.floor(duration.asDays()),
