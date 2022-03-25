@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 import { faPlus, faMapPin } from '@fortawesome/free-solid-svg-icons'
+import ReactGA from 'react-ga4';
 import '../assets/styles/calendar.scss';
 
 export default class Calendar extends Component {
@@ -20,14 +21,11 @@ export default class Calendar extends Component {
             });
 
             window.addeventatc.register('button-dropdown-click', obj => {
-                // TODO: Track clicks
-                /* Log */
-                console.log('button-dropdown-click -> ' + obj.id + ', service -> ' + obj.service);
-                console.log(obj);
-
-                /* Track event click with e.g. Google Analytics (using analytics.js)
-                https://developers.google.com/analytics/devguides/collection/analyticsjs/events */
-                window.ga('send', 'event', 'MyEvent', 'play', 'Fall Campaign');
+                ReactGA.event({
+                    category: "calendar",
+                    action: "addToCalendar",
+                    label: obj.service,
+                })
             })
         }
 
@@ -62,7 +60,7 @@ export default class Calendar extends Component {
                 </Button>
 
                 <div><span className="mx-4"><FontAwesomeIcon
-                    icon={faCalendar}/> 08. - 11. Juni 2023</span><span><FontAwesomeIcon icon={faMapPin}/> Zeltplatz Thalmässing im DV Eichstätt</span>
+                    icon={faCalendar}/> 08. - 11. Juni 2023</span><span><FontAwesomeIcon icon={faMapPin}/> Zeltplatz Thalmässing</span>
                 </div>
             </div>
         );

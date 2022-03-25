@@ -4,6 +4,8 @@ import "./assets/styles/index.scss";
 import * as serviceWorker from "./serviceWorker";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import ReactGA from 'react-ga4';
+
 import {
     Header,
     Footer,
@@ -23,7 +25,6 @@ fetch('https://backend.startklar.bayern/api/pages')
                     {pages.map(page => {
                         return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
                     })}
-
                 </Routes>
                 <Footer pages={pages}/>
             </Router>,
@@ -37,3 +38,9 @@ serviceWorker.unregister();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+ReactGA.initialize("G-EG3P2MR6NY", {
+    testMode: window.location.host !== "www.startklar.bayern",
+});
+
+ReactGA.send("pageview");
