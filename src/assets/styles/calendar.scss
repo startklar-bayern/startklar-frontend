@@ -1,0 +1,31 @@
+.calendar .addeventatc {
+  font-family: inherit;
+  box-shadow: none !important;
+  color: #000 !important;
+  line-height: inherit;
+  font-size: inherit;
+  background: inherit;
+  text-decoration: inherit;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  outline-color: inherit;
+  text-shadow: inherit;
+}
+
+.calendar .addeventatc:hover {
+  font-size: inherit;
+  text-decoration: inherit;
+  color: #FFF !important;
+}
+
+.calendar .addeventatc_icon {
+  display: none;
+}
+
+.calendar .addeventatc_dropdown {
+  font-family: inherit;
+}
+
+.calendar .ateoutlook {
+  background-image: url("./../icons/calendar-regular.svg") !important;
+}
