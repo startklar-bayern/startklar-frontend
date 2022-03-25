@@ -5,6 +5,7 @@ import { faCalendar } from '@fortawesome/free-regular-svg-icons'
 import { faPlus, faMapPin } from '@fortawesome/free-solid-svg-icons'
 import ReactGA from 'react-ga4';
 import '../assets/styles/calendar.scss';
+import Countdown from "./countdown";
 
 export default class Calendar extends Component {
 
@@ -41,7 +42,7 @@ export default class Calendar extends Component {
     render() {
         return (
             <div className="calendar text-center mb-4">
-                <h2>Noch <span className="h1">365</span> Tage und <span className="h1">16</span> Stunden</h2>
+                <Countdown />
 
                 <Button variant="outline-dark" className="mb-2 addeventatc" title="Zum Kalender hinzufügen">
                     Zum Kalender hinzufügen <FontAwesomeIcon icon={faPlus}/>
