@@ -45,6 +45,7 @@ h1, .h1 {
   text-transform: uppercase;
   font-weight: bold !important;
   padding: 0.7rem 2rem !important;
+  word-spacing: .1em;
 
   &:focus {
     box-shadow: unset !important;
