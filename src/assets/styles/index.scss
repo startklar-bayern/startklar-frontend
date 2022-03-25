@@ -57,9 +57,21 @@ h1, .h1 {
   }
 }
 
+.btn-primary {
+  color: $white !important;
+}
+
 .input-group .btn {
   background-color: $white !important;
   border-width: 0 !important;
+  color: $black !important;
+
+  &:before {
+    content: '';
+    height: 50%;
+    border-left: 2px solid $black;
+    padding-right: 2rem;
+  }
 
   &:hover {
     color: $primary;
