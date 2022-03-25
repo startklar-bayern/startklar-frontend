@@ -110,9 +110,10 @@ class Newsletter extends React.Component {
                                 >
                                     <Form.Check.Input
                                         type="checkbox"
-                                        isInvalid={!!touched.privacyAccepted && !!errors.privacyAccepted}
+                                        isInvalid={!!errors.privacyAccepted}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
+                                        value={values.privacyAccepted}
                                     />
                                     <Form.Check.Label>
                                         Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere sie
