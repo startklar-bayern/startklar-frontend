@@ -2,35 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/styles/index.scss";
 import * as serviceWorker from "./serviceWorker";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import ReactGA from 'react-ga4';
 
-import {
-    Header,
-    Footer,
-} from "./layouts";
+import App from "./components/app";
 
-import {Home} from "./pages";
-import Page from "./pages/page";
-
-fetch('https://backend.startklar.bayern/api/pages')
-    .then(response => response.json())
-    .then(pages => {
-        ReactDOM.render(
-            <Router>
-                <Header/>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    {pages.map(page => {
-                        return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
-                    })}
-                </Routes>
-                <Footer pages={pages}/>
-            </Router>,
-            document.getElementById("root")
-        );
-    })
+ReactDOM.render(<App />, document.getElementById("root"));
 
 serviceWorker.unregister();
 
@@ -38,9 +14,3 @@ serviceWorker.unregister();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-ReactGA.initialize("G-EG3P2MR6NY", {
-    testMode: window.location.host !== "www.startklar.bayern",
-});
-
-ReactGA.send("pageview");
