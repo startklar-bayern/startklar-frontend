@@ -4,6 +4,9 @@ import Button from "react-bootstrap/Button";
 import {withFormik} from 'formik';
 import * as Yup from 'yup';
 import '../assets/styles/newsletter.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 
 class Newsletter extends React.Component {
 
@@ -71,7 +74,7 @@ class Newsletter extends React.Component {
                     </Alert>}
 
                 {!isSubmitting && !status.success && !status.error &&
-                <Form noValidate onSubmit={handleSubmit}>
+                <Form noValidate onSubmit={handleSubmit} className="mb-4">
                     <Form.Group>
                         <InputGroup hasValidation>
                             <Form.Control
@@ -89,7 +92,7 @@ class Newsletter extends React.Component {
                             <Button
                                 type="submit"
                                 disabled={!isValid}
-                            >Anmelden</Button>
+                            >Anmelden <FontAwesomeIcon icon={faArrowRight} /></Button>
 
                             <Form.Control.Feedback type="invalid">
                                 {errors.email}
@@ -126,6 +129,8 @@ class Newsletter extends React.Component {
                 </Form>}
 
                 <p className="text-center"><span className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen sind schon STARTKLAR!</p>
+
+                <div class="text-center"><FontAwesomeIcon icon={faArrowDown} /></div>
             </div>
         );
     }

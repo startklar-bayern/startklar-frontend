@@ -19,12 +19,8 @@ section {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
-
-  .row {
-    width: 100%;
-  }
 }
 
 h1, .h1,
@@ -71,6 +67,6 @@ h1, .h1 {
   }
 }
 
-.accordion-item {
-  border-bottom-width: 2px !important;
+.svg-inline--fa {
+  margin: 0 0.5rem;
 }

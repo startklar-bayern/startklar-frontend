@@ -1,0 +1,34 @@
+@import "bootstrap-variables";
+
+footer {
+    .danai {
+        display: flex;
+        justify-content: space-between;
+        padding: 4rem 0;
+    }
+
+    .footer-border {
+        display: flex;
+        justify-content: space-between;
+
+        > div {
+            display: block;
+            background-color: $border-color;
+            height: 2px;
+        }
+
+        .xsmall {
+            width: 10px;
+        }
+        .small {
+            width: 20px;
+        }
+        .large {
+            width: calc(100% - 120px);
+        }
+    }
+
+    .nav-link {
+        color: $light;
+    }
+}
