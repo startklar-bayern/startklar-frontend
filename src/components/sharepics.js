@@ -25,7 +25,7 @@ const Sharepics = ({sharepics}) => {
                     </Col>
                 ))}
             </Row>
-            <h6 className="follow-us text-center">Folge uns Auf: <a href="https://www.instagram.com" rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a><a rel="noreferrer" href="https://www.facebook.com" target="_blank"><FontAwesomeIcon icon={faFacebook} /></a></h6>
+            <h6 className="follow-us text-center">Folge uns Auf: <a href="https://www.instagram.com/startklar.bayern" rel="noreferrer" target="_blank"><FontAwesomeIcon icon={faInstagram} /></a><a rel="noreferrer" href="https://www.facebook.com/startklar.bayern" target="_blank"><FontAwesomeIcon icon={faFacebook} /></a></h6>
         </div>
     )
 };
