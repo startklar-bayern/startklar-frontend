@@ -53,9 +53,7 @@ class Newsletter extends React.Component {
             <div className="newsletter">
                 <div className="text-center">
                     <h6>Bleib immer auf dem Laufenden</h6>
-                    <p>Lorem Ipsum dolor sit amet et consetutor, sadipscing elitr, sed diam nonumy eirmod empor ividunt
-                        ut
-                        labore et dolore magna aliquyam. </p>
+                    <p>Trage deine E-Mail Adresse hier ein und du erhältst in Zukunft alle neuen Infos zu Anmeldestart, Merchandise und co.</p>
                 </div>
 
                 {isSubmitting &&
