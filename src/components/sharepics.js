@@ -22,9 +22,11 @@ export default class Sharepics extends Component {
             <div>
                 <center><h2>Spread the word</h2></center>
                 <p className="text-light text-center">
-                    So ein Großevent lebt davon dass viele Leute dabei sind. Und da bist DU gefragt!<br/>
-                    Suche dir ein oder mehrere Sharepics aus und versende sie an deine Freund*innen oder teile sie in
-                    den sozialen Netzwerken.<br/>
+                    So ein Großevent lebt davon dass viele Leute dabei sind. Und da bist DU gefragt!</p>
+                <p className="text-light text-center">Suche dir ein oder mehrere Sharepics aus und versende sie an deine Freund*innen oder teile sie in
+                    den sozialen Netzwerken.</p>
+                <p className="text-light text-center"> Unter den Sharepics findest du noch Links zum offiziellen Instagram- und Facebook-Profil. Diesen
+                    Accounts kannst du gerne folgen um keine News zu verpassen.
                     Gemeinsam machen wir STARTKLAR zu einem unvergesslichen Erlebnis.
                 </p>
 
