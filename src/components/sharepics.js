@@ -21,8 +21,12 @@ export default class Sharepics extends Component {
         return (
             <div>
                 <center><h2>Spread the word</h2></center>
-                <p className="text-light text-center">Lorem Ipsum dolor sit amet et consetutor, sadipscing elitr, sed
-                    diam nonumy eirmod empor ividunt ut labore et dolore magna aliquyam.</p>
+                <p className="text-light text-center">
+                    So ein Großevent lebt davon dass viele Leute dabei sind. Und da bist DU gefragt!<br/>
+                    Suche dir ein oder mehrere Sharepics aus und versende sie an deine Freund*innen oder teile sie in
+                    den sozialen Netzwerken.<br/>
+                    Gemeinsam machen wir STARTKLAR zu einem unvergesslichen Erlebnis.
+                </p>
 
                 <Row className="mb-4">
                     {sharepics.map((sharepic) => (
