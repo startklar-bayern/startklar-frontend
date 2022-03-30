@@ -115,8 +115,7 @@ export default class ShareButton extends Component {
                 const shareData = {
                     files: filesArray,
                     url: "https://www.startklar.bayern",
-                    text: text,
-                    title: title,
+                    text: this.generateSharingText(),
                 }
 
                 if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
