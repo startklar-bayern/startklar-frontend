@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as Logo } from './../assets/images/logo.svg';
+import logo from './../assets/images/logo.png';
 import './../assets/styles/header.scss';
 import { NavLink } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
@@ -9,7 +9,7 @@ function Header() {
     <div className="header">
       <Navbar variant="light" fixed="top">
         <NavLink className="navbar-brand" to="/">
-          <Logo />
+          <img src={logo} alt="Logo" />
         </NavLink>
       </Navbar>
     </div>
