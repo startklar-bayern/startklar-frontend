@@ -53,7 +53,8 @@ class Newsletter extends React.Component {
             <div className="newsletter">
                 <div className="text-center">
                     <h6>Bleib immer auf dem Laufenden</h6>
-                    <p>Trage deine E-Mail Adresse hier ein und du erhältst in Zukunft alle neuen Infos zu Anmeldestart, Merchandise und co.</p>
+                    <p>Trage deine E-Mail Adresse hier ein und du erhältst in Zukunft alle neuen Infos zu Anmeldestart,
+                        Merchandise und co.</p>
                 </div>
 
                 {isSubmitting &&
@@ -98,7 +99,7 @@ class Newsletter extends React.Component {
                         </Form.Group>
 
                         <Collapse in={this.state.showPrivacy}>
-                            <Form.Group>
+                            <Form.Group className="mt-2">
                                 <Form.Check
                                     required
                                     type="checkbox"
@@ -114,7 +115,9 @@ class Newsletter extends React.Component {
                                         value={values.privacyAccepted}
                                     />
                                     <Form.Check.Label>
-                                        Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und akzeptiere sie
+                                        Ich habe die <a href="/datenschutz"
+                                                        target="_blank">Datenschutzerklärung</a> gelesen, akzeptiere
+                                        sie und stimme dem Erhalt von Informationen per E-Mail zu.
                                     </Form.Check.Label>
 
                                     <Form.Control.Feedback type="invalid">
