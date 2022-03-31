@@ -34,7 +34,15 @@ code {
 }
 
 section {
-  padding: 130px 0;
+  padding: 40px 0;
+  @include media-breakpoint-up(lg){
+    padding: 130px 0;
+  }
+}
+
+.gradient-container {
+  background: -webkit-radial-gradient(left 50%, shade-color($primary, 75%), $black 50%);
+  background: radial-gradient(at left 50%, shade-color($primary, 75%), $black 50%);
 }
 
 h1, .h1,
@@ -103,7 +111,7 @@ h1, .h1 {
   }
 
   &:hover {
-    color: $primary;
+    color: $primary !important;
     border-width: 0 !important;
   }
 }

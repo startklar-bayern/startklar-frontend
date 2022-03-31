@@ -1,5 +1,13 @@
 @import "bootstrap-variables";
 
+section.sharepics {
+    @include media-breakpoint-up(lg){
+      background-image: url('./../images/svg/music-notes-graphic.svg');
+      background-repeat: no-repeat;
+      background-position: left 95%;
+    }
+  }
+
 img.sharepic {
     width: 100%;
     height: auto;

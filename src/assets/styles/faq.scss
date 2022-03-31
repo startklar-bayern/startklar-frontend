@@ -1,7 +1,19 @@
 @import "bootstrap-variables";
 
+section.faqs {
+  @include media-breakpoint-up(lg){
+    background-image: url('./../images/svg/footsteps-graphic.svg');
+    background-repeat: no-repeat;
+    background-position: right 90%;
+  }
+}
+
 .accordion-header {
   border-bottom: 2px solid $border-color;
+}
+
+.accordion-item {
+  width: 40%;
 }
 
 .accordion-button {

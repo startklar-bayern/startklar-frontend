@@ -44,8 +44,9 @@ export default class Calendar extends Component {
             <div className="calendar text-center mb-4">
                 <Countdown />
 
-                <div class="mb-4"><span className="mx-2 mx-md-4"><FontAwesomeIcon
-                    icon={faCalendar}/> 08. - 11. Juni 2023</span><span><FontAwesomeIcon icon={faMapPin}/> Zeltplatz Thalmässing</span>
+                <div class="mb-4 event-info">
+                    <span className="mx-3"><FontAwesomeIcon icon={faCalendar}/> 08. - 11. Juni 2023</span>
+                    <span className="mx-3"><FontAwesomeIcon icon={faMapPin}/> Zeltplatz Thalmässing</span>
                 </div>
 
                 <Button variant="outline-dark" className="mb-2 addeventatc" title="Zum Kalender hinzufügen">

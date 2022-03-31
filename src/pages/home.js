@@ -31,13 +31,19 @@ class Home extends Component {
                         </Row>
                     </Container>
                 </section>
-                <section className="faqs container" id="faq">
-                    <FaqAccordion faqs={this.state.faqs}/>
-                    <FaqQuestion/>
-                </section>
-                <section className="sharepics container">
-                    <Sharepics sharepics={this.state.sharepics}/>
-                </section>
+                <div class="gradient-container">
+                    <section className="faqs" id="faq">
+                        <div className="container">
+                            <FaqAccordion faqs={this.state.faqs}/>
+                            <FaqQuestion/>
+                        </div>
+                    </section>
+                    <section className="sharepics">
+                        <div className="container">
+                            <Sharepics sharepics={this.state.sharepics}/>
+                        </div>
+                    </section>
+                </div>
                 <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>
                     <Toast.Header>
                         <strong className="me-auto">E-Mail bestätigt</strong>

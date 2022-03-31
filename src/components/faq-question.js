@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
-import {Alert, Collapse, Form, Spinner} from "react-bootstrap";
+import {Alert, Collapse, Form, Row, Spinner, Col} from "react-bootstrap";
 import {withFormik} from "formik";
 import * as Yup from "yup";
 
@@ -61,58 +61,62 @@ class FaqQuestion extends Component {
                             </Alert>}
 
                         {!isSubmitting && !status.success && !status.error &&
-                            <Form noValidate onSubmit={handleSubmit}>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Dein Name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="name"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={!!errors.name}/>
+                            <Row>
+                                <Col lg={{ span: 6, offset: 3 }}>
+                                    <Form noValidate onSubmit={handleSubmit}>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>Dein Name</Form.Label>
+                                            <Form.Control
+                                                type="text"
+                                                name="name"
+                                                value={values.name}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                isInvalid={!!errors.name}/>
 
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.name}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.name}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Deine E-Mail-Adresse</Form.Label>
-                                    <Form.Control
-                                        type="email"
-                                        name="email"
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={!!errors.email}/>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>Deine E-Mail-Adresse</Form.Label>
+                                            <Form.Control
+                                                type="email"
+                                                name="email"
+                                                value={values.email}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                isInvalid={!!errors.email}/>
 
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.email}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.email}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Deine Frage(n)</Form.Label>
-                                    <Form.Control
-                                        as="textarea"
-                                        rows={4}
-                                        name="body"
-                                        value={values.body}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={!!errors.body}/>
+                                        <Form.Group className="mb-3">
+                                            <Form.Label>Deine Frage(n)</Form.Label>
+                                            <Form.Control
+                                                as="textarea"
+                                                rows={4}
+                                                name="body"
+                                                value={values.body}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                isInvalid={!!errors.body}/>
 
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.body}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.body}
+                                            </Form.Control.Feedback>
+                                        </Form.Group>
 
-                                <Form.Group>
-                                    <Button type="submit" disabled={!isValid}>Absenden <FontAwesomeIcon
-                                        icon={faArrowRight}/></Button>
-                                </Form.Group>
-                            </Form>
+                                        <Form.Group>
+                                            <Button type="submit" disabled={!isValid}>Absenden <FontAwesomeIcon
+                                                icon={faArrowRight}/></Button>
+                                        </Form.Group>
+                                    </Form>
+                                </Col>
+                            </Row>
                         }
                     </div>
                 </Collapse>

@@ -1,3 +1,5 @@
+@import "bootstrap-variables";
+
 .calendar .addeventatc {
   font-family: inherit;
   box-shadow: none !important;
@@ -29,4 +31,10 @@
 
 .calendar .ateoutlook {
   background-image: url("./../icons/calendar-regular.svg") !important;
+}
+
+@include media-breakpoint-down(md) {
+  .event-info span {
+    display: block;
+  }
 }
