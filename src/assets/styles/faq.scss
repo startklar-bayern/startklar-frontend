@@ -1,5 +1,29 @@
 @import "bootstrap-variables";
 
 .accordion-header {
-    border-bottom: 2px solid $border-color;
+  border-bottom: 2px solid $border-color;
+}
+
+.accordion-button {
+  &::after {
+    background-image: url('./../images/svg/plus-solid.svg') !important;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: $white;
+    padding: 5px;
+    background-size: 50% !important;
+    background-position: center;
+  }
+  &:not(.collapsed)::after {
+    background-image: url('./../images/svg/minus-solid.svg') !important;
+  }
+
+  &:hover {
+    color: $primary;
+
+    &::after {
+      background-color: $primary;
+      border-color: $primary;
+    }
+  }
 }
