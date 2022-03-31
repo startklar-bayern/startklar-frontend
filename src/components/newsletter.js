@@ -132,7 +132,7 @@ class Newsletter extends React.Component {
                     className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen
                     sind schon STARTKLAR!</p>
 
-                <div className="text-center"><FontAwesomeIcon icon={faArrowDown}/></div>
+                <div className="text-center bounce-button"><a className="text-black" href="#faq"><FontAwesomeIcon icon={faArrowDown}/></a></div>
             </div>
         );
     }

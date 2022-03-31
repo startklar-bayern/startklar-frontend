@@ -1,14 +1,15 @@
 @import "bootstrap-variables";
 
-img {
+img.sharepic {
     width: 100%;
     height: auto;
+    border: 2px solid $light;
+    border-radius: 5px;
 }
 
 .share-button {
-    transform: translateY(-50%);
     display: block !important;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .follow-us a {

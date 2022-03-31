@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CookieConsent, {getCookieConsentValue} from "react-cookie-consent";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {Footer, Header} from "../layouts";
+import Footer from "../layouts/footer";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import ReactGA from "react-ga4";
@@ -45,7 +45,6 @@ export default class App extends Component {
                 >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
                 <Router>
-                    <Header/>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         {this.state.pages.map(page => {

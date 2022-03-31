@@ -1,11 +1,17 @@
 @import "bootstrap-variables";
 
 section.home {
-    background-image: url('./../images/mountain-silhoutte-background__1x.png');
-    @media (min-width: 1921px) {
-      background-image: url('./../images/mountain-silhoutte-background__2x.png');
-    }
-    background-position: bottom;
-    background-size: cover;
-    color: $black;
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-image: url('./../images/mountain-silhoutte-background__1x.png');
+  @media (min-width: 1921px) {
+    background-image: url('./../images/mountain-silhoutte-background__2x.png');
   }
+  background-position: bottom;
+  background-size: cover;
+  color: $black;
+}

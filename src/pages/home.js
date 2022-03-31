@@ -8,6 +8,7 @@ import Calendar from '../components/calendar';
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
+import Header from "../layouts/header";
 import {Toast} from "react-bootstrap";
 
 class Home extends Component {
@@ -20,6 +21,7 @@ class Home extends Component {
         return (
             <div>
                 <section className="home container-fluid">
+                    <Header/>
                     <Container>
                         <Row>
                             <Col lg={{ span: 8, offset: 2 }}>
@@ -29,7 +31,7 @@ class Home extends Component {
                         </Row>
                     </Container>
                 </section>
-                <section className="faqs container">
+                <section className="faqs container" id="faq">
                     <FaqAccordion faqs={this.state.faqs}/>
                     <FaqQuestion/>
                 </section>
