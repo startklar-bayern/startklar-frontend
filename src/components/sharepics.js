@@ -11,19 +11,21 @@ export default class Sharepics extends Component {
 
         return (
             <div>
-                <center><h2>Spread the word</h2></center>
-                <p className="text-light text-center">
-                    So ein Großevent lebt davon dass viele Leute dabei sind. Und da bist DU gefragt!</p>
-                <p className="text-light text-center">Suche dir ein oder mehrere Sharepics aus und versende sie an deine Freund*innen oder teile sie in
-                    den sozialen Netzwerken.</p>
-                <p className="text-light text-center"> Unter den Sharepics findest du noch Links zum offiziellen Instagram- und Facebook-Profil. Diesen
-                    Accounts kannst du gerne folgen um keine News zu verpassen.
-                    Gemeinsam machen wir STARTKLAR zu einem unvergesslichen Erlebnis.
-                </p>
+                <center><h2 className="mb-4">Spread the word</h2></center>
+                <div className="mb-4">
+                    <p className="text-light text-center">
+                        So ein Großevent lebt davon dass viele Leute dabei sind. Und da bist DU gefragt!</p>
+                    <p className="text-light text-center">Suche dir ein oder mehrere Sharepics aus und versende sie an deine Freund*innen oder teile sie in
+                        den sozialen Netzwerken.</p>
+                    <p className="text-light text-center"> Unter den Sharepics findest du noch Links zum offiziellen Instagram- und Facebook-Profil. Diesen
+                        Accounts kannst du gerne folgen um keine News zu verpassen.
+                        Gemeinsam machen wir STARTKLAR zu einem unvergesslichen Erlebnis.
+                    </p>
+                </div>
 
                 <Row className="mb-4">
                     {sharepics.map((sharepic) => (
-                        <Col xs={6} lg={3} key={'sharepic-' + sharepic.id}>
+                        <Col xs={6} lg={3} key={'sharepic-' + sharepic.id} className="my-4">
                             <img className="sharepic" src={sharepic.imagePreviewUrl} alt={sharepic.altText} width="200" height="200"/>
                             <ShareButton
                                 image={sharepic.imageShareUrl}

@@ -13,15 +13,15 @@ function Header() {
     <div class="container-fluid">
       <Navbar>
         <Row className="header">
-          <Col xs={4} className="seondary-brand text-center">
-            <img src={logoKolpingBayern} alt="Logo Kolpingjugend Bayern" />
+          <Col xs={2} md={4} className="seondary-brand text-center">
+            <img className="d-none d-sm-inline-block" src={logoKolpingBayern} alt="Logo Kolpingjugend Bayern" />
           </Col>
-          <Col xs={4} className="text-center">
+          <Col xs={8} md={4} className="text-center">
             <NavLink className="navbar-brand" to="/">
               <img src={logo} alt="Logo" />
             </NavLink>
           </Col>
-          <Col xs={4} className="text-center">
+          <Col xs={2} md={4} className="text-center">
             <SocialButtons/>
           </Col>
         </Row>

@@ -38,8 +38,8 @@ class FaqQuestion extends Component {
         }
 
         return (
-            <div className="faq-question text-center">
-                <h6>Noch fragen? Dann stelle sie uns hier:</h6>
+            <div className="faq-question text-center mt-4">
+                <h6 className="mb-4">Noch fragen? Dann stelle sie uns hier:</h6>
                 <Collapse in={this.state.formOpen}>
                     <div>
                         {isSubmitting &&

@@ -21,20 +21,29 @@
   }
 
   .social-buttons {
-    margin: 2rem;
+    margin-top: 2rem;
     display: inline-block;
 
     a {
       color: $black;
+
+      .svg-inline--fa {
+        margin: 0.5rem;
+      }
     }
   }
 
-  .navbar-brand img {
-    background: $white;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%;
-    max-width: 194px;
-    width: 100%;
-    padding: 20px;
+  .navbar-brand {
+    margin: 0 auto;
+
+    img {
+      background: $white;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      max-width: 194px;
+      min-width: 194px;
+      width: 100%;
+      padding: 20px;
+    }
   }
 }

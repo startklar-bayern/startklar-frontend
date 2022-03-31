@@ -108,6 +108,12 @@ h1, .h1 {
   }
 }
 
+.social-buttons {
+  .svg-inline--fa {
+    height: 2rem;
+  }
+}
+
 .bounce-button {
   animation: bounceit 500ms infinite alternate;
   -webkit-animation: bounceit 500ms infinite alternate;

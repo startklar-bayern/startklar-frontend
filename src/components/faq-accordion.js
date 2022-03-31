@@ -6,10 +6,10 @@ import './../assets/styles/faq.scss';
 
 const FaqAccordion = ({faqs}) => {
     return (
-        <Row className="mb-4">
+        <Row>
             <Col>
-                <center><h2>Häufig gestellte Fragen</h2></center>
-                <Accordion className="row">
+                <center><h2 className="mb-4">Häufig gestellte Fragen</h2></center>
+                <Accordion className="row mb-4">
                     {faqs.map((faq) => (
                         <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id} className="col-12 col-md-6">
                             <Accordion.Header>{faq.question}</Accordion.Header>

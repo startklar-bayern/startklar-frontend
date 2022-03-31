@@ -5,6 +5,10 @@
 }
 
 .accordion-button {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-left: 0;
+
   &::after {
     background-image: url('./../images/svg/plus-solid.svg') !important;
     border: 1px solid white;
