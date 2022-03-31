@@ -1,18 +1,40 @@
 @import "bootstrap-variables";
 
 .navbar {
-    padding-top: 0 !important;
+  padding-top: 0 !important;
+  justify-content: center;
 
-    .navbar-brand {
-        margin: 0 auto;
-        background: $white;
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
+  .header {
+    width: 100%;
+  }
 
-        img {
-            max-width: 194px;
-            width: 100%;
-            margin: 20px;
-        }
+  .seondary-brand {
+    margin-top: 2rem;
+
+    img {
+      max-width: 100px;
+
+      @include media-breakpoint-up(sm) {
+        max-width: 140px;
+      }
     }
+  }
+
+  .social-buttons {
+    margin: 2rem;
+    display: inline-block;
+
+    a {
+      color: $black;
+    }
+  }
+
+  .navbar-brand img {
+    background: $white;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    max-width: 194px;
+    width: 100%;
+    padding: 20px;
+  }
 }

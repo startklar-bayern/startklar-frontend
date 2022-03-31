@@ -1,12 +1,9 @@
 @import "bootstrap-variables";
 
 section.home {
-  height: 100vh;
-  padding: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: flex-start;
-  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 150px;
   background-image: url('./../images/mountain-silhoutte-background__1x.png');
   @media (min-width: 1921px) {
     background-image: url('./../images/mountain-silhoutte-background__2x.png');

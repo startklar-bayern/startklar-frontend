@@ -2,19 +2,10 @@ import React, {Component} from 'react'
 import './../assets/styles/sharepics.scss';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faInstagram, faFacebook} from '@fortawesome/free-brands-svg-icons'
 import ShareButton from "./shareButton";
-import ReactGA from "react-ga4";
+import SocialButtons from './socialButtons';
 
 export default class Sharepics extends Component {
-
-    constructor(props, context) {
-        super(props, context);
-
-        this.trackSocialMediaClick = this.trackSocialMediaClick.bind(this);
-    }
-
     render() {
         const sharepics = this.props.sharepics;
 
@@ -46,35 +37,9 @@ export default class Sharepics extends Component {
                 </Row>
 
                 <h6 className="follow-us text-center">
-                    Folge uns Auf:
-                    <a
-                        href="https://www.instagram.com/startklar.bayern"
-                        rel="noreferrer"
-                        target="_blank"
-                        title="Instagram"
-                        onClick={this.trackSocialMediaClick}>
-                        <FontAwesomeIcon icon={faInstagram}/>
-                    </a>
-                    <a
-                        rel="noreferrer"
-                        href="https://www.facebook.com/startklar.bayern"
-                        target="_blank"
-                        title="Facebook"
-                        onClick={this.trackSocialMediaClick}>
-                        <FontAwesomeIcon icon={faFacebook}/>
-                    </a>
+                    Folge uns Auf: <SocialButtons/>
                 </h6>
             </div>
         );
-    }
-
-    trackSocialMediaClick(e) {
-        const platform = e.target.title;
-
-        ReactGA.event({
-            category: "socialMedia",
-            action: "clickSocialMediaLink",
-            label: platform,
-        });
     }
 }
