@@ -51,7 +51,7 @@ export default class Footer extends Component {
                         <div className="xsmall"/>
                     </div>
                     <div className="navigation-container">
-                        <div className="text-light">&reg;Kolpingjugend - Kolpingwerk Bayern {currentYear}</div>
+                        <div className="text-light">© Kolpingjugend im Kolpingwerk Bayern {currentYear}</div>
                         <div className="navigation">
                             <nav className="navbar navbar-expand">
                                 <ul className="navbar-nav ml-auto">
