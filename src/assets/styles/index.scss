@@ -83,6 +83,11 @@ h1, .h1 {
 
 .btn-primary {
   color: $white !important;
+
+  &:hover {
+    background-color: shade-color($primary, $btn-hover-bg-tint-amount) !important;
+    border-color: shade-color($primary, $btn-hover-bg-tint-amount) !important;
+  }
 }
 
 .input-group .btn {
