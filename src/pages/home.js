@@ -5,9 +5,7 @@ import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
+import {Row, Col, Container}  from 'react-bootstrap'
 import Header from "../layouts/header";
 import {Toast} from "react-bootstrap";
 
@@ -31,17 +29,17 @@ class Home extends Component {
                         </Row>
                     </Container>
                 </section>
-                <div class="gradient-container">
+                <div className="gradient-container">
                     <section className="faqs" id="faq">
-                        <div className="container">
+                        <Container>
                             <FaqAccordion faqs={this.state.faqs}/>
                             <FaqQuestion/>
-                        </div>
+                        </Container>
                     </section>
                     <section className="sharepics">
-                        <div className="container">
+                        <Container>
                             <Sharepics sharepics={this.state.sharepics}/>
-                        </div>
+                        </Container>
                     </section>
                 </div>
                 <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>

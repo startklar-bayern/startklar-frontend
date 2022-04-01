@@ -44,7 +44,7 @@ export default class Calendar extends Component {
             <div className="calendar text-center mb-4">
                 <Countdown />
 
-                <div class="mb-4 event-info">
+                <div className="mb-4 event-info">
                     <span className="mx-3"><FontAwesomeIcon icon={faCalendar}/> 08. - 11. Juni 2023</span>
                     <span className="mx-3"><FontAwesomeIcon icon={faMapPin}/> Zeltplatz Thalmässing</span>
                 </div>

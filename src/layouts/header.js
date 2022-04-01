@@ -3,14 +3,12 @@ import logo from './../assets/images/logo-optisch-zentriert.png';
 import logoKolpingBayern from './../assets/images/logo-kolping-bayern.png';
 import './../assets/styles/header.scss';
 import { NavLink } from "react-router-dom";
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Navbar from 'react-bootstrap/Navbar'
+import {Row, Col, Navbar, Container}  from 'react-bootstrap'
 import SocialButtons from '../components/socialButtons';
 
 function Header() {
   return (
-    <div class="container-fluid">
+    <Container fluid>
       <Navbar>
         <Row className="header">
           <Col xs={2} md={4} className="seondary-brand text-center">
@@ -26,7 +24,7 @@ function Header() {
           </Col>
         </Row>
       </Navbar>
-    </div>
+    </Container>
   );
 }
 

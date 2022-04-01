@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
+import {Container} from "react-bootstrap";
 import './../assets/styles/footer.scss';
 
 export default class Footer extends Component {
@@ -41,7 +42,7 @@ export default class Footer extends Component {
         const currentYear = new Date().getFullYear()
 
         return (
-            <div className="footer container">
+            <Container className="footer">
                 <footer>
                     <div className="footer-border">
                         <div className="xsmall"/>
@@ -67,7 +68,7 @@ export default class Footer extends Component {
                         </div>
                     </div>
                 </footer>
-            </div>
+            </Container>
         );
     }
 }

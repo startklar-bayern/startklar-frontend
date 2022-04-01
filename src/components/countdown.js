@@ -48,7 +48,7 @@ export default class Countdown extends Component {
         }
 
         return (
-            <h2 class="mb-0">Noch {parts}</h2>
+            <h2 className="mb-0">Noch {parts}</h2>
         );
     }
 

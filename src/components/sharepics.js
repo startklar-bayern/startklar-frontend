@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import './../assets/styles/sharepics.scss';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import {Row, Col} from 'react-bootstrap'
 import ShareButton from "./shareButton";
 import SocialButtons from './socialButtons';
 
