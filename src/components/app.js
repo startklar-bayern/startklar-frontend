@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import CookieConsent, {getCookieConsentValue} from "react-cookie-consent";
+import OpengraphReactComponent from "opengraph-react";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Footer from "../layouts/footer";
 import {Home} from "../pages";
@@ -43,6 +44,12 @@ export default class App extends Component {
                     declineButtonText="Ablehnen"
                     onAccept={this.handleAcceptCookie}
                 >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
+
+                <OpengraphReactComponent
+                    site={window.location.href}
+                    appId={'35367279-d3e6-466d-a5dc-8c137f9094c0'}
+                    size={'small'}
+                />
 
                 <Router>
                     <Routes>
