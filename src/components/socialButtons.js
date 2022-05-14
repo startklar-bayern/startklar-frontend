@@ -23,7 +23,7 @@ export default class SocialButtons extends Component {
         </a>
         <a
             rel="noreferrer"
-            href="https://www.facebook.com/startklar.bayern"
+            href="https://www.facebook.com/events/344004301162008"
             target="_blank"
             title="Facebook"
             onClick={this.trackSocialMediaClick}>
