@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faInstagram, faFacebook} from '@fortawesome/free-brands-svg-icons'
+import {faInstagram, faFacebook, faTiktok} from '@fortawesome/free-brands-svg-icons'
 import ReactGA from "react-ga4";
 
 export default class SocialButtons extends Component {
@@ -28,6 +28,14 @@ export default class SocialButtons extends Component {
             title="Facebook"
             onClick={this.trackSocialMediaClick}>
             <FontAwesomeIcon icon={faFacebook}/>
+        </a>
+        <a
+            rel="noreferrer"
+            href="https://www.tiktok.com/@startklar.bayern"
+            target="_blank"
+            title="TikTok"
+            onClick={this.trackSocialMediaClick}>
+            <FontAwesomeIcon icon={faTiktok}/>
         </a>
       </span>
     )
