@@ -1,6 +1,6 @@
 import React from "react";
 import logo from './../assets/images/logo-optisch-zentriert.png';
-import logoKolpingBayern from './../assets/images/logo-kolping-bayern.png';
+import logoKolpingBayern from './../assets/images/logo-kolping-bayern.svg';
 import './../assets/styles/header.scss';
 import { NavLink } from "react-router-dom";
 import {Row, Col, Navbar, Container}  from 'react-bootstrap'
