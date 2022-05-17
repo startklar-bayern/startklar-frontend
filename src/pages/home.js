@@ -8,6 +8,10 @@ import Calendar from '../components/calendar';
 import {Row, Col, Container}  from 'react-bootstrap'
 import Header from "../layouts/header";
 import {Toast} from "react-bootstrap";
+import backgroundWebP from "../assets/images/mountain-silhoutte-background__1x.webp"
+import backgroundPng from "../assets/images/mountain-silhoutte-background__1x.png"
+import backgroundWebP2x from "../assets/images/mountain-silhoutte-background__2x.webp"
+import backgroundPng2x from "../assets/images/mountain-silhoutte-background__2x.png"
 
 class Home extends Component {
     constructor(props) {
@@ -19,6 +23,11 @@ class Home extends Component {
         return (
             <div>
                 <section className="home container-fluid">
+                    <picture className="home__background">
+                        <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp" />
+                        <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png" />
+                        <img src={backgroundPng} alt="" className="home__background__image" />
+                    </picture>
                     <Header/>
                     <Container>
                         <Row>

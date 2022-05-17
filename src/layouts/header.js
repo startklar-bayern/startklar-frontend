@@ -1,5 +1,6 @@
 import React from "react";
 import logo from './../assets/images/logo-optisch-zentriert.png';
+import logoWebP from './../assets/images/logo-optisch-zentriert.webp';
 import logoKolpingBayern from './../assets/images/logo-kolping-bayern.svg';
 import './../assets/styles/header.scss';
 import { NavLink } from "react-router-dom";
@@ -16,7 +17,11 @@ function Header() {
           </Col>
           <Col xs={8} md={4} className="text-center">
             <NavLink className="navbar-brand" to="/">
-              <img src={logo} alt="Logo" />
+              <picture>
+                <source srcSet={logoWebP} type="image/webp" />
+                <source srcSet={logo} type="image/png" />
+                <img src={logo} alt="Logo" width="388" height="388" className="header__logo"/>
+              </picture>
             </NavLink>
           </Col>
           <Col xs={2} md={4} className="text-center">

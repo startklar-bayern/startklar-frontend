@@ -25,7 +25,7 @@ export default class Sharepics extends Component {
                 <Row className="mb-4">
                     {sharepics.map((sharepic) => (
                         <Col xs={6} lg={3} key={'sharepic-' + sharepic.id} className="my-4">
-                            <img className="sharepic" src={sharepic.imagePreviewUrl} alt={sharepic.altText} width="200" height="200"/>
+                            <img className="sharepic" src={sharepic.imagePreviewUrl} alt={sharepic.altText} width="200" height="200" loading="lazy"/>
                             <ShareButton
                                 image={sharepic.imageShareUrl}
                                 previewImage={sharepic.imagePreviewUrl}
