@@ -10,6 +10,15 @@ section.faqs {
 
 .accordion-header {
   border-bottom: 2px solid $border-color;
+
+  .faq-new-badge {
+    background: darkorange;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 2px 5px;
+    margin: 0 1em;
+    color: #fff !important;
+  }
 }
 
 .accordion-button {

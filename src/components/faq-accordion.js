@@ -12,7 +12,7 @@ const FaqAccordion = ({faqs}) => {
                         {faqs.map((faq, index) => (
                             index <= faqs.length / 2 &&
                                 <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id}>
-                                    <Accordion.Header>{faq.question}</Accordion.Header>
+                                    <Accordion.Header>{faq.question}{faq.isNew && <span className="faq-new-badge">Neu</span>}</Accordion.Header>
                                     <Accordion.Body dangerouslySetInnerHTML={{__html: faq.answer}}>
                                     </Accordion.Body>
                                 </Accordion.Item>
@@ -22,7 +22,7 @@ const FaqAccordion = ({faqs}) => {
                         {faqs.map((faq, index) => (
                             index > faqs.length / 2 &&
                                 <Accordion.Item eventKey={faq.id} key={'faq-' + faq.id}>
-                                    <Accordion.Header>{faq.question}</Accordion.Header>
+                                    <Accordion.Header>{faq.question}{faq.isNew && <span className="faq-new-badge">Neu</span>}</Accordion.Header>
                                     <Accordion.Body dangerouslySetInnerHTML={{__html: faq.answer}}>
                                     </Accordion.Body>
                                 </Accordion.Item>
