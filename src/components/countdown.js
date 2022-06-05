@@ -63,7 +63,7 @@ export default class Countdown extends Component {
             parts.push({
                 key: 'day',
                 value: Math.floor(duration.asDays()),
-                label: duration.days() === 1 ? 'Tag' : 'Tage',
+                label: duration.asDays() === 1 ? 'Tag' : 'Tage',
             });
         }
 
