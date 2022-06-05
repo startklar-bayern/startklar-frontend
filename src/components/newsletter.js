@@ -22,12 +22,12 @@ class Newsletter extends React.Component {
 
 
     componentDidMount() {
-        fetch('https://backend.startklar.bayern/api/newsletter')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({subscriberCount: data.subscriber_count})
-            })
-            .catch(console.log)
+        // fetch('https://backend.startklar.bayern/api/newsletter')
+        //     .then(res => res.json())
+        //     .then((data) => {
+        //         this.setState({subscriberCount: data.subscriber_count})
+        //     })
+        //     .catch(console.log)
     }
 
     render() {
@@ -127,9 +127,9 @@ class Newsletter extends React.Component {
                         </Collapse>
                     </Form>}
 
-                <p className="text-center"><span
-                    className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen
-                    sind schon STARTKLAR!</p>
+                {/*<p className="text-center"><span*/}
+                {/*    className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen*/}
+                {/*    sind schon STARTKLAR!</p>*/}
 
                 <div className="text-center bounce-button"><a className="text-black" href="#faq"><FontAwesomeIcon icon={faArrowDown}/></a></div>
             </div>
