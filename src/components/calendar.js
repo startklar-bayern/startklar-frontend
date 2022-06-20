@@ -62,8 +62,8 @@ export default class Calendar extends Component {
                     <span className="all_day_event">true</span>
                     <span className="date_format">MM/DD/YYYY</span>
                     <span className="alarm_reminder">1440</span>
-                    {/*<span className="client">autHbjWzUzAfgSzWtmWE163074</span>*/}
-                    <span className="client">aEpukSZYxzpxeFJZQmvY155248</span>
+                    <span className="client">autHbjWzUzAfgSzWtmWE163074</span>
+                    {/*<span className="client">aEpukSZYxzpxeFJZQmvY155248</span>*/}
                 </Button>
             </div>
         );
