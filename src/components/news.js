@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Row, Col} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import {faArrowRight, faXmark} from '@fortawesome/free-solid-svg-icons'
 import {format} from 'date-fns'
 import {Modal} from "react-bootstrap";
 import './../assets/styles/news.scss';
@@ -29,7 +29,7 @@ export default class News extends Component {
                 <Row>
                     {news.map((singleNews) => (
                         <>
-                            <Col xs={6} lg={4} key={'news-' + singleNews.id} className="singleNews">
+                            <Col xs={6} lg={4} key={'news-' + singleNews.id} className="singleNews my-4">
                                 <div className="position-relative mb-4">
                                     <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width="200" height="200" loading="lazy"/>
                                     <div className="createdBadge text-light">{format(new Date(singleNews.created), "dd.MM.yyyy")}</div>
@@ -41,6 +41,7 @@ export default class News extends Component {
                             <Modal show={this.state.modalOpen} onHide={this.handleModalClose}>
                                 <Modal.Header>
                                     <Modal.Title>{singleNews.title}</Modal.Title>
+                                    <button class="btn btn-link modal-close" onClick={this.handleModalClose}><FontAwesomeIcon icon={faXmark}/></button>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <div className="position-relative mb-4">

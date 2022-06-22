@@ -1,7 +1,7 @@
 import React, {Component, useRef} from "react";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faCopy, faDownload, faShare, faSpinner} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faCopy, faDownload, faShare, faSpinner, faXmark} from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
 import {FormControl, Modal, Overlay, Tooltip} from "react-bootstrap";
 
@@ -33,6 +33,7 @@ export default class ShareButton extends Component {
                 <Modal show={this.state.modalOpen} onHide={this.handleModalClose}>
                     <Modal.Header>
                         <Modal.Title>Sende das Bild an deine Freunde</Modal.Title>
+                        <button class="btn btn-link modal-close" onClick={this.handleModalClose}><FontAwesomeIcon icon={faXmark}/></button>
                     </Modal.Header>
                     <Modal.Body>
                         <ol>
