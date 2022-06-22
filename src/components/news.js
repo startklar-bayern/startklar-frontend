@@ -29,7 +29,7 @@ export default class News extends Component {
                 <Row>
                     {news.map((singleNews) => (
                         <>
-                            <Col xs={6} lg={4} key={'news-' + singleNews.id} className="singleNews my-4">
+                            <Col md={6} lg={4} key={'news-' + singleNews.id} className="singleNews my-4">
                                 <div className="position-relative mb-4">
                                     <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width={singleNews.previewImage.width} height={singleNews.previewImage.height} loading="lazy"/>
                                     <div className="createdBadge text-light">{format(new Date(singleNews.created), "dd.MM.yyyy")}</div>
