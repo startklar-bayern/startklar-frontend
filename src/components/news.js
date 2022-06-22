@@ -41,7 +41,7 @@ export default class News extends Component {
                             <Modal show={this.state.modalOpen} onHide={this.handleModalClose}>
                                 <Modal.Header>
                                     <Modal.Title>{singleNews.title}</Modal.Title>
-                                    <button class="btn btn-link modal-close" onClick={this.handleModalClose}><FontAwesomeIcon icon={faXmark}/></button>
+                                    <button className="btn btn-link modal-close" onClick={this.handleModalClose}><FontAwesomeIcon icon={faXmark}/></button>
                                 </Modal.Header>
                                 <Modal.Body>
                                     <div className="position-relative mb-4">

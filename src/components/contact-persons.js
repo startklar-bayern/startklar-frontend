@@ -23,7 +23,7 @@ export default class ContactPersons extends Component {
                     {contactPersons.map((contactPerson) => (
                         <Col xs={6} lg={4} key={'contact-person-' + contactPerson.id}>
                             <div className="contactPerson p-4">
-                                <div class="text-center"><FontAwesomeIcon className="contactPersonIcon text-center" icon={contactPerson.icon.replace("fa-","")} /></div>
+                                <div className="text-center"><FontAwesomeIcon className="contactPersonIcon text-center" icon={contactPerson.icon.replace("fa-","")} /></div>
                                 <h3 className="text-center">{contactPerson.title}</h3>
                                 <p className="text-light" dangerouslySetInnerHTML={{__html: contactPerson.body}} />
                                 <hr />
