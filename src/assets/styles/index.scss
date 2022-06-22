@@ -45,6 +45,11 @@ section {
   background: radial-gradient(at left 50%, shade-color($primary, 75%), $black 50%);
 }
 
+.gradient-reverse-container {
+  background: -webkit-radial-gradient(right 50%, shade-color($primary, 75%), $black 50%);
+  background: radial-gradient(at right 50%, shade-color($primary, 75%), $black 50%);
+}
+
 h1, .h1,
 h2, .h2,
 h3, .h3,

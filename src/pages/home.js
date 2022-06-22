@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './../assets/styles/home.scss';
 import Sharepics from '../components/sharepics';
 import News from '../components/news';
+import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -51,9 +52,16 @@ class Home extends Component {
                             <Sharepics sharepics={this.state.sharepics}/>
                         </Container>
                     </section>
+                </div>
+                <div className="gradient-reverse-container">
                     <section className="news">
                         <Container>
                             <News news={this.state.news}/>
+                        </Container>
+                    </section>
+                    <section className="contact-persons">
+                        <Container>
+                            <ContactPersons contactPersons={this.state.contactPersons}/>
                         </Container>
                     </section>
                 </div>
@@ -73,6 +81,7 @@ class Home extends Component {
         sharepics: [],
         faqs: [],
         news: [],
+        contactPersons: [],
         showEmailConfirmed: false,
     };
 
@@ -94,6 +103,13 @@ class Home extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({news: data})
+            })
+            .catch(console.log)
+
+        fetch('https://backend.startklar.bayern/api/ags')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({contactPersons: data})
             })
             .catch(console.log)
 
