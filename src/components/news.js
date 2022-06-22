@@ -31,7 +31,7 @@ export default class News extends Component {
                         <>
                             <Col xs={6} lg={4} key={'news-' + singleNews.id} className="singleNews my-4">
                                 <div className="position-relative mb-4">
-                                    <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width="200" height="200" loading="lazy"/>
+                                    <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width={singleNews.previewImage.width} height={singleNews.previewImage.height} loading="lazy"/>
                                     <div className="createdBadge text-light">{format(new Date(singleNews.created), "dd.MM.yyyy")}</div>
                                 </div>
                                 <h6>{singleNews.title}</h6>
@@ -45,11 +45,18 @@ export default class News extends Component {
                                 </Modal.Header>
                                 <Modal.Body>
                                     <div className="position-relative mb-4">
-                                        <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width="200" height="200" loading="lazy"/>
+                                        <img className="newsPic" src={singleNews.previewImage.previewUrl} alt={singleNews.previewImage.altText} width={singleNews.previewImage.width} height={singleNews.previewImage.height} loading="lazy"/>
                                         <div className="createdBadge text-light">{format(new Date(singleNews.created), "dd.MM.yyyy")}</div>
                                     </div>
                                     <p dangerouslySetInnerHTML={{__html: singleNews.body}} />
-                                </Modal.Body>
+                                    <Row className="additionalImages g-4">
+                                        {singleNews.images.map((additionalImage) => (
+                                            <Col xs={12} lg={6}>
+                                                <img className="additionalImage" src={additionalImage.previewUrl} alt={additionalImage.altText} width={additionalImage.width} height={additionalImage.height} loading="lazy"/>
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </Modal.Body>r
                             </Modal>
                         </>
                     ))}
