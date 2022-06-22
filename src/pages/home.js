@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './../assets/styles/home.scss';
 import Sharepics from '../components/sharepics';
+import News from '../components/news';
 import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -50,6 +51,11 @@ class Home extends Component {
                             <Sharepics sharepics={this.state.sharepics}/>
                         </Container>
                     </section>
+                    <section className="news">
+                        <Container>
+                            <News news={this.state.news}/>
+                        </Container>
+                    </section>
                 </div>
                 <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>
                     <Toast.Header>
@@ -66,6 +72,7 @@ class Home extends Component {
     state = {
         sharepics: [],
         faqs: [],
+        news: [],
         showEmailConfirmed: false,
     };
 
@@ -80,6 +87,13 @@ class Home extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({faqs: data})
+            })
+            .catch(console.log)
+
+        fetch('https://backend.startklar.bayern/api/news')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({news: data})
             })
             .catch(console.log)
 
