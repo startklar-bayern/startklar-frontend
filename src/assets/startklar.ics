@@ -1,0 +1,10 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:20230607
+DTEND:20230611
+SUMMARY:STARTKLAR - Jugendfestival der Kolpingjugend Bayern
+DESCRIPTION:Mehr infos auf https://www.startklar.bayern
+LOCATION:Reinwarzhofen 17, Thalmässing, 91177, Germany
+END:VEVENT
+END:VCALENDAR

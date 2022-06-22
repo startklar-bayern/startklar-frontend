@@ -1,36 +1,21 @@
 @import "bootstrap-variables";
 
-.calendar .addeventatc {
-  font-family: inherit;
-  box-shadow: none !important;
-  color: #000 !important;
-  line-height: inherit;
-  font-size: inherit;
-  background: inherit;
-  text-decoration: inherit;
-  border: 1px solid #000;
-  border-radius: 0.25rem;
-  outline-color: inherit;
-  text-shadow: inherit;
-  z-index: 1000 !important;
-}
-
-.calendar .addeventatc:hover {
-  font-size: inherit;
-  text-decoration: inherit;
-  color: #FFF !important;
-}
-
-.calendar .addeventatc_icon {
+.calendar .dropdown-toggle:after {
   display: none;
 }
 
-.calendar .addeventatc_dropdown {
-  font-family: inherit;
-}
+.calendar .dropdown-item {
+  padding-top: .5em;
+  padding-bottom: .5em;
 
-.calendar .ateoutlook {
-  background-image: url("./../icons/calendar-regular.svg") !important;
+  svg {
+    width: 18px;
+    color: $primary;
+  }
+
+  small {
+    color: $border-color;
+  }
 }
 
 @include media-breakpoint-down(md) {
