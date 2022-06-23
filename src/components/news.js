@@ -50,13 +50,13 @@ export default class News extends Component {
                                     </div>
                                     <p dangerouslySetInnerHTML={{__html: singleNews.body}} />
                                     <Row className="additionalImages g-4">
-                                        {singleNews.images.map((additionalImage) => (
+                                        {singleNews.images && singleNews.images.map((additionalImage) => (
                                             <Col xs={12} lg={6}>
                                                 <img className="additionalImage" src={additionalImage.previewUrl} alt={additionalImage.altText} width={additionalImage.width} height={additionalImage.height} loading="lazy"/>
                                             </Col>
                                         ))}
                                     </Row>
-                                </Modal.Body>r
+                                </Modal.Body>
                             </Modal>
                         </>
                     ))}
