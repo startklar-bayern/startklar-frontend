@@ -41,58 +41,14 @@
           ]
         },
         "ankunft": {
-          "type": "object",
-          "properties": {
-            "tag": {
-              "title": "Ankunft Tag",
-              "type": "string",
-              "default": "do",
-              "enum": [
-                "do",
-                "fr",
-                "sa",
-                "so"
-              ],
-              "enumNames": [
-                "Donnerstag",
-                "Freitag",
-                "Samstag",
-                "Sonntag"
-              ]
-            },
-            "zeit": {
-              "title": "Ankunft Zeit",
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+          "title": "Ankunft",
+          "type": "string",
+          "format": "date-time"
         },
         "abfahrt": {
-          "type": "object",
-          "properties": {
-            "tag": {
-              "title": "Abfahrt Tag",
-              "type": "string",
-              "default": "so",
-              "enum": [
-                "do",
-                "fr",
-                "sa",
-                "so"
-              ],
-              "enumNames": [
-                "Donnerstag",
-                "Freitag",
-                "Samstag",
-                "Sonntag"
-              ]
-            },
-            "zeit": {
-              "title": "Abfahrt Zeit",
-              "type": "string",
-              "format": "date-time"
-            }
-          }
+          "title": "Abfahrt",
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
