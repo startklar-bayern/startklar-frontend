@@ -1,0 +1,232 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "dv": {
+      "type": "string",
+      "title": "DV"
+    },
+    "anreise": {
+      "type": "object",
+      "title": "Anreise",
+      "properties": {
+        "typ": {
+          "title": "Typ",
+          "type": "string",
+          "default": "mit_dv",
+          "enum": [
+            "selbststaendig",
+            "mit_dv"
+          ],
+          "enumNames": [
+            "Selbständig",
+            "mit DV"
+          ]
+        },
+        "alternative": {
+          "title": "Alternative",
+          "type": "string",
+          "enum": [
+            "direkt",
+            "zug_allersberg",
+            "zug_hilpoltstein"
+          ],
+          "enumNames": [
+            "direkt",
+            "Zug (Allersberg)",
+            "Zug (Hilpoltstein)"
+          ]
+        },
+        "ankunft": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "title": "Ankunft Tag",
+              "type": "string",
+              "default": "do",
+              "enum": [
+                "do",
+                "fr",
+                "sa",
+                "so"
+              ],
+              "enumNames": [
+                "Donnerstag",
+                "Freitag",
+                "Samstag",
+                "Sonntag"
+              ]
+            },
+            "zeit": {
+              "title": "Ankunft Zeit",
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        },
+        "abfahrt": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "title": "Abfahrt Tag",
+              "type": "string",
+              "default": "so",
+              "enum": [
+                "do",
+                "fr",
+                "sa",
+                "so"
+              ],
+              "enumNames": [
+                "Donnerstag",
+                "Freitag",
+                "Samstag",
+                "Sonntag"
+              ]
+            },
+            "zeit": {
+              "title": "Abfahrt Zeit",
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        }
+      }
+    },
+    "leitung": {
+      "type": "object",
+      "title": "Leitung",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "vorname": {
+          "title": "Vorname",
+          "type": "string"
+        },
+        "nachname": {
+          "title": "Nachname",
+          "type": "string"
+        },
+        "geburtsdatum": {
+          "title": "Geburtsdatum",
+          "type": "string",
+          "format": "date"
+        },
+        "geschlecht": {
+          "title": "Geschlecht",
+          "type": "string",
+          "enum": [
+            "m",
+            "w",
+            "d"
+          ],
+          "enumNames": [
+            "Männlich",
+            "Weiblich",
+            "Divers"
+          ]
+        },
+        "strasse": {
+          "title": "Straße",
+          "type": "string"
+        },
+        "plz": {
+          "title": "PLZ",
+          "type": "integer",
+          "minLength": 5,
+          "maxLength": 5
+        },
+        "ort": {
+          "title": "Ort",
+          "type": "string"
+        },
+        "telefon": {
+          "title": "Telefon",
+          "type": "string"
+        },
+        "mail": {
+          "title": "E-Mail",
+          "type": "string",
+          "format": "email"
+        },
+        "eltern": {
+          "type": "object",
+          "title": "Eltern",
+          "properties": {
+            "telefon": {
+              "title": "Telefon",
+              "type": "string"
+            },
+            "mail": {
+              "title": "E-Mail",
+              "type": "string",
+              "format": "email"
+            }
+          }
+        },
+        "aufsichtsperson": {
+          "title": "Aufsichtsperson",
+          "type": "string"
+        },
+        "geschwisterkind": {
+          "title": "Geschwisterkind",
+          "type": "string"
+        },
+        "essen": {
+          "title": "Essen",
+          "type": "object",
+          "properties": {
+            "typ": {
+              "type": "string",
+              "title": "Typ",
+              "default": "normal",
+              "enum": [
+                "normal",
+                "vegetarisch",
+                "vegan"
+              ],
+              "enumNames": [
+                "Normal",
+                "Vegetarisch",
+                "Vegan"
+              ]
+            },
+            "anmerkungen": {
+              "title": "Anmerkungen",
+              "type": "string"
+            }
+          }
+        },
+        "anmerkungen": {
+          "title": "Anmerkungen",
+          "type": "string"
+        }
+      }
+    },
+    "teilnehmende": {
+      "type": "array",
+      "title": "Teilnehmende",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vorname": {
+            "type": "string",
+            "title": "Vorname"
+          },
+          "nachname": {
+            "type": "string",
+            "title": "Nachname"
+          }
+        }
+      }
+    },
+    "jugendschutzgesetz_akzeptiert": {
+      "title": "Jugendschutz akzeptiert",
+      "type": "boolean"
+    }
+  }
+}

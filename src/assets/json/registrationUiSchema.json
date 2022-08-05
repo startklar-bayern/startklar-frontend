@@ -1,0 +1,82 @@
+{
+  "name": {
+    "ui:column": "col-lg-8"
+  },
+  "dv": {
+    "ui:column": "col-lg-4"
+  },
+  "anreise": {
+    "typ": {
+      "ui:column": "col-lg-6"
+    },
+    "alternative": {
+      "ui:column": "col-lg-6"
+    },
+    "ankunft": {
+      "ui:column": "col-lg-6"
+    },
+    "abfahrt": {
+      "ui:column": "col-lg-6"
+    }
+  },
+  "leitung": {
+    "vorname": {
+      "ui:column": "col-lg-6"
+    },
+    "nachname": {
+      "ui:column": "col-lg-6"
+    },
+    "geburtsdatum": {
+      "ui:column": "col-lg-6"
+    },
+    "geschlecht": {
+      "ui:column": "col-lg-6"
+    },
+    "plz": {
+      "ui:column": "col-lg-6"
+    },
+    "ort": {
+      "ui:column": "col-lg-6"
+    },
+    "telefon": {
+      "ui:column": "col-lg-6"
+    },
+    "mail": {
+      "ui:column": "col-lg-6",
+      "inputType": "email"
+    },
+    "eltern": {
+      "telefon": {
+        "ui:column": "col-lg-6"
+      },
+      "mail": {
+        "ui:column": "col-lg-6",
+        "inputType": "email"
+      }
+    },
+    "essen": {
+      "typ": {
+        "ui:column": "col-lg-6"
+      },
+      "anmerkungen": {
+        "ui:column": "col-lg-6"
+      }
+    },
+    "geschwisterkind": {
+      "ui:column": "col-lg-6"
+    },
+    "aufsichtsperson": {
+      "ui:column": "col-lg-6"
+    }
+  },
+  "teilnehmende": {
+    "items": {
+      "vorname": {
+        "ui:column": "col-lg-6"
+      },
+      "nachname": {
+        "ui:column": "col-lg-6"
+      }
+    }
+  }
+}

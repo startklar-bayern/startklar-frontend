@@ -1,0 +1,29 @@
+@import "bootstrap-variables";
+
+.field-object {
+  padding: 20px;
+  background-color: rgba($white, 0.15);
+  margin: 20px 0;
+
+  .property-wrapper {
+    margin: 10px 0;
+  }
+}
+
+.field-array {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: rgba($white, 0.15);
+
+  .array-item {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: rgba($white, 0.15);
+
+    .field-object {
+      padding: 0;
+      background-color: transparent;
+      margin: 0;
+    }
+  }
+}
