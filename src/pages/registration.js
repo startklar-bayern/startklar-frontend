@@ -5,10 +5,31 @@ import './../assets/styles/forms.scss';
 import registrationSchema from '../assets/json/registrationSchema.json';
 import registrationUiSchema from '../assets/json/registrationUiSchema.json';
 import classNames from 'classnames'
+import axios from 'axios'
 
 class Registration extends Component {
+    state = {
+        group: []
+    }
+
+    componentDidMount() {
+        axios
+            .get('https://backend.startklar.bayern/api/anmeldung/group/Tatkraft-157', {
+                /* headers: {
+                    "Access-Control-Allow-Origin": "*"
+                    // Authorization: 'Bearer ' + token
+                } */
+            })
+            .then(res => {
+                const group = res.data;
+                this.setState({ group });
+            })
+    }
+
     render() {
         const log = (type) => console.log.bind(console, type);
+
+        console.log(this.state.group);
 
         return (
             <div className="registration">
@@ -16,6 +37,9 @@ class Registration extends Component {
                     <Row>
                         <Col>
                             <h1>Anmeldung</h1>
+                            <ul>
+                                { this.state.group.map(person => <li>{person.name}</li>)}
+                            </ul>
                             <Form schema={registrationSchema}
                                 uiSchema={registrationUiSchema}
                                 onChange={log("changed")}

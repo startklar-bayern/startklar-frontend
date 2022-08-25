@@ -5,6 +5,7 @@ import Footer from "../layouts/footer";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import Registration from "../pages/registration";
+import CreateGroup from "../components/registration/createGroup";
 import ReactGA from "react-ga4";
 
 export default class App extends Component {
@@ -52,6 +53,7 @@ export default class App extends Component {
                             return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
                         })}
                         <Route path="/anmeldung" element={<Registration/>}/>
+                        <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
                     </Routes>
                     <Footer pages={this.state.pages}/>
                 </Router>
