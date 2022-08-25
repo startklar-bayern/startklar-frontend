@@ -15,10 +15,10 @@ class Registration extends Component {
     componentDidMount() {
         axios
             .get('https://backend.startklar.bayern/api/anmeldung/group/Tatkraft-157', {
-                /* headers: {
+                headers: {
                     "Access-Control-Allow-Origin": "*"
                     // Authorization: 'Bearer ' + token
-                } */
+                }
             })
             .then(res => {
                 const group = res.data;
