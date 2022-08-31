@@ -6,30 +6,27 @@ import registrationSchema from '../assets/json/registrationSchema.json';
 import registrationUiSchema from '../assets/json/registrationUiSchema.json';
 import classNames from 'classnames'
 import axios from 'axios'
+import { useDebugValue } from "react";
+import { faDeviantart } from "@fortawesome/free-brands-svg-icons";
 
 class Registration extends Component {
     state = {
-        group: []
+        dvs: []
     }
 
     componentDidMount() {
         axios
-            .get('https://backend.startklar.bayern/api/anmeldung/group/Tatkraft-157', {
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                    // Authorization: 'Bearer ' + token
-                }
-            })
+            .get('https://backend.startklar.bayern/api/anmeldung/dvs')
             .then(res => {
-                const group = res.data;
-                this.setState({ group });
+                const dvs = res.data;
+                this.setState({ dvs });
             })
     }
 
     render() {
         const log = (type) => console.log.bind(console, type);
 
-        console.log(this.state.group);
+        console.log(this.state.dvs);
 
         return (
             <div className="registration">
@@ -38,7 +35,7 @@ class Registration extends Component {
                         <Col>
                             <h1>Anmeldung</h1>
                             <ul>
-                                { this.state.group.map(person => <li>{person.name}</li>)}
+                                { this.state.dvs.map(dv => <li>{dv.name}</li>)}
                             </ul>
                             <Form schema={registrationSchema}
                                 uiSchema={registrationUiSchema}
