@@ -17,13 +17,13 @@ export default class CreateGroup extends React.Component {
     event.preventDefault();
 
     const group = {
-      mail: this.state.mail,
-      participant_privacy_accepted: true,
-      privacy_accepted: true
+      "mail": this.state.mail,
+      "participant_privacy_accepted": true,
+      "privacy_accepted": true
     };
 
     axios
-      .post('https://backend.startklar.bayern/api/anmeldung/group', {group})
+      .post('https://backend.startklar.bayern/api/anmeldung/group', group)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -31,28 +31,6 @@ export default class CreateGroup extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-
-    /* Alternative mit Fetch
-    fetch('https://backend.startklar.bayern/api/anmeldung/group', {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "mail": "user@example.com",
-        "participant_privacy_accepted": true,
-        "privacy_accepted": true
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
-      */
   }
 
   render() {

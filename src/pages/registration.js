@@ -26,8 +26,6 @@ class Registration extends Component {
     render() {
         const log = (type) => console.log.bind(console, type);
 
-        console.log(this.state.dvs);
-
         return (
             <div className="registration">
                 <Container>
