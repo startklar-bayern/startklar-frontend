@@ -1,26 +1,52 @@
-import React, {Component} from "react";
+import React from "react";
 import {Container, Row, Col}  from 'react-bootstrap'
 import Form from "@rjsf/core";
-import './../assets/styles/forms.scss';
-import registrationSchema from '../assets/json/registrationSchema.json';
-import registrationUiSchema from '../assets/json/registrationUiSchema.json';
+import './../../assets/styles/forms.scss';
+import registrationSchema from '../../assets/json/registrationSchema.json';
+import registrationUiSchema from '../../assets/json/registrationUiSchema.json';
 import classNames from 'classnames'
-import axios from 'axios'
-import { useDebugValue } from "react";
-import { faDeviantart } from "@fortawesome/free-brands-svg-icons";
+import { useParams, useLocation } from "react-router-dom";
 
-class Registration extends Component {
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()} location={useLocation().search} />;
+}
+
+class EditGroup extends React.Component {
     state = {
-        dvs: []
+        formDataTemp: []
+    }
+    handleSubmit = ({formData}, e) => {
+        fetch('https://backend.startklar.bayern/api/anmeldung/tempStorage/' + this.props.params.groupId, {
+            method: 'put',
+            body: JSON.stringify({formData}),
+            headers: {
+                'Authorization': 'Bearer ' + this.GetToken()
+            }
+        })
+            .then(response => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     componentDidMount() {
-        axios
-            .get('https://backend.startklar.bayern/api/anmeldung/dvs')
-            .then(res => {
-                const dvs = res.data;
-                this.setState({ dvs });
+        fetch('https://backend.startklar.bayern/api/anmeldung/tempStorage/' + this.props.params.groupId, {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + this.GetToken()
+            }
+        })
+            .then(response => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                this.setState({formDataTemp: data});
             })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {
@@ -32,13 +58,9 @@ class Registration extends Component {
                     <Row>
                         <Col>
                             <h1>Anmeldung</h1>
-                            <ul>
-                                { this.state.dvs.map(dv => <li>{dv.name}</li>)}
-                            </ul>
                             <Form schema={registrationSchema}
                                 uiSchema={registrationUiSchema}
-                                onChange={log("changed")}
-                                onSubmit={log("submitted")}
+                                onSubmit={this.handleSubmit}
                                 onError={log("errors")}
                                 ObjectFieldTemplate={this.ObjectFieldTemplate}
                                 ArrayFieldTemplate={this.ArrayFieldTemplate} />
@@ -99,6 +121,10 @@ class Registration extends Component {
             </Row>
         );
     }
+
+    GetToken(){
+        return new URLSearchParams(this.props.location).get("token");
+    }
 }
 
-export default Registration
+export default withParams(EditGroup)
