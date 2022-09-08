@@ -62,6 +62,7 @@ class EditGroup extends React.Component {
                                 uiSchema={registrationUiSchema}
                                 onSubmit={this.handleSubmit}
                                 onError={log("errors")}
+                                formData={this.state.formDataTemp.formData}
                                 ObjectFieldTemplate={this.ObjectFieldTemplate}
                                 ArrayFieldTemplate={this.ArrayFieldTemplate} />
                         </Col>
