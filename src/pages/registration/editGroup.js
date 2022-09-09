@@ -16,7 +16,7 @@ class EditGroup extends React.Component {
         formDataTemp: []
     }
     handleSubmit = ({formData}, e) => {
-        fetch('https://backend.startklar.bayern/api/anmeldung/tempStorage/' + this.props.params.groupId, {
+        fetch(this.GetPath(), {
             method: 'put',
             body: JSON.stringify({formData}),
             headers: {
@@ -24,29 +24,33 @@ class EditGroup extends React.Component {
             }
         })
             .then(response => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
             .catch(function (error) {
                 console.log(error);
             });
     }
 
     componentDidMount() {
-        fetch('https://backend.startklar.bayern/api/anmeldung/tempStorage/' + this.props.params.groupId, {
-            method: 'get',
+        fetch(this.GetPath(), {
+            method: 'head',
             headers: {
                 'Authorization': 'Bearer ' + this.GetToken()
             }
         })
-            .then(response => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-                this.setState({formDataTemp: data});
+            .then ((response) => {
+                const contentType = response.headers.get('content-type');
+
+                if (
+                    response.status === 200 ||
+                    (contentType != null && contentType.indexOf('json') === -1)
+                  ) {
+                    this.GetFormData();
+                }
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch (
+                function(error) {
+                console.log('Da haben wir ein Problem: \n', error);
             });
+
     }
 
     render() {
@@ -125,6 +129,28 @@ class EditGroup extends React.Component {
 
     GetToken(){
         return new URLSearchParams(this.props.location).get("token");
+    }
+
+    GetPath(endpoint = "tempStorage"){
+        return 'https://backend.startklar.bayern/api/anmeldung/' + endpoint + '/' + this.props.params.groupId;
+    }
+
+    GetFormData(){
+        fetch(this.GetPath(), {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + this.GetToken()
+            }
+        })
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    formDataTemp: data
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 }
 
