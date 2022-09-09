@@ -15,4 +15,7 @@
 13. Die Daten werden an  PUT /anmeldung/group/{groupId}  (Authentication mit JWT) gesendet
 14. Daten werden im Backend gespeichert und Folgeprozesse (Führungszeugnis prüfen) wird angestoßen
 15. Frontend löscht die Daten aus dem Zwischenspeicher (DELETE /anmeldung/tempStorage/{groupId}, Authentication mit JWT)
-15. User kommt später wieder über den Link um was zu ändern (Schritte 8-14 werden wiederholt)
+16. User kommt später wieder über den Link um was zu ändern 
+17. Gespeicherte Daten laden per GET /anmeldung/group/{groupId} (Authentication mit JWT) und ins Formular übertragen
+18. Zwischenspeichern nicht mehr möglich
+19. (Schritte 10-14 werden wiederholt)
