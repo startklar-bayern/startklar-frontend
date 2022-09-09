@@ -6,6 +6,7 @@ import registrationSchema from '../../assets/json/registrationSchema.json';
 import registrationUiSchema from '../../assets/json/registrationUiSchema.json';
 import classNames from 'classnames'
 import { useParams, useLocation } from "react-router-dom";
+import {withSupportChat} from "../../hoc/withSupportChat";
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} location={useLocation().search} />;
@@ -154,4 +155,4 @@ class EditGroup extends React.Component {
     }
 }
 
-export default withParams(EditGroup)
+export default withSupportChat(withParams(EditGroup))

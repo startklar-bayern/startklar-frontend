@@ -3,8 +3,9 @@ import {Container, Row, Col, Button, Form, InputGroup}  from 'react-bootstrap'
 import axios from 'axios';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import {withSupportChat} from "../../hoc/withSupportChat";
 
-export default class CreateGroup extends React.Component {
+class CreateGroup extends React.Component {
   state = {
     mail: '',
   }
@@ -60,3 +61,5 @@ export default class CreateGroup extends React.Component {
     )
   }
 }
+
+export default withSupportChat(CreateGroup);
