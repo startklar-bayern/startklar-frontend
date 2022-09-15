@@ -30,28 +30,44 @@ class EditGroup extends React.Component {
             });
     }
 
+    handleChange = ({formData}, e) => {
+        this.setState({
+            formDataTemp: {formData}
+        });
+    }
+
     componentDidMount() {
         fetch(this.GetPath(), {
-            method: 'head',
+            method: 'get',
             headers: {
                 'Authorization': 'Bearer ' + this.GetToken()
             }
         })
-            .then ((response) => {
-                const contentType = response.headers.get('content-type');
-
-                if (
-                    response.status === 200 ||
-                    (contentType != null && contentType.indexOf('json') === -1)
-                  ) {
-                    this.GetFormData();
-                }
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    formDataTemp: data
+                });
             })
-            .catch (
-                function(error) {
-                console.log('Da haben wir ein Problem: \n', error);
+            .catch(function (error) {
+                console.log(error);
             });
 
+        setInterval(() => {
+            let formData = this.state.formDataTemp;
+
+            fetch(this.GetPath(), {
+                method: 'put',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Authorization': 'Bearer ' + this.GetToken()
+                }
+            })
+                .then(response => response.json())
+                .catch(function (error) {
+                    console.log(error);
+                })
+        }, 10000);
     }
 
     render() {
@@ -66,6 +82,7 @@ class EditGroup extends React.Component {
                             <Form schema={registrationSchema}
                                 uiSchema={registrationUiSchema}
                                 onSubmit={this.handleSubmit}
+                                onChange={this.handleChange}
                                 onError={log("errors")}
                                 formData={this.state.formDataTemp.formData}
                                 ObjectFieldTemplate={this.ObjectFieldTemplate}
@@ -134,24 +151,6 @@ class EditGroup extends React.Component {
 
     GetPath(endpoint = "tempStorage"){
         return 'https://backend.startklar.bayern/api/anmeldung/' + endpoint + '/' + this.props.params.groupId;
-    }
-
-    GetFormData(){
-        fetch(this.GetPath(), {
-            method: 'get',
-            headers: {
-                'Authorization': 'Bearer ' + this.GetToken()
-            }
-        })
-            .then(response => response.json())
-            .then((data) => {
-                this.setState({
-                    formDataTemp: data
-                });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
 }
 
