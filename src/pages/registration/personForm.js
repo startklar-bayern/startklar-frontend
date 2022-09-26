@@ -239,8 +239,6 @@ export default class PersonForm extends React.Component {
                     </Form.Control.Feedback>
                 </Form.Group>}
 
-                {/*TODO:Erziehungsberechtigte Person conditionally required*/}
-
                 {this.personIsUnderage(values) && <PersonSelect
                     name={namePrefix + '.aufsichtsperson'}
                     value={values?.aufsichtsperson}
@@ -371,7 +369,7 @@ export default class PersonForm extends React.Component {
                     {/*    rechtskräftig wegen verschiedener Straftaten (z.B. sexueller Missbrauch) verurteilt worden sind.*/}
                     {/*    Die Kolpingjugend ist ein freier Träger der Kinder- und Jugendhilfe und somit verpflichtet*/}
                     {/*    Führungszeugnisse zu überprüfen. Weitere Informationen dazu findest du in unserem*/}
-                    {/*    Schutzkonzept. /!*TODO Link*!/</p>*/}
+                    {/*    Schutzkonzept. */}
 
                     {isLeitung && <p>Als Gruppenleiter*in musst du an einer kurzen Einweisung in die Inhalte des
                         Schutzkonzepts teilnehmen. Diese wird online durchgeführt und dauert ca. 30 Minuten.</p>}
@@ -382,7 +380,6 @@ export default class PersonForm extends React.Component {
                             30 Minuten.</p>}
 
 
-                    {/*TODO: Wenn Aufsichtsperson, dann kein pflichtfeld */}
                     <Form.Group className="mb-3">
                         <Form.Label>Termin Einweisung Schutzkonzept{isLeitung ? " *" : ""}</Form.Label>
                         {termineSchutzkonzept.length !== 0 ? <Form.Select

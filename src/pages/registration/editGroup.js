@@ -139,6 +139,7 @@ class EditGroup extends React.Component {
         }
 
         this.tempStorageUpdateInterval = setInterval(() => {
+            // Set version for later migrations
             this.tempData.version = 1;
 
             let formData = JSON.stringify(this.tempData);
@@ -149,7 +150,6 @@ class EditGroup extends React.Component {
 
             this.oldTempData = JSON.stringify(this.tempData);
 
-            // TODO: Only execute when value has changed to reduce load on server
             fetch(this.getTempStoragePath(), {
                 method: 'put',
                 body: formData,
@@ -265,7 +265,6 @@ class EditGroup extends React.Component {
                                         Gruppe verantwortlich. Außerdem sorgst du auch für die Einhaltung des
                                         Schutzkonzepts, nimmst an der Einweisung dazu teil und bist Ansprechpartner*in
                                         für Rückfragen.</p>
-                                    {/*TODO*/}
                                     {values.leitung && <PersonCard
                                         person={values.leitung}
                                         allowDelete={false}
@@ -275,7 +274,6 @@ class EditGroup extends React.Component {
 
                                 <div className="field-object">
                                     <h3>Teilnehmende</h3>
-                                    {/*TODO*/}
                                     {this.renderTeilnehmer(values.teilnehmer)}
                                     <button type="button" onClick={this.addTeilnehmer}>Teilnehmer*in hinzufügen</button>
                                 </div>
