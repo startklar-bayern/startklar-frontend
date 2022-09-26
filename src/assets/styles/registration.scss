@@ -1,0 +1,9 @@
+@import "bootstrap-variables";
+
+.person-card {
+
+}
+.person-card__error {
+    font-size: $font-size-sm;
+    color: $form-feedback-invalid-color;
+}

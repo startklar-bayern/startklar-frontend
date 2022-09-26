@@ -6,7 +6,6 @@ $body-color: $white;
 $input-bg: $white;
 $border-color: #3b3b3b;
 $light: #a9a9a9;
-$modal-content-color: $black;
 $toast-color: $black;
 $input-color:  $black;
 $form-file-button-hover-bg: red;
@@ -32,6 +31,12 @@ $h3-font-size: $font-size-base * 2;
 $h4-font-size: $font-size-base * 1.5;
 $h5-font-size: $font-size-base * 1.25;
 $h6-font-size: $font-size-base * 1.33;
+
+$modal-content-bg: #2f2f2f;
+$modal-content-color: $white;
+$modal-backdrop-opacity: .8;
+
+$input-placeholder-color: #b6b6b6;
 
 $container-max-widths: (
   sm: 540px,
