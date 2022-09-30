@@ -86,19 +86,17 @@ class CreateGroup extends React.Component {
 
                   <hr></hr>
 
-                  <div>
-                    <Row>
-                      <Col lg={1} xs={2}>
-                        <FontAwesomeIcon size="2x" icon={faEnvelope}/>
-                      </Col>
-                      <Col lg={11} xs={10}>
-                        <p>
-                          Du solltest jetzt eine E-Mail mit einem Link erhalten haben. Schaue in deinem Posteingang und im Spam-Ordner nach und klicke auf den Link um fortzufahren.<br></br>
-                          Du kannst diesen Link auch verwenden um deine Anmeldung bis zum Anmeldeschluss am 16.04.2023 jederzeit online zu bearbeiten.
-                        </p>
-                      </Col>
-                    </Row>
-                  </div>
+                  <Row>
+                    <Col lg={1} xs={2}>
+                      <FontAwesomeIcon size="2x" icon={faEnvelope}/>
+                    </Col>
+                    <Col lg={11} xs={10}>
+                      <p>
+                        Du solltest jetzt eine E-Mail mit einem Link erhalten haben. Schaue in deinem Posteingang und im Spam-Ordner nach und klicke auf den Link um fortzufahren.<br></br>
+                        Du kannst diesen Link auch verwenden um deine Anmeldung bis zum Anmeldeschluss am 16.04.2023 jederzeit online zu bearbeiten.
+                      </p>
+                    </Col>
+                  </Row>
                 </Col>
                 <Col lg={4}>
                   <Alert bsStyle="info">

@@ -5,6 +5,8 @@ import Footer from "../layouts/footer";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import CreateGroup from "../pages/registration/createGroup";
+import AnmeldungAuswahl from "../pages/registration/anmeldungAuswahl";
+import AnmeldungInfo from "../pages/registration/anmeldungInfo";
 import EditGroup from "../pages/registration/editGroup";
 import ReactGA from "react-ga4";
 
@@ -54,6 +56,8 @@ export default class App extends Component {
                         })}
                         <Route path="/anmeldung/:groupId" element={<EditGroup/>}/>
                         <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
+                        <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
+                        <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
                     </Routes>
                     <Footer pages={this.state.pages}/>
                 </Router>
