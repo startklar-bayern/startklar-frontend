@@ -38,7 +38,7 @@ class CreateGroup extends React.Component {
     return (
         <div className="createGroup">
             <Container>
-              <Row>
+              <Row className="my-4">
                 <Col>
                   <h1>Anmeldung als Gruppe</h1>
                 </Col>
@@ -49,7 +49,7 @@ class CreateGroup extends React.Component {
                     Zuerst benötigen wir deine E-Mail Adresse.<br></br>
                     Du erhältst dann eine E-Mail mit einem Link unter dem du deine Anmeldung starten kannst.
                   </p>
-                  <Form onSubmit={this.handleSubmit}>
+                  <Form onSubmit={this.handleSubmit} className="mb-4">
                       <Form.Group className="mb-3">
                         <Form.Label>E-Mail Adresse*</Form.Label>
                         <Form.Control
