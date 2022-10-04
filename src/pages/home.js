@@ -8,7 +8,6 @@ import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
 import {Row, Col, Container}  from 'react-bootstrap'
-import Header from "../layouts/header";
 import {Toast} from "react-bootstrap";
 import backgroundWebP from "../assets/images/mountain-silhoutte-background__1x.webp"
 import backgroundPng from "../assets/images/mountain-silhoutte-background__1x.png"
@@ -30,7 +29,6 @@ class Home extends Component {
                         <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png" />
                         <img src={backgroundPng} alt="" className="home__background__image" />
                     </picture>
-                    <Header/>
                     <Container>
                         <Row>
                             <Col lg={{ span: 8, offset: 2 }}>

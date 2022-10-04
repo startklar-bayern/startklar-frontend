@@ -1,6 +1,5 @@
 import React from "react";
 import {Container, Row, Col, Card}  from 'react-bootstrap'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleGroup, faHammer } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,7 +15,7 @@ export default class AnmeldungAuswahl extends React.Component {
               </Row>
               <Row className="mb-4">
                 <Col className="text-center ">
-                  <a href="/anmeldung-gruppe">
+                  <a href="/anmeldung-info">
                     <Card>
                       <FontAwesomeIcon icon={faPeopleGroup} size="6x" className="text-dark my-4" />
                       <h2>Als Teilnehmer*in</h2>

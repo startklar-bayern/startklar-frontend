@@ -84,7 +84,7 @@ class CreateGroup extends React.Component {
                       <Button type="submit">Absenden</Button>
                   </Form>
 
-                  <hr></hr>
+                  <hr/>
 
                   <Row>
                     <Col lg={1} xs={2}>

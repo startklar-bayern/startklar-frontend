@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CookieConsent, {getCookieConsentValue} from "react-cookie-consent";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import Footer from "../layouts/footer";
+import {Header, Footer, HeaderWhite} from "../layouts";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import CreateGroup from "../pages/registration/createGroup";
@@ -39,7 +39,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div>
+            <div className="window.location.host">
                 <CookieConsent
                     location="bottom"
                     buttonText="Akzeptieren"
@@ -49,6 +49,10 @@ export default class App extends Component {
                 >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
                 <Router>
+                    {window.location.pathname === "/"
+                        ? <Header/>
+                        : <HeaderWhite/>
+                    }
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         {this.state.pages.map(page => {

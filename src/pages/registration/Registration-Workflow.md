@@ -15,7 +15,22 @@
 13. Die Daten werden an  PUT /anmeldung/group/{groupId}  (Authentication mit JWT) gesendet
 14. Daten werden im Backend gespeichert und Folgeprozesse (Führungszeugnis prüfen) wird angestoßen
 15. Frontend löscht die Daten aus dem Zwischenspeicher (DELETE /anmeldung/tempStorage/{groupId}, Authentication mit JWT)
-16. User kommt später wieder über den Link um was zu ändern 
+16. User kommt später wieder über den Link um was zu ändern
 17. Gespeicherte Daten laden per GET /anmeldung/group/{groupId} (Authentication mit JWT) und ins Formular übertragen
 18. Zwischenspeichern nicht mehr möglich
 19. (Schritte 10-14 werden wiederholt)
+
+
+## ToDo
+- Die Info-Seite vor der Eingabe der Daten
+- Die Quick-Facts in der personCard
+- Anzeige der globalen Fehlermeldungen
+- Teilnahmegebühr berechnung
+- Formular endgültig übermitteln
+- daten nicht aus tempstorage laden, sondern aus GET /anmeldung/{gruppe} (sobald das erste mal übermittelt)
+- bestätigungsseite
+- Verlinkung der Anmeldung auf der Startseite
+
+## Erledigt
+- Design und Funktion der "Gruppe erstellen" Seite
+- Anmeldung Auswahl Seite
