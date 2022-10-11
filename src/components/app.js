@@ -10,9 +10,10 @@ import AnmeldungInfo from "../pages/registration/anmeldungInfo";
 import EditGroup from "../pages/registration/editGroup";
 import ReactGA from "react-ga4";
 
-export default class App extends Component {
+class App extends Component {
     state = {
         pages: [],
+        headerWhite: false,
     }
 
     constructor(props) {
@@ -28,6 +29,7 @@ export default class App extends Component {
 
         this.handleAcceptCookie = this.handleAcceptCookie.bind(this);
         this.initGoogleAnalytics = this.initGoogleAnalytics.bind(this);
+        this.onLocationChange = this.onLocationChange.bind(this);
     }
 
     componentDidMount() {
@@ -35,9 +37,37 @@ export default class App extends Component {
         if (isConsent) {
             this.initGoogleAnalytics();
         }
+
+        window.history.pushState = ( f => function pushState(){
+            var ret = f.apply(this, arguments);
+            window.dispatchEvent(new Event('pushstate'));
+            window.dispatchEvent(new Event('locationchange'));
+            return ret;
+        })(window.history.pushState);
+
+        window.history.replaceState = ( f => function replaceState(){
+            var ret = f.apply(this, arguments);
+            window.dispatchEvent(new Event('replacestate'));
+            window.dispatchEvent(new Event('locationchange'));
+            return ret;
+        })(window.history.replaceState);
+
+        window.addEventListener('popstate', function() {
+            window.dispatchEvent(new Event('locationchange'))
+        });
+
+        window.addEventListener('locationchange', this.onLocationChange);
+    }
+
+    onLocationChange() {
+        this.setState({
+            headerWhite: window.location.url !== '/'
+        })
     }
 
     render() {
+
+
         return (
             <div className="window.location.host">
                 <CookieConsent
@@ -81,3 +111,5 @@ export default class App extends Component {
         ReactGA.send("pageview");
     }
 }
+
+export default App;
