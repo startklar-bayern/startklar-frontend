@@ -2,11 +2,16 @@ import React from "react";
 import {Container, Row, Col, Card}  from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleGroup, faHammer } from '@fortawesome/free-solid-svg-icons'
+import {Helmet} from "react-helmet-async";
 
 export default class AnmeldungAuswahl extends React.Component {
   render() {
     return (
         <div className="anmeldungAuswahl">
+            <Helmet>
+              <title>Anmeldung | STARTKLAR</title>
+            </Helmet>
+
             <Container>
               <Row className="my-4">
                 <Col>

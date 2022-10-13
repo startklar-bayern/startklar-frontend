@@ -23,6 +23,7 @@ import anmeldungSchema from "./anmeldungSchema";
 import AnreiseFieldGroup from "./anreiseFieldGroup";
 import Pricing from "./pricing";
 import moment from "moment";
+import {Helmet} from "react-helmet-async";
 
 function withParams(Component) {
     return props => <Component {...props}
@@ -87,6 +88,10 @@ class EditGroup extends React.Component {
 
         return (
             <div className="registration">
+                <Helmet>
+                    <title>Gruppen-Anmeldung | STARTKLAR</title>
+                </Helmet>
+
                 <Container>
                     <Row>
                         <Col>
@@ -219,7 +224,7 @@ class EditGroup extends React.Component {
                                     </Form.Control.Feedback>
                                 </Form.Group>
 
-                                <p>Während der Veranstaltung werden Fotos gemacht die im Zuge der Öffentlichkeitsarbeit
+                                <p>Während der Veranstaltung werden Fotos gemacht, die im Zuge der Öffentlichkeitsarbeit
                                     verwendet werden. Mit der Anmeldung zum Jugendfestival stimmst du dem zu und hast
                                     auch das Einverständnis aller Teilnehmenden deiner Gruppe.</p>
 

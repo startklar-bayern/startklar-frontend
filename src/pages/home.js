@@ -13,6 +13,7 @@ import backgroundWebP from "../assets/images/mountain-silhoutte-background__1x.w
 import backgroundPng from "../assets/images/mountain-silhoutte-background__1x.png"
 import backgroundWebP2x from "../assets/images/mountain-silhoutte-background__2x.webp"
 import backgroundPng2x from "../assets/images/mountain-silhoutte-background__2x.png"
+import {Helmet} from "react-helmet-async";
 
 class Home extends Component {
     constructor(props) {
@@ -23,6 +24,10 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>STARTKLAR Jugendfestival - Kolpingjugend Bayern</title>
+                </Helmet>
+
                 <section className="home container-fluid">
                     <picture className="home__background">
                         <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp" />

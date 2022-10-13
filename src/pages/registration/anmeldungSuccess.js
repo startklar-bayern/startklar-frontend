@@ -1,16 +1,14 @@
 import React from "react";
-import {Container, Row, Col, Alert} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faQuestionCircle, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";
-import '../../assets/styles/anmeldung-info.scss';
-import {Link, Navigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class AnmeldungSuccess extends React.Component {
     render() {
         return (
-            <div className="anmeldungInfo gradient-reverse-container">
+            <div>
                 <Container>
                     <Row className="my-4">
                         <Col>

@@ -10,6 +10,8 @@ import AnmeldungInfo from "../pages/registration/anmeldungInfo";
 import EditGroup from "../pages/registration/editGroup";
 import ReactGA from "react-ga4";
 import AnmeldungSuccess from "../pages/registration/anmeldungSuccess";
+import PageNotFound from "../pages/pageNotFound";
+import {HelmetProvider} from "react-helmet-async";
 
 class App extends Component {
     state = {
@@ -39,21 +41,21 @@ class App extends Component {
             this.initGoogleAnalytics();
         }
 
-        window.history.pushState = ( f => function pushState(){
+        window.history.pushState = (f => function pushState() {
             var ret = f.apply(this, arguments);
             window.dispatchEvent(new Event('pushstate'));
             window.dispatchEvent(new Event('locationchange'));
             return ret;
         })(window.history.pushState);
 
-        window.history.replaceState = ( f => function replaceState(){
+        window.history.replaceState = (f => function replaceState() {
             var ret = f.apply(this, arguments);
             window.dispatchEvent(new Event('replacestate'));
             window.dispatchEvent(new Event('locationchange'));
             return ret;
         })(window.history.replaceState);
 
-        window.addEventListener('popstate', function() {
+        window.addEventListener('popstate', function () {
             window.dispatchEvent(new Event('locationchange'))
         });
 
@@ -70,34 +72,36 @@ class App extends Component {
 
 
         return (
-            <div className="window.location.host">
-                <CookieConsent
-                    location="bottom"
-                    buttonText="Akzeptieren"
-                    enableDeclineButton
-                    declineButtonText="Ablehnen"
-                    onAccept={this.handleAcceptCookie}
-                >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
+            <div>
+                <HelmetProvider>
+                    <CookieConsent
+                        location="bottom"
+                        buttonText="Akzeptieren"
+                        enableDeclineButton
+                        declineButtonText="Ablehnen"
+                        onAccept={this.handleAcceptCookie}
+                    >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
-                <Router>
-                    {window.location.pathname === "/"
-                        ? <Header/>
-                        : <HeaderWhite/>
-                    }
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        {this.state.pages.map(page => {
-                            return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
-                        })}
-                        <Route path="/anmeldung/:groupId" element={<EditGroup/>}/>
-                        <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
-                        <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
-                        <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
-                        <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
-                        // TODO: 404 page
-                    </Routes>
-                    <Footer pages={this.state.pages}/>
-                </Router>
+                    <Router>
+                        {window.location.pathname === "/"
+                            ? <Header/>
+                            : <HeaderWhite/>
+                        }
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            {this.state.pages.map(page => {
+                                return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
+                            })}
+                            <Route path="/anmeldung/:groupId" element={<EditGroup/>}/>
+                            <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
+                            <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
+                            <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
+                            <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
+                            <Route path="*" element={<PageNotFound/>}/>
+                        </Routes>
+                        <Footer pages={this.state.pages}/>
+                    </Router>
+                </HelmetProvider>
             </div>
         )
     }

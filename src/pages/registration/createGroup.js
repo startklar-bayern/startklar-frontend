@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import ToastContext from "react-bootstrap/ToastContext";
+import {Helmet} from "react-helmet-async";
 
 class CreateGroup extends React.Component {
     state = {
@@ -54,6 +55,10 @@ class CreateGroup extends React.Component {
     render() {
         return (
             <div className="createGroup">
+                <Helmet>
+                    <title>Gruppen-Anmeldung | STARTKLAR</title>
+                </Helmet>
+
                 <ToastContainer className="p-3" position="top-end">
                     <Toast bg="warning" autohide delay="5000" show={this.state.isError}
                            onClose={() => this.setState({isError: false, submitted: false})}>

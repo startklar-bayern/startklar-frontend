@@ -1,11 +1,16 @@
 import React, {Component} from "react";
 import {Container, Row, Col}  from 'react-bootstrap'
+import {Helmet} from "react-helmet-async";
 
 export default class Page extends Component {
 
     render() {
         return (
             <div className="about">
+                <Helmet>
+                    <title>{this.props.page.title} | STARTKLAR</title>
+                </Helmet>
+
                 <Container>
                     <Row className="align-items-center my-5">
                         <Col>
