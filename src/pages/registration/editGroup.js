@@ -320,7 +320,15 @@ class EditGroup extends React.Component {
                                 <Form.Group>
                                     <Button type="submit" disabled={!isValid}>Gruppe kostenpflichtig
                                         anmelden <FontAwesomeIcon
-                                            icon={faArrowRight}/></Button>
+                                            icon={faArrowRight} /></Button>
+
+                                    {!isValid && <Row className="text-danger mt-2">
+                                        <Col xs="1"><FontAwesomeIcon icon="warning" /></Col>
+                                        <Col>
+                                            Stelle sicher, dass du alle Pflichtfelder und alle Warnungen behoben hast.
+                                            Erst dann kannst du deine Gruppenanmeldung abschließen.
+                                        </Col>
+                                    </Row>}
                                 </Form.Group>
                             </Form>
                         </Col>
