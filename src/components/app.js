@@ -94,6 +94,7 @@ class App extends Component {
                         <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
                         <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
                         <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
+                        // TODO: 404 page
                     </Routes>
                     <Footer pages={this.state.pages}/>
                 </Router>

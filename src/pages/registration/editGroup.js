@@ -64,6 +64,7 @@ class EditGroup extends React.Component {
     }
 
     render() {
+        // TODO: Error handling for invalid urls
         let {
             touched,
             handleChange,
@@ -94,7 +95,7 @@ class EditGroup extends React.Component {
                     </Row>
                     <Row className="justify-content-center">
                         <Col className="field-object align-self-center" lg="7">
-                            <div className="field-object mt-0">
+                            <div className={'field-object mt-0 ' + (this.state.mode === 'update' ? 'bg-warning text-black' : '')}>
                                 <Row>
                                     <Col md="1">
                                         <FontAwesomeIcon icon={this.state.mode === 'create' ? 'info-circle' : 'warning'}
@@ -102,7 +103,7 @@ class EditGroup extends React.Component {
                                     </Col>
                                     <Col md="11">
                                         {this.state.mode === 'create' && <div>
-                                            <p>Alle Änderungen die du in diesem Formular machst werden automatisch
+                                            <p>Alle Änderungen, die du in diesem Formular machst, werden automatisch
                                                 zwischengespeichert.</p>
                                             <p>Wenn du also noch nicht alle Daten hast, kannst du über den Link aus der
                                                 E-Mail jederzeit hierher zurückkehren und die Anmeldung fortsetzen.</p>
@@ -680,12 +681,10 @@ export default withSupportChat(withParams(withFormik({
             console.log(data);
             setStatus('success')
             setSubmitting(false)
-            // TODO
         }).catch(error => {
             console.error(error);
             setSubmitting(false);
             setStatus('error')
-            // TODO
         })
 
     }

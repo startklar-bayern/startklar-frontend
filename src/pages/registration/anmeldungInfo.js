@@ -33,7 +33,6 @@ class AnmeldungInfo extends React.Component {
                     <li>Geschlecht</li>
                     <li>Adresse</li>
                     <li>Telefon und E-Mail </li>
-                    <li>E-Mail</li>
                     <li>Telefon und E-Mail einer erziehungsberechtigten Person (Wenn nicht volljährig)</li>
                     <li>T-Shirt Größe (XS, S, M, L, XL, XXL, XXXL)</li>
                     <li>Anreise (Datum + ungefähre Uhrzeit)</li>
@@ -66,7 +65,7 @@ class AnmeldungInfo extends React.Component {
                   <h3>MELDE DEINE GRUPPE AN</h3>
                   <p>
                     Wenn du alle Daten erfasst hast, kannst du deine Gruppe über den Link unten auf dieser Seite anmelden.<br></br>
-                    Trage alle erfassten Daten online ein. Du kannst jederzeit zwischenspeichern und die Anmeldung zu einem späteren Zeitpunkt fortsetzen.
+                    Trage alle erfassten Daten online ein. Die Daten werden automatisch zwischengespeicher und du kannst die Anmeldung zu einem späteren Zeitpunkt fortsetzen.
                   </p>
                   <p>
                     Danach bekommst du eine Anmeldebestätigung per E-Mail.

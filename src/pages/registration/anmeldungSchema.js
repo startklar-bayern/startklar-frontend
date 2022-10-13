@@ -157,6 +157,10 @@ const getDataFromContext = (ctx) => {
     return ctx.from[ctx.from.length - 1].value;
 }
 
+const emptyStringToNull = (value, originalValue) => {
+    return value === '' ? null : value;
+}
+
 const anreiseSchema = Yup.object({
     typ: Yup.string().oneOf(['selbststaendig', 'mit_dv'], 'Anreise ist erforderlich').required('Anreise ist erforderlich'),
     ziel: Yup.string().oneOf(['direkt', 'zug_allersberg', 'zug_hilpoltstein'], 'Anreiseziel ist erforderlich').required('Anreiseziel ist erforderlich'),
@@ -199,19 +203,23 @@ const personSchema = Yup.object({
     telefon_eltern: Yup.string().test(underageRequired('Telefonnummer einer erziehungsberechtigten Person')),
     mail_eltern: Yup.string().email('Das ist keine korrekte E-Mail Adresse').test(underageRequired('E-Mail Adresse einer erziehungsberechtigten Person')),
     aufsichtsperson: Yup.string()
+        .nullable()
         .uuid('ID der Aufsichtsperson muss eine valide UUID sein')
         .test(aufsichtspersonLimit(10))
         .test(underageRequired('Aufsichtsperson'))
         .test(referencedUuidExists('Aufsichtsperson'))
-        .test(referencedUuidIsNotUnderage('Aufsichtsperson')),
+        .test(referencedUuidIsNotUnderage('Aufsichtsperson'))
+        .transform(emptyStringToNull),
     tshirt_groesse: Yup.number().required('T-Shirt Größe ist erforderlich').typeError('T-Shirt Größe ist erforderlich'),
     essen: Yup.string().required('Essensvorlieben ist erforderlich').oneOf(['normal', 'vegetarisch', 'vegan']),
     essen_anmerkungen: Yup.string(),
     anmerkungen: Yup.string(),
     geschwisterkind: Yup.string()
+        .nullable()
         .uuid('ID der Aufsichtsperson muss eine valide UUID sein')
         .test(referencedUuidExists('Geschwisterkind'))
-        .test(selectedSiblingShouldNotHaveASiblingSelected),
+        .test(selectedSiblingShouldNotHaveASiblingSelected)
+        .transform(emptyStringToNull),
     anreise: personAnreiseSchema,
     termin_schutzkonzept: Yup.number()
         .integer('Termin Schutzkonzept ist kein erlaubter Wert')
