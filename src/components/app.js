@@ -9,6 +9,7 @@ import AnmeldungAuswahl from "../pages/registration/anmeldungAuswahl";
 import AnmeldungInfo from "../pages/registration/anmeldungInfo";
 import EditGroup from "../pages/registration/editGroup";
 import ReactGA from "react-ga4";
+import AnmeldungSuccess from "../pages/registration/anmeldungSuccess";
 
 class App extends Component {
     state = {
@@ -92,6 +93,7 @@ class App extends Component {
                         <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
                         <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
                         <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
+                        <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
                     </Routes>
                     <Footer pages={this.state.pages}/>
                 </Router>

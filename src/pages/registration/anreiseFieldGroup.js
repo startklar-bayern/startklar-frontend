@@ -92,11 +92,11 @@ export default class AnreiseFieldGroup extends React.Component {
 
                         <InputGroup>
                             <Form.Select
-                                name={namePrefix + ".alternative"}
-                                value={values?.alternative}
+                                name={namePrefix + ".ziel"}
+                                value={values?.ziel}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                isInvalid={touched?.alternative && !!errors?.alternative}>
+                                isInvalid={touched?.ziel && !!errors?.ziel}>
                                 <option value="">- Auswählen -</option>
                                 <option value="direkt">... direkt zum Zeltplatz</option>
                                 <option value="zug_allersberg">... mit dem Zug nach Allersberg</option>
@@ -122,7 +122,7 @@ export default class AnreiseFieldGroup extends React.Component {
                             </Overlay>
 
                             <Form.Control.Feedback type="invalid">
-                                {errors?.alternative}
+                                {errors?.ziel}
                             </Form.Control.Feedback>
                         </InputGroup>
                     </Form.Group>

@@ -109,8 +109,9 @@ class CreateGroup extends React.Component {
                                         label="Ich habe die Datenschutzerklärung gelesen und akzeptiere diese *"/>
                                 </Form.Group>
 
-                                <Button type="submit" disabled={this.state.loading}><FontAwesomeIcon
-                                    icon="paper-plane"/> Absenden</Button>
+                                <Button type="submit" disabled={this.state.loading}>
+                                    <FontAwesomeIcon icon="paper-plane"/> Absenden
+                                </Button>
                             </Form>
                         </Col>
                     </Row>}

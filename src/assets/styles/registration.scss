@@ -12,3 +12,13 @@
 .person-card__quickfact {
     font-size: $font-size-sm;
 }
+
+
+.person-card__error,
+.person-card__quickfact {
+    padding-left: 32px;
+
+    svg {
+        margin-left: -32px;
+    }
+}

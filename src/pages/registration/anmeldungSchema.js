@@ -159,7 +159,7 @@ const getDataFromContext = (ctx) => {
 
 const anreiseSchema = Yup.object({
     typ: Yup.string().oneOf(['selbststaendig', 'mit_dv'], 'Anreise ist erforderlich').required('Anreise ist erforderlich'),
-    alternative: Yup.string().oneOf(['direkt', 'zug_allersberg', 'zug_hilpoltstein'], 'Anreiseziel ist erforderlich').required('Anreiseziel ist erforderlich'),
+    ziel: Yup.string().oneOf(['direkt', 'zug_allersberg', 'zug_hilpoltstein'], 'Anreiseziel ist erforderlich').required('Anreiseziel ist erforderlich'),
     ankunft: Yup.date().min('2023-06-08T00:00', 'Das Ankunfts-Datum darf nicht vor dem 8.6.2023 liegen').max('2023-06-11T23:59', 'Das Ankunfts-Datum darf nicht nach dem 11.6.2023 liegen').required('Das Ankunfts-Datum ist erforderlich'),
     abfahrt: Yup.date()
         .min('2023-06-08T00:00', 'Das Abfahrts-Datum darf nicht vor dem 8.6.2023 liegen')
@@ -171,7 +171,7 @@ const anreiseSchema = Yup.object({
 const personAnreiseSchema = Yup.object({
     mit_gruppe: Yup.boolean().required(),
     typ: Yup.string().oneOf(['selbststaendig', 'mit_dv'], 'Anreise ist erforderlich').test(requiredIfNotMitGruppe('Anreise ist erforderlich')),
-    alternative: Yup.string().oneOf(['direkt', 'zug_allersberg', 'zug_hilpoltstein'], 'Anreiseziel ist erforderlich').test(requiredIfNotMitGruppe('Anreiseziel ist erforderlich')),
+    ziel: Yup.string().oneOf(['direkt', 'zug_allersberg', 'zug_hilpoltstein'], 'Anreiseziel ist erforderlich').test(requiredIfNotMitGruppe('Anreiseziel ist erforderlich')),
     ankunft: Yup.date().min('2023-06-08T00:00', 'Das Ankunfts-Datum darf nicht vor dem 8.6.2023 liegen').max('2023-06-11T23:59', 'Das Ankunfts-Datum darf nicht nach dem 11.6.2023 liegen').test(requiredIfNotMitGruppe('Das Ankunfts-Datum ist erforderlich')),
     abfahrt: Yup.date()
         .min('2023-06-08T00:00', 'Das Abfahrts-Datum darf nicht vor dem 8.6.2023 liegen')
@@ -209,6 +209,7 @@ const personSchema = Yup.object({
     essen_anmerkungen: Yup.string(),
     anmerkungen: Yup.string(),
     geschwisterkind: Yup.string()
+        .uuid('ID der Aufsichtsperson muss eine valide UUID sein')
         .test(referencedUuidExists('Geschwisterkind'))
         .test(selectedSiblingShouldNotHaveASiblingSelected),
     anreise: personAnreiseSchema,

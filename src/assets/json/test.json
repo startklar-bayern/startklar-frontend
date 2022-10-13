@@ -1,0 +1,34 @@
+{
+  "fuehrungszeugnis": true,
+  "jugendschutzgesetz_akzeptiert": true,
+  "teilnehmer": [],
+  "leitung": {
+    "termin_schutzkonzept": 18,
+    "anreise": {
+      "abfahrt": "2023-06-11T11:00:00.000Z",
+      "ankunft": "2023-06-08T08:00:00.000Z",
+      "typ": "mit_dv",
+      "mit_gruppe": true
+    },
+    "essen": "normal",
+    "tshirt_groesse": 12,
+    "mail": "max.bachhuber@bahuma.io",
+    "telefon": "0175 / 422 4666",
+    "ort": "Breitenbrunn",
+    "plz": "92363",
+    "strasse": "Dietfurter Weg 4",
+    "geschlecht": "m",
+    "geburtsdatum": "1996-08-19T22:00:00.000Z",
+    "nachname": "Bachhuber",
+    "vorname": "Max",
+    "id": "ae98819c-e704-490c-9bf1-1654d02e4040"
+  },
+  "anreise": {
+    "abfahrt": "2023-06-11T11:00:00.000Z",
+    "ankunft": "2023-06-08T08:00:00.000Z",
+    "ziel": "direkt",
+    "typ": "selbststaendig"
+  },
+  "dv": 3,
+  "name": "Kolpingjugend Dietfurt"
+}

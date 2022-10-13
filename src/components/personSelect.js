@@ -68,8 +68,6 @@ export default class PersonSelect extends React.Component {
         let people = [values.leitung];
         people.push(...values.teilnehmer);
 
-        console.log('people', people);
-
         people = people.filter(value => value !== null);
         people = people.filter(value => value?.id !== self);
 

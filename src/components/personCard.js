@@ -138,7 +138,7 @@ class PersonCard extends React.Component {
             let ankunft = moment(person.anreise.ankunft);
             let abfahrt = moment(person.anreise.abfahrt)
             let typLabel = {'selbststaendig' : 'selbstständig', 'mit_dv': 'mit DV'}[person.anreise.typ] || '';
-            let zielLabel = {'direkt' : 'direkt zum Zeltplatz', 'zug_allersberg': 'mit dem Zug nach Allersberg', 'zug_hilpoltstein': 'mit dem Zug nach Hilpoltstein'}[person.anreise.alternative] || '';
+            let zielLabel = {'direkt' : 'direkt zum Zeltplatz', 'zug_allersberg': 'mit dem Zug nach Allersberg', 'zug_hilpoltstein': 'mit dem Zug nach Hilpoltstein'}[person.anreise.ziel] || '';
 
             quickFacts.push({
                 icon: 'car',

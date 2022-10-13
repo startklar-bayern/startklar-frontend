@@ -1,19 +1,15 @@
 import React, {useEffect} from "react";
 import {
-    Alert,
-    Collapse,
     Container,
     Form,
     Row,
     Spinner,
     Col,
-    FormGroup,
-    InputGroup,
-    Overlay,
-    Tooltip, Modal
+    Modal, Toast, ToastContainer
 } from "react-bootstrap";
 import './../../assets/styles/forms.scss';
-import {useParams, useLocation} from "react-router-dom";
+import './../../assets/styles/registration.scss';
+import {useParams, useLocation, useNavigate} from "react-router-dom";
 import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -25,10 +21,14 @@ import {get, findIndex} from "underscore";
 import PersonCard from "../../components/personCard";
 import anmeldungSchema from "./anmeldungSchema";
 import AnreiseFieldGroup from "./anreiseFieldGroup";
-import './../../assets/styles/registration.scss';
+import Pricing from "./pricing";
+import moment from "moment";
 
 function withParams(Component) {
-    return props => <Component {...props} params={useParams()} location={useLocation().search}/>;
+    return props => <Component {...props}
+                               params={useParams()}
+                               location={useLocation().search}
+                               navigate={useNavigate()}/>;
 }
 
 class EditGroup extends React.Component {
@@ -41,6 +41,8 @@ class EditGroup extends React.Component {
         tshirtGroessen: [],
         termineSchutzkonzept: [],
         modalPerson: null,
+        loading: false,
+        mode: 'loading',
     };
 
     constructor(props, context) {
@@ -53,115 +55,8 @@ class EditGroup extends React.Component {
     }
 
     componentDidMount() {
-        // Load temp data
-        fetch(this.getTempStoragePath(), {
-            method: 'get',
-            headers: {
-                'Authorization': 'Bearer ' + this.getTokenFromUrl()
-            }
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("No 2xx response");
-                }
-
-                return response.json();
-            })
-            .then((data) => {
-                data = this.tempStorageDataMigration(data);
-
-                if (data) {
-                    this.props.setValues(data);
-                } else {
-                    this.initializeLeitung();
-                }
-
-                this.setState({
-                    formDataTemp: data
-                });
-            })
-            .catch(error => {
-                console.error(error);
-                this.initializeLeitung();
-            });
-
-
-        // Load DVs
-        fetch('https://backend.startklar.bayern/api/anmeldung/dvs')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    dvs: data,
-                })
-            })
-            .catch(error => {
-                console.error(error);
-            })
-
-        // Load Termine Schutzkonzept
-        fetch('https://backend.startklar.bayern/api/anmeldung/termine-schutzkonzept')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Error while loading schutzkonzept termine");
-            })
-            .then(data => {
-                this.setState({
-                    termineSchutzkonzept: data
-                });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-        // Load T-Shirt Größen
-        fetch('https://backend.startklar.bayern/api/anmeldung/tshirt-groessen')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw new Error("Error while loading T-Shirt Größen");
-            })
-            .then(data => {
-                this.setState({
-                    tshirtGroessen: data
-                });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-
-        // Autosave temp data
-        if (this.tempStorageUpdateInterval) {
-            clearInterval(this.tempStorageUpdateInterval);
-        }
-
-        this.tempStorageUpdateInterval = setInterval(() => {
-            // Set version for later migrations
-            this.tempData.version = 1;
-
-            let formData = JSON.stringify(this.tempData);
-
-            if (formData === this.oldTempData) {
-                return;
-            }
-
-            this.oldTempData = JSON.stringify(this.tempData);
-
-            fetch(this.getTempStoragePath(), {
-                method: 'put',
-                body: formData,
-                headers: {
-                    'Authorization': 'Bearer ' + this.getTokenFromUrl()
-                }
-            })
-                .then(response => response.json())
-                .catch(function (error) {
-                    console.error(error);
-                })
-        }, 10000);
+        this.loadSelectData();
+        this.getStoredData();
     }
 
     componentWillUnmount() {
@@ -169,22 +64,23 @@ class EditGroup extends React.Component {
     }
 
     render() {
-
-
         let {
             touched,
             handleChange,
             handleSubmit,
             handleBlur,
             values,
-            setValues,
             errors,
             isSubmitting,
             status,
+            setStatus,
             isValid,
+            navigate
         } = this.props;
 
-        console.log(values);
+        if (status === 'success' && this.state.mode === 'create') {
+            navigate('/anmeldung-success')
+        }
 
         const modalPersonPath = this.state.modalPerson?.replace(']', '').split('[');
 
@@ -201,16 +97,24 @@ class EditGroup extends React.Component {
                             <div className="field-object mt-0">
                                 <Row>
                                     <Col md="1">
-                                        <FontAwesomeIcon icon="info-circle" size="xl"></FontAwesomeIcon>
+                                        <FontAwesomeIcon icon={this.state.mode === 'create' ? 'info-circle' : 'warning'}
+                                                         size="xl"></FontAwesomeIcon>
                                     </Col>
                                     <Col md="11">
-                                        <p>Alle Änderungen die du in diesem Formular machst werden automatisch
-                                            zwischengespeichert.</p>
-                                        <p>Wenn du also noch nicht alle Daten hast, kannst du über den Link aus der
-                                            E-Mail jederzeit hierher zurückkehren und die Anmeldung fortsetzen.</p>
+                                        {this.state.mode === 'create' && <div>
+                                            <p>Alle Änderungen die du in diesem Formular machst werden automatisch
+                                                zwischengespeichert.</p>
+                                            <p>Wenn du also noch nicht alle Daten hast, kannst du über den Link aus der
+                                                E-Mail jederzeit hierher zurückkehren und die Anmeldung fortsetzen.</p>
+                                        </div>}
+
+                                        {this.state.mode === 'update' && <div>
+                                            Achtung: Deine Änderungen werden erst gespeichert wenn du am Ende des
+                                            Formulars auf speichern klickst.
+                                        </div>}
+
                                     </Col>
                                 </Row>
-
                             </div>
 
                             <Form noValidate onSubmit={handleSubmit}>
@@ -260,7 +164,7 @@ class EditGroup extends React.Component {
                                     status={status}
                                     isValid={isValid}
                                     namePrefix="anreise"
-                                    />
+                                />
 
                                 <div className="field-object">
                                     <h3>Gruppenleiter*in</h3>
@@ -280,7 +184,8 @@ class EditGroup extends React.Component {
                                 <div className="field-object">
                                     <h3>Teilnehmende</h3>
                                     {this.renderTeilnehmer(values.teilnehmer, values)}
-                                    <Button size="sm" onClick={this.addTeilnehmer}><FontAwesomeIcon icon="user-plus" /> Teilnehmer*in hinzufügen</Button>
+                                    <Button size="sm" onClick={this.addTeilnehmer}><FontAwesomeIcon
+                                        icon="user-plus"/> Teilnehmer*in hinzufügen</Button>
                                 </div>
 
                                 <Form.Group className="mb-3">
@@ -317,16 +222,29 @@ class EditGroup extends React.Component {
                                     verwendet werden. Mit der Anmeldung zum Jugendfestival stimmst du dem zu und hast
                                     auch das Einverständnis aller Teilnehmenden deiner Gruppe.</p>
 
+
+                                <Pricing values={values}/>
+
                                 <Form.Group>
-                                    <Button type="submit" disabled={!isValid}>Gruppe kostenpflichtig
-                                        anmelden <FontAwesomeIcon
-                                            icon={faArrowRight} /></Button>
+                                    <Button type="submit" disabled={!isValid || isSubmitting}>
+                                        {this.state.mode === 'create' ? 'Gruppe kostenpflichtig anmelden' : 'Änderungen speichern'}
+                                        {!isSubmitting && <FontAwesomeIcon icon={faArrowRight}/>}
+                                        {isSubmitting &&
+                                            <Spinner animation="border" size="sm" className="m-2 mt-0 mb-0"/>}
+                                    </Button>
 
                                     {!isValid && <Row className="text-danger mt-2">
-                                        <Col xs="1"><FontAwesomeIcon icon="warning" /></Col>
+                                        <Col xs="1"><FontAwesomeIcon icon="warning"/></Col>
                                         <Col>
                                             Stelle sicher, dass du alle Pflichtfelder und alle Warnungen behoben hast.
                                             Erst dann kannst du deine Gruppenanmeldung abschließen.
+
+                                            <details className="small">
+                                                <summary>Technische Details</summary>
+                                                <pre>
+                                                    {JSON.stringify(errors, null, '  ')}
+                                                </pre>
+                                            </details>
                                         </Col>
                                     </Row>}
                                 </Form.Group>
@@ -334,7 +252,6 @@ class EditGroup extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-
 
 
                 <Modal show={this.state.modalPerson} onHide={this.closePersonModal}>
@@ -364,6 +281,30 @@ class EditGroup extends React.Component {
                         <Button variant="primary" onClick={this.closePersonModal}>Schließen</Button>
                     </Modal.Footer>
                 </Modal>
+
+                <ToastContainer className="p-3 position-fixed" position="top-end" style={{zIndex: 999}}>
+                    <Toast bg="danger" autohide delay="15000" show={status === 'error'}
+                           onClose={() => setStatus('none')}>
+                        <Toast.Header>
+                            <strong className="me-auto">Es ist ein Fehler aufgetreten</strong>
+                        </Toast.Header>
+                        <Toast.Body>
+                            Bitte kontaktiere uns über den Support-Chat oder per E-Mail an <a
+                            href="mailto:anmeldung@startklar.bayern"
+                            className="text-black">anmeldung@startklar.bayern</a>.
+                        </Toast.Body>
+                    </Toast>
+
+                    <Toast bg="success" autohide delay="5000" show={status === 'success'}
+                           onClose={() => setStatus('none')}>
+                        <Toast.Header>
+                            <strong className="me-auto">Gespeichert</strong>
+                        </Toast.Header>
+                        <Toast.Body>
+                            Deine Änderungen wurden erfolgreich gespeichert.
+                        </Toast.Body>
+                    </Toast>
+                </ToastContainer>
             </div>
         );
     }
@@ -372,7 +313,7 @@ class EditGroup extends React.Component {
         let result = [];
 
         const teilnehmers = JSON.parse(JSON.stringify(teilnehmerList));
-        teilnehmers.sort((a,b) => {
+        teilnehmers.sort((a, b) => {
             return a.nachname?.localeCompare(b.nachname) || a.vorname?.localeCompare(b.nachname)
         })
 
@@ -406,7 +347,7 @@ class EditGroup extends React.Component {
         return new URLSearchParams(this.props.location).get("token");
     }
 
-    getTempStoragePath(endpoint = "tempStorage") {
+    getApiPath(endpoint = "tempStorage") {
         return 'https://backend.startklar.bayern/api/anmeldung/' + endpoint + '/' + this.props.params.groupId;
     }
 
@@ -418,7 +359,7 @@ class EditGroup extends React.Component {
             anreise: {
                 mit_gruppe: true,
                 typ: 'mit_dv',
-                alternative: '',
+                ziel: '',
                 ankunft: '2023-06-08T10:00:00',
                 abfahrt: '2023-06-11T13:00:00',
             }
@@ -436,7 +377,7 @@ class EditGroup extends React.Component {
             anreise: {
                 mit_gruppe: true,
                 typ: 'mit_dv',
-                alternative: '',
+                ziel: '',
                 ankunft: '2023-06-08T10:00:00',
                 abfahrt: '2023-06-11T13:00:00',
             }
@@ -487,8 +428,193 @@ class EditGroup extends React.Component {
 
         return data;
     }
-}
 
+    loadSelectData() {
+        // Load DVs
+        fetch('https://backend.startklar.bayern/api/anmeldung/dvs')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    dvs: data,
+                })
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+        // Load Termine Schutzkonzept
+        fetch('https://backend.startklar.bayern/api/anmeldung/termine-schutzkonzept')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error("Error while loading schutzkonzept termine");
+            })
+            .then(data => {
+                this.setState({
+                    termineSchutzkonzept: data
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        // Load T-Shirt Größen
+        fetch('https://backend.startklar.bayern/api/anmeldung/tshirt-groessen')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error("Error while loading T-Shirt Größen");
+            })
+            .then(data => {
+                this.setState({
+                    tshirtGroessen: data
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
+    getStoredData() {
+        fetch(this.getApiPath('group'), {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + this.getTokenFromUrl()
+            }
+        })
+            .then(response => {
+                console.log(response);
+                if (!response.ok) {
+                    if (response.status === 400) {
+                        throw new Error("Not yet submitted");
+                    }
+                    throw new Error("No 2xx response");
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                this.massageValues(data);
+                this.props.setValues(data);
+
+                this.setState({
+                    mode: 'update'
+                });
+
+                // TODO:
+                // data = this.tempStorageDataMigration(data);
+                //
+                // if (data) {
+                //     this.props.setValues(data);
+                // } else {
+                //     this.initializeLeitung();
+                // }
+                //
+                // this.setState({
+                //     formDataTemp: data
+                // });
+            })
+            .catch(error => {
+                if (error.message === 'Not yet submitted') {
+                    this.setState({
+                        mode: 'create',
+                    });
+
+                    this.initializeTempStore();
+                } else {
+                    console.error(error);
+                }
+
+
+            });
+    }
+
+    initializeTempStore() {
+        // Load temp data
+        fetch(this.getApiPath(), {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + this.getTokenFromUrl()
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("No 2xx response");
+                }
+
+                return response.json();
+            })
+            .then((data) => {
+                data = this.tempStorageDataMigration(data);
+
+                if (data) {
+                    this.props.setValues(data);
+                } else {
+                    this.initializeLeitung();
+                }
+
+                this.setState({
+                    formDataTemp: data
+                });
+            })
+            .catch(error => {
+                console.error(error);
+                this.initializeLeitung();
+            });
+
+
+        // Autosave temp data
+        if (this.tempStorageUpdateInterval) {
+            clearInterval(this.tempStorageUpdateInterval);
+        }
+
+        this.tempStorageUpdateInterval = setInterval(() => {
+            // Set version for later migrations
+            this.tempData.version = 1;
+
+            let formData = JSON.stringify(this.tempData);
+
+            if (formData === this.oldTempData) {
+                return;
+            }
+
+            this.oldTempData = JSON.stringify(this.tempData);
+
+            fetch(this.getApiPath(), {
+                method: 'put',
+                body: formData,
+                headers: {
+                    'Authorization': 'Bearer ' + this.getTokenFromUrl()
+                }
+            })
+                .then(response => response.json())
+                .catch(function (error) {
+                    console.error(error);
+                })
+        }, 10000);
+    }
+
+    massageValues(data) {
+        if (data.leitung.anreise && !data.leitung.anreise.hasOwnProperty('ankunft')) {
+            data.leitung.anreise.ankunft = "2023-06-08T10:00:00"
+            data.leitung.anreise.abfahrt = "2023-06-11T13:00:00"
+            data.leitung.anreise.typ = "mit_dv"
+            data.leitung.anreise.ziel = "direkt"
+        }
+
+        for (let i = 0; i < data.teilnehmer.length; i++) {
+            if (data.teilnehmer[i].anreise && !data.teilnehmer[i].anreise.hasOwnProperty('ankunft')) {
+                data.teilnehmer[i].anreise.ankunft = "2023-06-08T10:00:00"
+                data.teilnehmer[i].anreise.abfahrt = "2023-06-11T13:00:00"
+                data.teilnehmer[i].anreise.typ = "mit_dv"
+                data.teilnehmer[i].anreise.ziel = "direkt"
+            }
+        }
+    }
+}
 
 
 export default withSupportChat(withParams(withFormik({
@@ -497,7 +623,7 @@ export default withSupportChat(withParams(withFormik({
         "dv": null,
         "anreise": {
             "typ": 'mit_dv',
-            "alternative": '',
+            "ziel": '',
             "ankunft": '2023-06-08T10:00:00',
             "abfahrt": '2023-06-11T13:00:00',
         },
@@ -513,8 +639,54 @@ export default withSupportChat(withParams(withFormik({
 
     validationSchema: anmeldungSchema,
 
-    handleSubmit: (values, {setSubmitting, setStatus}) => {
-        // TODO: Submit logic
-        console.log(values)
+    handleSubmit: (values, {setSubmitting, setStatus, props}) => {
+        const formData = anmeldungSchema.cast(values, {
+            stripUnknown: true,
+        });
+
+        const replacer = function (key, value) {
+            if (key.indexOf('geburtsdatum') !== -1) {
+                return moment(this[key]).format('YYYY-MM-DD')
+            }
+
+            if (this[key] instanceof Date) {
+                return moment(this[key]).format();
+            }
+
+            return value;
+        }
+
+        const formDataString = JSON.stringify(formData, replacer);
+
+
+        setSubmitting(true);
+
+        const token = new URLSearchParams(props.location).get("token");
+        const groupId = props.params.groupId;
+
+        fetch('https://backend.startklar.bayern/api/anmeldung/group/' + groupId, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: formDataString,
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Response not 200');
+            }
+            console.log(response);
+            return response.text();
+        }).then(data => {
+            console.log(data);
+            setStatus('success')
+            setSubmitting(false)
+            // TODO
+        }).catch(error => {
+            console.error(error);
+            setSubmitting(false);
+            setStatus('error')
+            // TODO
+        })
+
     }
 })(EditGroup)));
