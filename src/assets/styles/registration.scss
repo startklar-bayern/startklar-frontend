@@ -3,7 +3,12 @@
 .person-card {
 
 }
+
 .person-card__error {
     font-size: $font-size-sm;
     color: $form-feedback-invalid-color;
+}
+
+.person-card__quickfact {
+    font-size: $font-size-sm;
 }

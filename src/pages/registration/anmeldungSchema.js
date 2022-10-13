@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 import * as Yup from "yup";
+import {getReferencedPersonByUuid, getReferencingPeople} from "./toolbox";
 
 const underageRequired = fieldName => {
     return {
@@ -150,29 +151,6 @@ const isLeitung = (value, ctx) => {
     const uuid = ctx.parent?.id;
     const data = getDataFromContext(ctx);
     return data.leitung?.id === uuid;
-}
-
-const getReferencedPersonByUuid = (data, uuid) => {
-    // Get all current people
-    let people = [data.leitung];
-    people.push(...data.teilnehmer);
-
-    people = people.filter(value => value !== null);
-
-    // Find referenced person
-    const result = people.filter(person => person?.id === uuid);
-
-    return result.length === 1 ? result[0] : false;
-}
-
-const getReferencingPeople = (data, uuid) => {
-    // Get all current people
-    let people = [data.leitung];
-    people.push(...data.teilnehmer);
-
-    people = people.filter(value => value !== null);
-
-    return people.filter(person => person.aufsichtsperson === uuid);
 }
 
 const getDataFromContext = (ctx) => {

@@ -135,6 +135,10 @@ button {
   word-spacing: 0.1em;
 }
 
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
 .modal-close svg {
   color: $black;
   height: 1.5rem;

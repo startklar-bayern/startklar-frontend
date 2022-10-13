@@ -192,10 +192,13 @@ class EditGroup extends React.Component {
             <div className="registration">
                 <Container>
                     <Row>
-                        <Col className="field-object">
-                            <h2>Gruppen-Anmeldung</h2>
-
-                            <div className="field-object">
+                        <Col>
+                            <h1 className="text-center">Gruppen-Anmeldung</h1>
+                        </Col>
+                    </Row>
+                    <Row className="justify-content-center">
+                        <Col className="field-object align-self-center" lg="7">
+                            <div className="field-object mt-0">
                                 <Row>
                                     <Col md="1">
                                         <FontAwesomeIcon icon="info-circle" size="xl"></FontAwesomeIcon>
@@ -266,7 +269,9 @@ class EditGroup extends React.Component {
                                         Schutzkonzepts, nimmst an der Einweisung dazu teil und bist Ansprechpartner*in
                                         für Rückfragen.</p>
                                     {values.leitung && <PersonCard
+                                        key="leitung"
                                         person={values.leitung}
+                                        allValues={values}
                                         allowDelete={false}
                                         errors={errors.leitung}
                                         onEdit={() => this.showPersonModal('leitung')}/>}
@@ -274,8 +279,8 @@ class EditGroup extends React.Component {
 
                                 <div className="field-object">
                                     <h3>Teilnehmende</h3>
-                                    {this.renderTeilnehmer(values.teilnehmer)}
-                                    <button type="button" onClick={this.addTeilnehmer}>Teilnehmer*in hinzufügen</button>
+                                    {this.renderTeilnehmer(values.teilnehmer, values)}
+                                    <Button size="sm" onClick={this.addTeilnehmer}><FontAwesomeIcon icon="user-plus" /> Teilnehmer*in hinzufügen</Button>
                                 </div>
 
                                 <Form.Group className="mb-3">
@@ -355,7 +360,7 @@ class EditGroup extends React.Component {
         );
     }
 
-    renderTeilnehmer(teilnehmerList) {
+    renderTeilnehmer(teilnehmerList, values) {
         let result = [];
 
         const teilnehmers = JSON.parse(JSON.stringify(teilnehmerList));
@@ -369,6 +374,7 @@ class EditGroup extends React.Component {
                 mb="2"
                 key={teilnehmer.id}
                 person={teilnehmer}
+                allValues={values}
                 allowDelete={true}
                 errors={get(this.props.errors, ['teilnehmer', index])}
                 onDelete={() => this.removeTeilnehmer(index)}
