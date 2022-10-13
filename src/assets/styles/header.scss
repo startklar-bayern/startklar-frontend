@@ -39,6 +39,10 @@
 
   .header-white .social-buttons a {
     color: $white;
+
+    &:hover {
+      color: $primary;
+    }
   }
 
   .navbar-brand {

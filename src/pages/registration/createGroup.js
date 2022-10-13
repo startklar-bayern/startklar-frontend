@@ -1,121 +1,139 @@
 import React from "react";
-import {Container, Row, Col, Button, Form, Alert}  from 'react-bootstrap'
+import {Container, Row, Col, Button, Form, Alert, Toast, ToastContainer} from 'react-bootstrap'
 import axios from 'axios';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEnvelope, faQuestionCircle} from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
+import ToastContext from "react-bootstrap/ToastContext";
 
 class CreateGroup extends React.Component {
-  state = {
-    mail: '',
-  }
+    state = {
+        mail: '',
+        submitted: false,
+        loading: false,
+        isError: false,
+    }
 
-  handleChange = event => {
-    this.setState({ mail: event.target.value });
-  }
+    handleChange = event => {
+        this.setState({mail: event.target.value});
+    }
 
-  handleSubmit = event => {
-    event.preventDefault();
+    handleSubmit = event => {
+        event.preventDefault();
 
-    const group = {
-      "mail": this.state.mail,
-      "participant_privacy_accepted": true,
-      "privacy_accepted": true
-    };
+        this.setState({
+            loading: true,
+            isError: false,
+        });
 
-    axios
-      .post('https://backend.startklar.bayern/api/anmeldung/group', group)
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+        const group = {
+            "mail": this.state.mail,
+            "participant_privacy_accepted": true,
+            "privacy_accepted": true,
+        };
 
-  render() {
-    return (
-        <div className="createGroup">
-            <Container>
-              <Row className="my-4">
-                <Col>
-                  <h1>Anmeldung als Gruppe</h1>
-                </Col>
-              </Row>
-              <Row>
-                <Col lg={8}>
-                  <p>
-                    Zuerst benötigen wir deine E-Mail Adresse.<br></br>
-                    Du erhältst dann eine E-Mail mit einem Link unter dem du deine Anmeldung starten kannst.
-                  </p>
-                  <Form onSubmit={this.handleSubmit} className="mb-4">
-                      <Form.Group className="mb-3">
-                        <Form.Label>E-Mail Adresse*</Form.Label>
-                        <Form.Control
-                            type="email"
-                            name="mail"
-                            placeholder="m.mustermann@example.com"
-                            aria-label="E-Mail Adresse"
-                            aria-describedby="E-Mail Adresse"
-                            onChange={this.handleChange}
-                            required
-                          />
-                      </Form.Group>
+        axios
+            .post('https://backend.startklar.bayern/api/anmeldung/group', group)
+            .then(response => {
+                console.log(response);
 
-                     <Form.Group className="mb-3">
-                        <Form.Check
-                            type="checkbox"
-                            required
-                            name="weitergabe_daten_akzeptiert"
-                            label="Ich habe das Einverständnis aller Teilnehmenden ihre Daten weiterzugeben *"
-                        />
-                      </Form.Group>
+                this.setState({
+                    submitted: true,
+                })
+            })
+            .catch(error => {
+                console.log(error);
 
+                this.setState({
+                    loading: false,
+                    isError: true,
+                });
+            });
+    }
 
-                      <Form.Group className="mb-3">
-                        <Form.Check
-                            type="checkbox"
-                            required
-                            name="datenschutzerklaerung_akzeptiert"
-                            label="Ich habe die Datenschutzerklärung gelesen und akzeptiere diese *"/>
-                      </Form.Group>
+    render() {
+        return (
+            <div className="createGroup">
+                <ToastContainer className="p-3" position="top-end">
+                    <Toast bg="warning" autohide delay="5000" show={this.state.isError}
+                           onClose={() => this.setState({isError: false, submitted: false})}>
+                        <Toast.Body>
+                            <strong>Es ist ein Fehler aufgetreten.</strong><br/>
+                            Bitte kontaktiere uns über den Support-Chat.
+                        </Toast.Body>
+                    </Toast>
+                </ToastContainer>
 
-                      <Button type="submit">Absenden</Button>
-                  </Form>
-
-                  <hr/>
-
-                  <Row>
-                    <Col lg={1} xs={2}>
-                      <FontAwesomeIcon size="2x" icon={faEnvelope}/>
-                    </Col>
-                    <Col lg={11} xs={10}>
-                      <p>
-                        Du solltest jetzt eine E-Mail mit einem Link erhalten haben. Schaue in deinem Posteingang und im Spam-Ordner nach und klicke auf den Link um fortzufahren.<br></br>
-                        Du kannst diesen Link auch verwenden um deine Anmeldung bis zum Anmeldeschluss am 16.04.2023 jederzeit online zu bearbeiten.
-                      </p>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col lg={4}>
-                  <Alert bsStyle="info">
-                    <Row>
-                    <Col xs={2}>
-                        <FontAwesomeIcon size="2x" icon={faQuestionCircle}/>
-                      </Col>
-                      <Col xs={10}>
-                        <h3>HAST DU NOCH Fragen zur Anmeldung?</h3>
-                        <p>Dann wende dich per E-Mail an <a href="mailto:anmeldung@startklar.bayern">anmeldung@startklar.bayern</a> oder telefonisch ans Jugendbüro unter <a href="tel:08959996930">089 / 59 99 69 - 30</a> </p>
-                      </Col>
+                <Container>
+                    <Row className="my-4">
+                        <Col>
+                            <h1>Gruppen-Anmeldung</h1>
+                        </Col>
                     </Row>
-                  </Alert>
-                </Col>
-              </Row>
-            </Container>
-        </div>
-    )
-  }
+
+                    {!this.state.submitted && <Row>
+                        <Col>
+                            <p>
+                                Zuerst benötigen wir deine E-Mail Adresse.<br></br>
+                                Du erhältst dann eine E-Mail mit einem Link unter dem du deine Anmeldung starten kannst.
+                            </p>
+                            <Form onSubmit={this.handleSubmit} className="mb-4">
+                                <Form.Group className="mb-3 col-lg-5">
+                                    <Form.Label>E-Mail Adresse*</Form.Label>
+                                    <Form.Control
+                                        type="email"
+                                        name="mail"
+                                        placeholder="m.mustermann@example.com"
+                                        aria-label="E-Mail Adresse"
+                                        aria-describedby="E-Mail Adresse"
+                                        onChange={this.handleChange}
+                                        required
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Check
+                                        type="checkbox"
+                                        required
+                                        name="weitergabe_daten_akzeptiert"
+                                        label="Ich habe das Einverständnis aller Teilnehmenden ihre Daten weiterzugeben *"
+                                    />
+                                </Form.Group>
+
+
+                                <Form.Group className="mb-3">
+                                    <Form.Check
+                                        type="checkbox"
+                                        required
+                                        name="datenschutzerklaerung_akzeptiert"
+                                        label="Ich habe die Datenschutzerklärung gelesen und akzeptiere diese *"/>
+                                </Form.Group>
+
+                                <Button type="submit" disabled={this.state.loading}><FontAwesomeIcon
+                                    icon="paper-plane"/> Absenden</Button>
+                            </Form>
+                        </Col>
+                    </Row>}
+
+                    {this.state.submitted && <Row>
+                        <Col lg={1} xs={2}>
+                            <FontAwesomeIcon size="2x" icon={faEnvelope}/>
+                        </Col>
+                        <Col lg={11} xs={10}>
+                            <p>
+                                Du solltest jetzt eine E-Mail mit einem Link erhalten haben. Schaue in deinem
+                                Posteingang und im Spam-Ordner nach und klicke auf den Link um
+                                fortzufahren.</p>
+                            <p>
+                                Du kannst diesen Link auch verwenden um deine Anmeldung bis zum Anmeldeschluss
+                                am 16.04.2023 jederzeit online zu bearbeiten.
+                            </p>
+                        </Col>
+                    </Row>}
+                </Container>
+            </div>
+        )
+    }
 }
 
 export default withSupportChat(CreateGroup);

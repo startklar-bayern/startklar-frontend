@@ -61,15 +61,6 @@ h6, .h6 {
 
 h1, .h1 {
   color: $primary;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: $black;
-  text-shadow: 2px -2px $primary;
-
-  @include media-breakpoint-up(md) {
-    -webkit-text-stroke-width: 3px;
-    text-shadow: 3px -3px $primary;
-  }
 }
 
 .btn {

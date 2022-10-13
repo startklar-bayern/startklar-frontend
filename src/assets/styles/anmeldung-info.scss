@@ -1,0 +1,18 @@
+@import "bootstrap-variables";
+
+.anmeldung-info-row {
+    list-style: decimal;
+    padding-left: 45px;
+
+    h3 {
+        display: list-item;
+
+        &:not(:first-child) {
+            margin-top: 1em;
+        }
+
+        &::marker {
+            color: $primary;
+        }
+    }
+}
