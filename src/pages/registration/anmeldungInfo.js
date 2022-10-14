@@ -43,7 +43,7 @@ class AnmeldungInfo extends React.Component {
                                 <li>Geschlecht</li>
                                 <li>Adresse</li>
                                 <li>Telefon und E-Mail</li>
-                                <li>Telefon und E-Mail einer erziehungsberechtigten Person (Wenn nicht volljährig)</li>
+                                <li>Telefon und E-Mail einer erziehungsberechtigten Person (wenn nicht volljährig)</li>
                                 <li>T-Shirt Größe (XS, S, M, L, XL, XXL, XXXL)</li>
                                 <li>Anreise (Datum + ungefähre Uhrzeit)</li>
                                 <li>Abreise (Datum + ungefähre Uhrzeit)</li>
