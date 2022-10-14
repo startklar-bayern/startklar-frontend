@@ -128,7 +128,7 @@ export default class PersonForm extends React.Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Straße *</Form.Label>
+                    <Form.Label>Straße und Nummer *</Form.Label>
                     <Form.Control
                         type="text"
                         name={namePrefix + ".strasse"}

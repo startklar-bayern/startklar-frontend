@@ -71,10 +71,10 @@ export default class AnreiseFieldGroup extends React.Component {
                                      show={this.state.showInfoAnreise}>
                                 {(props) => (
                                     <Tooltip {...props}>
-                                        <p>Je nach Teilnehmer*innenzahl werden von den verschiedenen
+                                        <p>Je nach Teilnehmer*innenzahl werden von den verschiedenen Diözesanverbänden
                                             gemeinsame Busfahrten organisiert. Dies wird aber erst nach
                                             Anmeldeschluss bekannt gegeben.</p>
-                                        <p>Deshalb musst du auch angeben, wie ihr anreist falls euer DV
+                                        <p>Deshalb musst du auch angeben wie ihr anreist, falls euer DV
                                             keine Busfahrt anbietet.</p>
                                     </Tooltip>
                                 )}
