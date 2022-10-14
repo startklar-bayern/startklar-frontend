@@ -62,8 +62,7 @@ class AnmeldungInfo extends React.Component {
                                 Website eingegeben werden.
                             </p>
 
-                            {/*TODO: Link*/}
-                            <a href="" target="_blank" className="btn-primary btn-sm"><FontAwesomeIcon
+                            <a href="/vorlage-anmeldebogen.docx" target="_blank" className="btn-primary btn-sm"><FontAwesomeIcon
                                 icon="download"/> Anmeldebogen</a>
 
                             <h3>Bestimme Aufsichtspersonen</h3>
