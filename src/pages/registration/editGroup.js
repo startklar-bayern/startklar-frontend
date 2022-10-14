@@ -65,7 +65,6 @@ class EditGroup extends React.Component {
     }
 
     render() {
-        // TODO: Error handling for invalid urls
         let {
             touched,
             handleChange,
@@ -98,7 +97,7 @@ class EditGroup extends React.Component {
                             <h1 className="text-center">Gruppen-Anmeldung</h1>
                         </Col>
                     </Row>
-                    <Row className="justify-content-center">
+                    {(this.state.mode === 'create' || this.state.mode === 'update' )&& <Row className="justify-content-center">
                         <Col className="field-object align-self-center" lg="7">
                             <div className={'field-object mt-0 ' + (this.state.mode === 'update' ? 'bg-warning text-black' : '')}>
                                 <Row>
@@ -256,7 +255,22 @@ class EditGroup extends React.Component {
                                 </Form.Group>
                             </Form>
                         </Col>
-                    </Row>
+                    </Row>}
+
+                    {this.state.mode === 'loading' && <Row>
+                        <Col className="text-center">
+                            <h3><Spinner animation="border" /> Daten werden geladen...</h3>
+                        </Col>
+                    </Row>}
+
+                    {this.state.mode === 'invalidUrl' && <Row>
+                        <Col className="text-center">
+                            <h3><FontAwesomeIcon icon="warning"/> Ein Fehler ist aufgetreten</h3>
+                            <p>Es gab Probleme beim Laden deiner Daten. Entweder ist der Link, den du verwendet hast, nicht mehr gültig oder unvollständig.</p>
+                            <p>Versuche die Seite neu zu laden und prüfe ob du den richtigen Link verwendet hast.</p>
+                            <p>Solltest du weiterhin Probleme haben, kannst du uns über den Support-Chat oder per E-Mail an <a href="mailto:anmeldung@startklar.bayern">anmeldung@startklar.bayern</a> kontaktieren.</p>
+                        </Col>
+                    </Row>}
                 </Container>
 
 
@@ -496,6 +510,15 @@ class EditGroup extends React.Component {
                     if (response.status === 400) {
                         throw new Error("Not yet submitted");
                     }
+
+                    if (response.status === 403 || response.status === 401) {
+                        throw new Error("Unauthorized")
+                    }
+
+                    if (response.status === 404) {
+                        throw new Error("Group not found")
+                    }
+
                     throw new Error("No 2xx response");
                 }
 
@@ -509,19 +532,6 @@ class EditGroup extends React.Component {
                 this.setState({
                     mode: 'update'
                 });
-
-                // TODO:
-                // data = this.tempStorageDataMigration(data);
-                //
-                // if (data) {
-                //     this.props.setValues(data);
-                // } else {
-                //     this.initializeLeitung();
-                // }
-                //
-                // this.setState({
-                //     formDataTemp: data
-                // });
             })
             .catch(error => {
                 if (error.message === 'Not yet submitted') {
@@ -530,6 +540,14 @@ class EditGroup extends React.Component {
                     });
 
                     this.initializeTempStore();
+                } else if (error.message === 'Unauthorized') {
+                  this.setState({
+                      mode: 'invalidUrl',
+                  })
+                } else if (error.message === 'Group not found') {
+                    this.setState({
+                        mode: 'invalidUrl',
+                    })
                 } else {
                     console.error(error);
                 }
