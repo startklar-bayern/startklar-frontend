@@ -196,7 +196,9 @@ const personSchema = Yup.object({
         .test(maxIfAufsichtsperson('2005-06-11')),
     geschlecht: Yup.string().required('Geschlecht ist erforderlich').oneOf(['m', 'w', 'd']),
     strasse: Yup.string().required('Straße ist erforderlich'),
-    plz: Yup.string().required('Postleitzahl ist erforderlich'),
+    plz: Yup.string()
+        .required('Postleitzahl ist erforderlich')
+        .matches(/^[0-9]{5}$/, 'Bitte gib eine gültige PLZ ein'),
     ort: Yup.string().required('Ort ist erforderlich'),
     telefon: Yup.string().required('Telefon ist erforderlich'),
     mail: Yup.string().required('E-Mail ist erforderlich').email('Das ist keine korrekte E-Mail Adresse'),
