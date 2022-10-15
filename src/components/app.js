@@ -80,6 +80,12 @@ class App extends Component {
                         enableDeclineButton
                         declineButtonText="Ablehnen"
                         onAccept={this.handleAcceptCookie}
+                        disableStyles="true"
+                        containerClasses="alert row bg-dark text-white"
+                        contentClasses="col-md-auto"
+                        buttonClasses="btn btn-primary py-1 px-3"
+                        declineButtonClasses="btn btn-small btn-secondary me-3 py-1 px-3"
+                        buttonWrapperClasses="col-md text-md-end mt-2 mt-md-0"
                     >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
                     <Router>
