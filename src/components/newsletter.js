@@ -53,7 +53,7 @@ class Newsletter extends React.Component {
             <div className="newsletter">
                 <div className="text-center">
                     <h6>Bleib immer auf dem Laufenden</h6>
-                    <p>Melde dich an und erhalte alle neuen Infos.</p>
+                    <p>Melde dich zum Newsletter an und erhalte alle neuen Infos.</p>
                 </div>
 
                 {isSubmitting &&
@@ -71,7 +71,7 @@ class Newsletter extends React.Component {
                     <Alert variant="success">
                         <p style={{marginBottom: 0}}>
                             Bitte klicke auf den Bestätigungslink in der E-Mail, die wir dir gesendet haben, um die
-                            Anmeldung abzuschließen.
+                            Newsletter-Anmeldung abzuschließen.
                         </p>
                     </Alert>}
 

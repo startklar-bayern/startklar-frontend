@@ -12,6 +12,7 @@ import ReactGA from "react-ga4";
 import AnmeldungSuccess from "../pages/registration/anmeldungSuccess";
 import PageNotFound from "../pages/pageNotFound";
 import {HelmetProvider} from "react-helmet-async";
+import ScrollToTop from "./scrollToTop";
 
 class App extends Component {
     state = {
@@ -93,6 +94,7 @@ class App extends Component {
                             ? <Header/>
                             : <HeaderWhite/>
                         }
+                        <ScrollToTop/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>
                             {this.state.pages.map(page => {

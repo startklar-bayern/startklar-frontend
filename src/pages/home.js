@@ -14,6 +14,9 @@ import backgroundPng from "../assets/images/mountain-silhoutte-background__1x.pn
 import backgroundWebP2x from "../assets/images/mountain-silhoutte-background__2x.webp"
 import backgroundPng2x from "../assets/images/mountain-silhoutte-background__2x.png"
 import {Helmet} from "react-helmet-async";
+import Button from "react-bootstrap/Button";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {NavLink, useNavigate} from "react-router-dom";
 
 class Home extends Component {
     constructor(props) {
@@ -38,6 +41,11 @@ class Home extends Component {
                         <Row>
                             <Col lg={{ span: 8, offset: 2 }}>
                                 <Calendar/>
+                                <div className="text-center mb-5 mt-5">
+                                    <h3>Bist du STARTKLAR?</h3>
+                                    <p>Dann melde jetzt deine Gruppe an!</p>
+                                    <NavLink to="anmeldung-auswahl"><Button>Zur Anmeldung <FontAwesomeIcon icon="arrow-right"/></Button></NavLink>
+                                </div>
                                 <Newsletter/>
                             </Col>
                         </Row>

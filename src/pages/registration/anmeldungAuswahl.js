@@ -3,6 +3,7 @@ import {Container, Row, Col, Card}  from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleGroup, faHammer } from '@fortawesome/free-solid-svg-icons'
 import {Helmet} from "react-helmet-async";
+import {NavLink} from "react-router-dom";
 
 export default class AnmeldungAuswahl extends React.Component {
   render() {
@@ -21,10 +22,10 @@ export default class AnmeldungAuswahl extends React.Component {
               <Row className="mb-4 align-items-stretch">
                 <Col className="text-center d-flex mb-4 mb-sm-0">
                     <Card className="bg-black border-light p-4 align-self-stretch flex-fill" >
-                        <a href="/anmeldung-info">
+                        <NavLink to="/anmeldung-info">
                             <FontAwesomeIcon icon={faPeopleGroup} size="6x" className="text-white my-4" />
                             <h2>Als Teilnehmer*in</h2>
-                        </a>
+                        </NavLink>
                     </Card>
                 </Col>
                 <Col className="text-center">

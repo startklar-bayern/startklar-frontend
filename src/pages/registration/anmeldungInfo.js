@@ -5,6 +5,7 @@ import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import '../../assets/styles/anmeldung-info.scss';
 import {Helmet} from "react-helmet-async";
+import {NavLink} from "react-router-dom";
 
 class AnmeldungInfo extends React.Component {
     render() {
@@ -118,10 +119,10 @@ class AnmeldungInfo extends React.Component {
                                 <h2>Anmeldung</h2>
                                 <p>Hast du die Daten aller Teilnehmer*innen deiner Gruppe beisammen und bist startklar
                                     für die Anmeldung? Dann geht's jetzt los!</p>
-                                <a href="/anmeldung-gruppe">
+                                <NavLink to="/anmeldung-gruppe">
                                     <button className="btn btn-primary">Zur Anmeldung <FontAwesomeIcon
                                         icon={faArrowRight}/></button>
-                                </a>
+                                </NavLink>
                             </div>
                         </Col>
                     </Row>
