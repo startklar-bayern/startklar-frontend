@@ -298,7 +298,7 @@ class EditGroup extends React.Component {
                         ></PersonForm>}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary" onClick={this.closePersonModal}>Schließen</Button>
+                        <Button variant="primary" onClick={this.closePersonModal}>Speichern</Button>
                     </Modal.Footer>
                 </Modal>
 
