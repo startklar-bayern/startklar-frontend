@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {Row, Col} from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import {Col, Row} from 'react-bootstrap'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {library} from '@fortawesome/fontawesome-svg-core'
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 import './../assets/styles/contact-persons.scss';
 

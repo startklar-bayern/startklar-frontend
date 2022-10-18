@@ -1,9 +1,9 @@
-import React, {Component, useRef} from "react";
+import React, {Component} from "react";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faCopy, faDownload, faShare, faSpinner, faXmark} from "@fortawesome/free-solid-svg-icons";
 import ReactGA from "react-ga4";
-import {FormControl, Modal, Overlay, Tooltip} from "react-bootstrap";
+import {FormControl, Modal} from "react-bootstrap";
 
 export default class ShareButton extends Component {
     state = {

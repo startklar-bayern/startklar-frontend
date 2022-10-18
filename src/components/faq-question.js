@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Button from 'react-bootstrap/Button'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
-import {Alert, Collapse, Form, Row, Spinner, Col} from "react-bootstrap";
+import {Alert, Col, Collapse, Form, Row, Spinner} from "react-bootstrap";
 import {withFormik} from "formik";
 import * as Yup from "yup";
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendar } from '@fortawesome/free-regular-svg-icons'
-import { faPlus, faMapPin } from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCalendar} from '@fortawesome/free-regular-svg-icons'
+import {faMapPin, faPlus} from '@fortawesome/free-solid-svg-icons'
 import ReactGA from 'react-ga4';
 import '../assets/styles/calendar.scss';
 import Countdown from "./countdown";

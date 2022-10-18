@@ -1,7 +1,7 @@
 import React from "react";
-import {Container, Row, Col, Card}  from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPeopleGroup, faHammer } from '@fortawesome/free-solid-svg-icons'
+import {Card, Col, Container, Row} from 'react-bootstrap'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHammer, faPeopleGroup} from '@fortawesome/free-solid-svg-icons'
 import {Helmet} from "react-helmet-async";
 import {NavLink} from "react-router-dom";
 

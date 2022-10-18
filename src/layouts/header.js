@@ -2,8 +2,8 @@ import React from "react";
 import logo from './../assets/images/logo-optisch-zentriert.svg';
 import logoKolpingBayern from './../assets/images/logo-kolping-bayern.svg';
 import './../assets/styles/header.scss';
-import { NavLink } from "react-router-dom";
-import {Row, Col, Navbar, Container}  from 'react-bootstrap'
+import {NavLink} from "react-router-dom";
+import {Col, Container, Navbar, Row} from 'react-bootstrap'
 import SocialButtons from '../components/socialButtons';
 
 function Header() {

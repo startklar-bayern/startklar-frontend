@@ -7,8 +7,7 @@ import FaqAccordion from '../components/faq-accordion';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
-import {Row, Col, Container}  from 'react-bootstrap'
-import {Toast} from "react-bootstrap";
+import {Col, Container, Row, Toast} from 'react-bootstrap'
 import backgroundWebP from "../assets/images/mountain-silhoutte-background__1x.webp"
 import backgroundPng from "../assets/images/mountain-silhoutte-background__1x.png"
 import backgroundWebP2x from "../assets/images/mountain-silhoutte-background__2x.webp"
@@ -16,7 +15,7 @@ import backgroundPng2x from "../assets/images/mountain-silhoutte-background__2x.
 import {Helmet} from "react-helmet-async";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 class Home extends Component {
     constructor(props) {

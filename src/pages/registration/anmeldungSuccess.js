@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Row, Col} from 'react-bootstrap'
+import {Col, Container, Row} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";

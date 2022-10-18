@@ -1,15 +1,8 @@
 import React, {useEffect} from "react";
-import {
-    Container,
-    Form,
-    Row,
-    Spinner,
-    Col,
-    Modal, Toast, ToastContainer
-} from "react-bootstrap";
+import {Col, Container, Form, Modal, Row, Spinner, Toast, ToastContainer} from "react-bootstrap";
 import './../../assets/styles/forms.scss';
 import './../../assets/styles/registration.scss';
-import {useParams, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -17,7 +10,7 @@ import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {useFormikContext, withFormik} from "formik";
 import PersonForm from "./personForm";
 import {v4 as uuid} from "uuid";
-import {get, findIndex} from "underscore";
+import {findIndex, get} from "underscore";
 import PersonCard from "../../components/personCard";
 import anmeldungSchema from "./anmeldungSchema";
 import AnreiseFieldGroup from "./anreiseFieldGroup";

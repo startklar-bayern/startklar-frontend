@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faInstagram, faFacebook, faTiktok} from '@fortawesome/free-brands-svg-icons'
+import {faFacebook, faInstagram, faTiktok} from '@fortawesome/free-brands-svg-icons'
 import ReactGA from "react-ga4";
 
 export default class SocialButtons extends Component {

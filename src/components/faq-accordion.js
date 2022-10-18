@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row, Accordion} from 'react-bootstrap'
+import {Accordion, Col, Row} from 'react-bootstrap'
 import './../assets/styles/faq.scss';
 
 const FaqAccordion = ({faqs}) => {

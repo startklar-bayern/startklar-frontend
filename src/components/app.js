@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CookieConsent, {getCookieConsentValue} from "react-cookie-consent";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {Header, Footer, HeaderWhite} from "../layouts";
+import {Footer, Header, HeaderWhite} from "../layouts";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import CreateGroup from "../pages/registration/createGroup";

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import {Row, Col} from 'react-bootstrap'
+import {Col, Modal, Row} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowRight, faXmark} from '@fortawesome/free-solid-svg-icons'
 import {format} from 'date-fns'
-import {Modal} from "react-bootstrap";
 import './../assets/styles/news.scss';
 
 export default class News extends Component {

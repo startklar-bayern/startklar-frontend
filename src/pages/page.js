@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Container, Row, Col}  from 'react-bootstrap'
+import {Col, Container, Row} from 'react-bootstrap'
 import {Helmet} from "react-helmet-async";
 
 export default class Page extends Component {

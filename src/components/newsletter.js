@@ -5,7 +5,7 @@ import {withFormik} from 'formik';
 import * as Yup from 'yup';
 import '../assets/styles/newsletter.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faArrowRight, faArrowDown} from '@fortawesome/free-solid-svg-icons'
+import {faArrowDown, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 
 class Newsletter extends React.Component {
