@@ -210,13 +210,20 @@ class EditGroup extends React.Component {
 
                                 <Form.Group className="mb-3">
                                     <Form.Check
-                                        type="checkbox"
-                                        name="fuehrungszeugnis"
-                                        label="Ich habe am Festival ein einwandfreies Führungszeugnis und sorge auch dafür dass alle Aufsichtspersonen in meiner Gruppe eines besitzen. Informationen dazu im Schutzkonzept.*" // TODO: Link zu Schutzkonzept
-                                        checked={values.fuehrungszeugnis}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={touched.fuehrungszeugnis && !!errors.fuehrungszeugnis}/>
+                                        type="checkbox">
+                                        <Form.Check.Input
+                                            type="checkbox"
+                                            name="fuehrungszeugnis"
+                                            checked={values.fuehrungszeugnis}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isInvalid={touched.fuehrungszeugnis && !!errors.fuehrungszeugnis}
+                                            />
+                                        <Form.Check.Label>
+                                            Ich habe am Festival ein einwandfreies Führungszeugnis und sorge auch dafür dass alle Aufsichtspersonen in meiner Gruppe eines besitzen. *<br/>
+                                            Informationen dazu im <a href="/schutzkonzept" target="_blank">Schutzkonzept</a>.
+                                        </Form.Check.Label>
+                                    </Form.Check>
 
                                     <Form.Control.Feedback type="invalid">
                                         {errors.fuehrungszeugnis}

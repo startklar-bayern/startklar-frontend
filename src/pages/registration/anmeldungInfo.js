@@ -74,8 +74,7 @@ class AnmeldungInfo extends React.Component {
                                 zugeordnet werden.
                             </p>
                             <p>
-                                {/*TODO: Link*/}
-                                Weitere Infos dazu findest du auch in unserem <a href=""
+                                Weitere Infos dazu findest du auch in unserem <a href="/schutzkonzept"
                                                                                  target="_blank">Schutzkonzept</a>.
                             </p>
 
