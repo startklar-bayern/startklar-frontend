@@ -45,7 +45,6 @@ class Home extends Component {
                                     <p>Dann melde jetzt deine Gruppe an!</p>
                                     <NavLink to="anmeldung-auswahl"><Button>Zur Anmeldung <FontAwesomeIcon icon="arrow-right"/></Button></NavLink>
                                 </div>
-                                <Newsletter/>
                             </Col>
                         </Row>
                     </Container>
@@ -67,6 +66,7 @@ class Home extends Component {
                     <section className="news">
                         <Container>
                             <News news={this.state.news}/>
+                            <Newsletter/>
                         </Container>
                     </section>
                     <section className="contact-persons">

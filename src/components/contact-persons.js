@@ -22,12 +22,12 @@ export default class ContactPersons extends Component {
                 <Row className="g-4">
                     {contactPersons.map((contactPerson) => (
                         <Col md={6} lg={4} key={'contact-person-' + contactPerson.id}>
-                            <div className="contactPerson p-4">
+                            <div className="contactPerson p-4 d-flex flex-column">
                                 <div className="text-center"><FontAwesomeIcon className="contactPersonIcon text-center" icon={contactPerson.icon.replace("fa-","")} /></div>
                                 <h3 className="text-center">{contactPerson.title}</h3>
-                                <p className="text-light" dangerouslySetInnerHTML={{__html: contactPerson.body}} />
+                                <p className="text-light flex-grow-1" dangerouslySetInnerHTML={{__html: contactPerson.body}} />
                                 <hr />
-                                <div className="text-light ">ANSPRECHPARTNER: </div>
+                                <div className="text-light">ANSPRECHPARTNER: </div>
                                 <h6>{contactPerson.contactName}</h6>
                                 <div className="contactInfo mt-4">
                                     {contactPerson.contactMail &&

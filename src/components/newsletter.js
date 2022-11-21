@@ -1,5 +1,5 @@
 import React from 'react'
-import {Alert, Collapse, Form, InputGroup, Spinner} from "react-bootstrap";
+import {Alert, Collapse, Form, InputGroup, Spinner, Row, Col} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {withFormik} from 'formik';
 import * as Yup from 'yup';
@@ -51,87 +51,91 @@ class Newsletter extends React.Component {
 
         return (
             <div className="newsletter">
-                <div className="text-center">
-                    <h6>Bleib immer auf dem Laufenden</h6>
-                    <p>Melde dich zum Newsletter an und erhalte alle neuen Infos.</p>
-                </div>
+                <Row>
+                    <Col md={{ span: 6, offset: 3 }}>
+                        <div className="text-center">
+                            <h6>Bleib immer auf dem Laufenden</h6>
+                            <p>Melde dich zum Newsletter an und erhalte alle neuen Infos.</p>
+                        </div>
 
-                {isSubmitting &&
-                    <Spinner animation="border"/>}
+                        {isSubmitting &&
+                            <Spinner animation="border"/>}
 
-                {!isSubmitting && status.error &&
-                    <Alert variant="danger">
-                        <p style={{marginBottom: 0}}>
-                            Ein Fehler ist aufgetreten. Bitte wende dich an <a
-                            href="mailto:info@startklar.bayern">info@startklar.bayern</a>
-                        </p>
-                    </Alert>}
+                        {!isSubmitting && status.error &&
+                            <Alert variant="danger">
+                                <p style={{marginBottom: 0}}>
+                                    Ein Fehler ist aufgetreten. Bitte wende dich an <a
+                                    href="mailto:info@startklar.bayern">info@startklar.bayern</a>
+                                </p>
+                            </Alert>}
 
-                {!isSubmitting && status.success &&
-                    <Alert variant="success">
-                        <p style={{marginBottom: 0}}>
-                            Bitte klicke auf den Bestätigungslink in der E-Mail, die wir dir gesendet haben, um die
-                            Newsletter-Anmeldung abzuschließen.
-                        </p>
-                    </Alert>}
+                        {!isSubmitting && status.success &&
+                            <Alert variant="success">
+                                <p style={{marginBottom: 0}}>
+                                    Bitte klicke auf den Bestätigungslink in der E-Mail, die wir dir gesendet haben, um die
+                                    Newsletter-Anmeldung abzuschließen.
+                                </p>
+                            </Alert>}
 
-                {!isSubmitting && !status.success && !status.error &&
-                    <Form noValidate onSubmit={handleSubmit} className="mb-4">
-                        <Form.Group>
-                            <InputGroup hasValidation>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="E-Mail Adresse"
-                                    name="email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    onFocus={this.showPrivacy}
-                                    isInvalid={!!errors.email}/>
+                        {!isSubmitting && !status.success && !status.error &&
+                            <Form noValidate onSubmit={handleSubmit} className="mb-4">
+                                <Form.Group>
+                                    <InputGroup hasValidation>
+                                        <Form.Control
+                                            type="email"
+                                            placeholder="E-Mail Adresse"
+                                            name="email"
+                                            value={values.email}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            onFocus={this.showPrivacy}
+                                            isInvalid={!!errors.email}/>
 
-                                <Button type="submit">Anmelden <FontAwesomeIcon icon={faArrowRight}/></Button>
+                                        <Button type="submit">Anmelden <FontAwesomeIcon icon={faArrowRight}/></Button>
 
-                                <Form.Control.Feedback type="invalid">
-                                    {errors.email}
-                                </Form.Control.Feedback>
-                            </InputGroup>
-                        </Form.Group>
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.email}
+                                        </Form.Control.Feedback>
+                                    </InputGroup>
+                                </Form.Group>
 
-                        <Collapse in={this.state.showPrivacy}>
-                            <Form.Group className="mt-2">
-                                <Form.Check
-                                    required
-                                    type="checkbox"
-                                    name="privacyAccepted"
-                                    id="privacyAccepted"
-                                    key="checkbox-privacyAccepted"
-                                >
-                                    <Form.Check.Input
-                                        type="checkbox"
-                                        isInvalid={!!errors.privacyAccepted}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.privacyAccepted}
-                                    />
-                                    <Form.Check.Label>
-                                        Ich habe die <a href="/datenschutz"
-                                                        target="_blank">Datenschutzerklärung</a> gelesen, akzeptiere
-                                        sie und stimme dem Erhalt von Informationen per E-Mail zu.
-                                    </Form.Check.Label>
+                                <Collapse in={this.state.showPrivacy}>
+                                    <Form.Group className="mt-2">
+                                        <Form.Check
+                                            required
+                                            type="checkbox"
+                                            name="privacyAccepted"
+                                            id="privacyAccepted"
+                                            key="checkbox-privacyAccepted"
+                                        >
+                                            <Form.Check.Input
+                                                type="checkbox"
+                                                isInvalid={!!errors.privacyAccepted}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.privacyAccepted}
+                                            />
+                                            <Form.Check.Label>
+                                                Ich habe die <a href="/datenschutz"
+                                                                target="_blank">Datenschutzerklärung</a> gelesen, akzeptiere
+                                                sie und stimme dem Erhalt von Informationen per E-Mail zu.
+                                            </Form.Check.Label>
 
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.privacyAccepted}
-                                    </Form.Control.Feedback>
-                                </Form.Check>
-                            </Form.Group>
-                        </Collapse>
-                    </Form>}
+                                            <Form.Control.Feedback type="invalid">
+                                                {errors.privacyAccepted}
+                                            </Form.Control.Feedback>
+                                        </Form.Check>
+                                    </Form.Group>
+                                </Collapse>
+                            </Form>}
 
-                {/*<p className="text-center"><span*/}
-                {/*    className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen*/}
-                {/*    sind schon STARTKLAR!</p>*/}
+                        {/*<p className="text-center"><span*/}
+                        {/*    className={status.success ? "animation-bounce" : ''}>{status.success ? this.state.subscriberCount + 1 : this.state.subscriberCount}</span> Personen*/}
+                        {/*    sind schon STARTKLAR!</p>*/}
 
-                <div className="text-center bounce-button"><a className="text-black" href="#faq"><FontAwesomeIcon icon={faArrowDown}/></a></div>
+                        <div className="text-center bounce-button"><a className="text-black" href="#faq"><FontAwesomeIcon icon={faArrowDown}/></a></div>
+                    </Col>
+                </Row>
             </div>
         );
     }
