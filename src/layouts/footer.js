@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import {Container} from "react-bootstrap";
+import BjrLogo from './../assets/images/foerderung/BJR.svg';
+import StMasLogo from './../assets/images/foerderung/StMAS.jpg';
 import './../assets/styles/footer.scss';
 
 export default class Footer extends Component {
@@ -67,6 +69,7 @@ export default class Footer extends Component {
                             </nav>
                         </div>
                     </div>
+                    <div className="footer-foerderung text-center text-black bg-white">Gefördert durch den <img height="100" src={BjrLogo} alt="BJR Logo" /> aus Mitteln des Kinder- und Jugendprogramms des <img src={StMasLogo} height="50" alt="StMAS Logo" /></div>
                 </footer>
             </Container>
         );

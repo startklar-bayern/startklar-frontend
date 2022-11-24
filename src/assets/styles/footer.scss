@@ -7,6 +7,14 @@ footer {
         padding: 4rem 0;
     }
 
+    .footer-foerderung {
+        margin-bottom: 4rem;
+
+        img {
+            display: inline-block;
+        }
+    }
+
     .footer-border {
         display: flex;
         justify-content: space-between;
@@ -30,5 +38,10 @@ footer {
 
     .nav-link {
         color: $light;
+        padding-top: 0;
+
+        &:hover {
+            color: white;
+        }
     }
 }
