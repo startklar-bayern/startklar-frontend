@@ -69,7 +69,12 @@ export default class Footer extends Component {
                             </nav>
                         </div>
                     </div>
-                    <div className="footer-foerderung text-center text-black bg-white">Gefördert durch den <img height="100" src={BjrLogo} alt="BJR Logo" /> aus Mitteln des Kinder- und Jugendprogramms des <img src={StMasLogo} height="50" alt="StMAS Logo" /></div>
+                    <div className="footer-foerderung text-center text-black bg-white">
+                        <div>Gefördert durch den</div>
+                        <img height="75" src={BjrLogo} alt="BJR Logo" />
+                        <div>aus Mitteln des Kinder- und Jugendprogramms des</div>
+                        <img src={StMasLogo} height="50" alt="StMAS Logo" />
+                    </div>
                 </footer>
             </Container>
         );

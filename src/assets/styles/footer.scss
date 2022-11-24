@@ -9,9 +9,12 @@ footer {
 
     .footer-foerderung {
         margin-bottom: 4rem;
+        line-height: 2;
+        padding: 1rem;
 
-        img {
+        > * {
             display: inline-block;
+            margin: 0 5px;
         }
     }
 
