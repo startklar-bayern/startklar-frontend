@@ -27,7 +27,7 @@ export default class ContactPersons extends Component {
                                 <h3 className="text-center">{contactPerson.title}</h3>
                                 <p className="text-light flex-grow-1" dangerouslySetInnerHTML={{__html: contactPerson.body}} />
                                 <hr />
-                                <div className="text-light">ANSPRECHPARTNER: </div>
+                                <div className="text-light">ANSPRECHPARTNER*IN: </div>
                                 <h6>{contactPerson.contactName}</h6>
                                 <div className="contactInfo mt-4">
                                     {contactPerson.contactMail &&
