@@ -4,6 +4,7 @@ import Sharepics from '../components/sharepics';
 import News from '../components/news';
 import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
+import Schedule from '../components/schedule';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
 import Calendar from '../components/calendar';
@@ -56,19 +57,26 @@ class Home extends Component {
                             <FaqQuestion/>
                         </Container>
                     </section>
+                    <section className="schedule" id="schedule">
+                        <Container>
+                            <Schedule />
+                        </Container>
+                    </section>
+                </div>
+                <div className="gradient-reverse-container">
                     <section className="sharepics">
                         <Container>
                             <Sharepics sharepics={this.state.sharepics}/>
                         </Container>
                     </section>
-                </div>
-                <div className="gradient-reverse-container">
                     <section className="news">
                         <Container>
                             <News news={this.state.news}/>
                             <Newsletter/>
                         </Container>
                     </section>
+                </div>
+                <div className="gradient-container">
                     <section className="contact-persons">
                         <Container>
                             <ContactPersons contactPersons={this.state.contactPersons}/>
