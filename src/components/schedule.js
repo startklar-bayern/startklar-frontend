@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table, Col, Row} from 'react-bootstrap'
+import './../assets/styles/schedule.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCross, faUserGroup, faFire, faUserCheck, faTrain, faTents, faTentArrowDownToLine, faMusic,  faPeopleRoof, faMugSaucer, faFlag, faUtensils, faFlagCheckered, faHandshake} from '@fortawesome/free-solid-svg-icons'
 
@@ -17,7 +18,7 @@ const Schedule = () => {
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th colspan={2}>Donnerstag, 08.06.2023</th>
+                      <th className="text-center" colspan={2}><h1>Do</h1><h4>08.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -51,7 +52,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                      <th colspan={2}>Freitag, 09.06.2023</th>
+                      <th className="text-center" colspan={2}><h1>Fr</h1><h4>09.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,7 +99,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                      <th colspan={2}>Samstag, 10.06.2023</th>
+                     <th className="text-center" colspan={2}><h1>Sa</h1><h4>10.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -141,7 +142,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                      <th colspan={2}>Sonntag, 11.06.2023</th>
+                      <th className="text-center" colspan={2}><h1>So</h1><h4>11.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>

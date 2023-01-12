@@ -1,0 +1,12 @@
+@import "bootstrap-variables";
+
+table tr {
+  svg {
+    color: $light;
+  }
+
+  td:first-child {
+    font-weight: bold;
+    min-width: 90px;
+  }
+}

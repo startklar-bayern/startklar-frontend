@@ -20,7 +20,10 @@
 
 
 
-.calendar h1, .calendar .h1 {
+.calendar h1,
+.calendar .h1,
+.schedule h1,
+.schedule .h1 {
   color: $primary;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 2px;
