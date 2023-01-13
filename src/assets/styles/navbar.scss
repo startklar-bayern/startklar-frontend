@@ -1,0 +1,20 @@
+nav.main-nav {
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  .navbar-nav {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+nav.main-nav-top {
+  position: fixed;
+  top: 0;
+}
+
+nav.main-nav-bottom {
+  position: absolute;
+  bottom: 0;
+}

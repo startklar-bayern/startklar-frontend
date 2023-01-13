@@ -4,6 +4,7 @@ import Sharepics from '../components/sharepics';
 import News from '../components/news';
 import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
+import StartklarNavbar from '../components/navbar';
 import Schedule from '../components/schedule';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -49,6 +50,7 @@ class Home extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <StartklarNavbar />
                 </section>
                 <div className="gradient-container">
                     <section className="faqs" id="faq">
@@ -64,20 +66,22 @@ class Home extends Component {
                     </section>
                 </div>
                 <div className="gradient-reverse-container">
-                    <section className="sharepics">
+                    <section className="sharepics" id="sharepics">
                         <Container>
                             <Sharepics sharepics={this.state.sharepics}/>
                         </Container>
                     </section>
-                    <section className="news">
+                    <section className="news" id="news">
                         <Container>
                             <News news={this.state.news}/>
-                            <Newsletter/>
+                            <div id="newsletter">
+                                <Newsletter/>
+                            </div>
                         </Container>
                     </section>
                 </div>
                 <div className="gradient-container">
-                    <section className="contact-persons">
+                    <section className="contact-persons" id="contact-persons">
                         <Container>
                             <ContactPersons contactPersons={this.state.contactPersons}/>
                         </Container>

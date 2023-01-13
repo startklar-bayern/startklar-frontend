@@ -18,7 +18,7 @@ const Schedule = () => {
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th className="text-center" colspan={2}><h1>Do</h1><h4>08.06.2023</h4></th>
+                      <th className="text-center" colSpan={2}><h1>Do</h1><h4>08.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -52,7 +52,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                      <th className="text-center" colspan={2}><h1>Fr</h1><h4>09.06.2023</h4></th>
+                      <th className="text-center" colSpan={2}><h1>Fr</h1><h4>09.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -99,7 +99,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                     <th className="text-center" colspan={2}><h1>Sa</h1><h4>10.06.2023</h4></th>
+                     <th className="text-center" colSpan={2}><h1>Sa</h1><h4>10.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -142,7 +142,7 @@ const Schedule = () => {
                 <Table striped bordered>
                   <thead>
                     <tr>
-                      <th className="text-center" colspan={2}><h1>So</h1><h4>11.06.2023</h4></th>
+                      <th className="text-center" colSpan={2}><h1>So</h1><h4>11.06.2023</h4></th>
                     </tr>
                   </thead>
                   <tbody>
