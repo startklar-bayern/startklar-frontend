@@ -1,8 +1,11 @@
 @import "bootstrap-variables";
 
 table tr {
-  svg {
+  .svg-inline--fa {
     color: $light;
+    width: 30px;
+    text-align: center;
+    margin-left: 0;
   }
 
   td:first-child {

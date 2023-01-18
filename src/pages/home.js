@@ -4,7 +4,7 @@ import Sharepics from '../components/sharepics';
 import News from '../components/news';
 import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
-import StartklarNavbar from '../components/navbar';
+// import StartklarNavbar from '../components/navbar';
 import Schedule from '../components/schedule';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -50,7 +50,6 @@ class Home extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <StartklarNavbar />
                 </section>
                 <div className="gradient-container">
                     <section className="faqs" id="faq">
