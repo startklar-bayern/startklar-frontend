@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import './../assets/styles/home.scss';
 import Sharepics from '../components/sharepics';
+import Workshops from '../components/workshops';
 import News from '../components/news';
 import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
-// import StartklarNavbar from '../components/navbar';
+import StartklarNavbar from '../components/navbar';
 import Schedule from '../components/schedule';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -50,6 +51,7 @@ class Home extends Component {
                             </Col>
                         </Row>
                     </Container>
+                    <StartklarNavbar />
                 </section>
                 <div className="gradient-container">
                     <section className="faqs" id="faq">
@@ -65,11 +67,18 @@ class Home extends Component {
                     </section>
                 </div>
                 <div className="gradient-reverse-container">
+                    <section className="workshops" id="workshops">
+                        <Container>
+                            <Workshops workshops={this.state.workshops}/>
+                        </Container>
+                    </section>
                     <section className="sharepics" id="sharepics">
                         <Container>
                             <Sharepics sharepics={this.state.sharepics}/>
                         </Container>
                     </section>
+                </div>
+                <div className="gradient-container">
                     <section className="news" id="news">
                         <Container>
                             <News news={this.state.news}/>
@@ -78,8 +87,6 @@ class Home extends Component {
                             </div>
                         </Container>
                     </section>
-                </div>
-                <div className="gradient-container">
                     <section className="contact-persons" id="contact-persons">
                         <Container>
                             <ContactPersons contactPersons={this.state.contactPersons}/>
@@ -100,6 +107,7 @@ class Home extends Component {
 
     state = {
         sharepics: [],
+        workshops: [],
         faqs: [],
         news: [],
         contactPersons: [],
@@ -111,6 +119,12 @@ class Home extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({sharepics: data})
+            })
+            .catch(console.log)
+        fetch('https://backend.startklar.bayern/api/workshops')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({workshops: data})
             })
             .catch(console.log)
         fetch('https://backend.startklar.bayern/api/faqs')
