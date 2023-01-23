@@ -20,8 +20,8 @@ export default class ContactPersons extends Component {
             <div>
                 <center><h2 className="mb-4">Wer steckt dahinter?</h2></center>
                 <Row className="g-4">
-                    {contactPersons.map((contactPerson) => (
-                        <Col md={6} lg={4} key={'contact-person-' + contactPerson.id}>
+                    {contactPersons.map((contactPerson, index) => (
+                        <Col md={6} xl={index < 3 ? 4 : 3} key={'contact-person-' + contactPerson.id}>
                             <div className="contactPerson p-4 d-flex flex-column">
                                 <div className="text-center"><FontAwesomeIcon className="contactPersonIcon text-center" icon={contactPerson.icon.replace("fa-","")} /></div>
                                 <h3 className="text-center">{contactPerson.title}</h3>
