@@ -90,10 +90,12 @@ class App extends Component {
                     >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
                     <Router>
-                        {window.location.pathname === "/"
-                            ? <Header/>
-                            : <HeaderWhite/>
-                        }
+                        <div id="home">
+                            {window.location.pathname === "/"
+                                ? <Header/>
+                                : <HeaderWhite/>
+                            }
+                        </div>
                         <ScrollToTop/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>

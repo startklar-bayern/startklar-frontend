@@ -82,9 +82,11 @@ class Home extends Component {
                     <section className="news" id="news">
                         <Container>
                             <News news={this.state.news}/>
-                            <div id="newsletter">
-                                <Newsletter/>
-                            </div>
+                        </Container>
+                    </section>
+                    <section className="newsletter" id="newsletter">
+                        <Container>
+                            <Newsletter />
                         </Container>
                     </section>
                     <section className="contact-persons" id="contact-persons">

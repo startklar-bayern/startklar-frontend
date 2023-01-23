@@ -33,7 +33,7 @@ code {
     monospace;
 }
 
-section {
+section:not(.newsletter) {
   padding: 40px 0;
   @include media-breakpoint-up(lg){
     padding: 130px 0;

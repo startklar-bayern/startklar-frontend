@@ -6,6 +6,10 @@ nav.main-nav {
   .navbar-nav {
     justify-content: center;
     width: 100%;
+
+    .nav-link {
+      cursor: pointer;
+    }
   }
 }
 
