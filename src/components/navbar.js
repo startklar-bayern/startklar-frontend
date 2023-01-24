@@ -25,6 +25,7 @@ export default class StartklarNavbar extends Component {
               <Link className="nav-link" to="home" spy={true} smooth={true} offset={0} duration={50}>Countdown</Link>
               <Link className="nav-link" to="faq" spy={true} smooth={true} offset={50} duration={50}>FAQs</Link>
               <Link className="nav-link" to="schedule" spy={true} smooth={true} offset={50} duration={50}>Zeitplan</Link>
+              <Link className="nav-link" to="workshops" spy={true} smooth={true} offset={50} duration={50}>Workshops</Link>
               <Link className="nav-link" to="sharepics" spy={true} smooth={true} offset={50} duration={50}>Bewerben</Link>
               <Link className="nav-link" to="news" spy={true} smooth={true} offset={50} duration={50}>News</Link>
               <Link className="nav-link" to="newsletter" spy={true} smooth={true} offset={-100} duration={50}>Newsletter</Link>
