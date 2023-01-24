@@ -106,35 +106,3 @@ class Workshops extends Component {
 }
 
 export default Workshops
-
-
-/*
-[
-  {
-    "id": 0,
-    "title": "Handmassage",
-    "summary": "Lorem Ipsum dolor sit amet.\r\nEt consetutor.",
-    "body": "Lorem Ipsum dolor sit amet. <br>Et consetutor.",
-    "timeslots": [
-      "friday_morning"
-    ],
-    "location": "Hauptbühne",
-    "previewImage": {
-      "url": "https://backend.startklar.bayern/sites/default/files/images/123.jpg",
-      "previewUrl": "https://backend.startklar.bayern/sites/default/files/styles/preview/public/images/123.jpg",
-      "altText": "Lachende Personen am Lagerfeuer",
-      "width": 0,
-      "height": 0
-    },
-    "images": [
-      {
-        "url": "https://backend.startklar.bayern/sites/default/files/images/123.jpg",
-        "previewUrl": "https://backend.startklar.bayern/sites/default/files/styles/preview/public/images/123.jpg",
-        "altText": "Lachende Personen am Lagerfeuer",
-        "width": 0,
-        "height": 0
-      }
-    ]
-  }
-]
-*/

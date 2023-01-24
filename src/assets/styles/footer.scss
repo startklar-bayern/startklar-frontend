@@ -1,10 +1,28 @@
 @import "bootstrap-variables";
 
 footer {
+    nav.footer-nav {
+        margin-bottom: 2rem;
+        justify-content: center;
+
+        .navbar-nav {
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .nav-link.active {
+                color: $light;
+            }
+
+            .nav-arrow {
+                display: none;
+            }
+        }
+    }
+
     .navigation-container {
         display: flex;
         justify-content: space-between;
-        padding: 4rem 0;
+        padding-bottom: 4rem;
     }
 
     .footer-foerderung {
@@ -21,6 +39,7 @@ footer {
     .footer-border {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 4rem;
 
         > div {
             display: block;

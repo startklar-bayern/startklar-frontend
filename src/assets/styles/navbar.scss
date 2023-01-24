@@ -1,3 +1,5 @@
+@import "bootstrap-variables";
+
 nav.main-nav {
   left: 0;
   right: 0;
@@ -9,6 +11,12 @@ nav.main-nav {
 
     .nav-link {
       cursor: pointer;
+
+      &:not(.active):not(.d-lg-none) {
+        @include media-breakpoint-down(lg) {
+          display: none;
+        }
+      }
     }
   }
 }

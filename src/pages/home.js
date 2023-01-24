@@ -51,7 +51,6 @@ class Home extends Component {
                             </Col>
                         </Row>
                     </Container>
-                    <StartklarNavbar />
                 </section>
                 <div className="gradient-container">
                     <section className="faqs" id="faq">
