@@ -6,7 +6,6 @@ footer {
         justify-content: center;
 
         .navbar-nav {
-            flex-wrap: wrap;
             justify-content: center;
 
             .nav-link.active {
@@ -17,6 +16,10 @@ footer {
                 display: none;
             }
         }
+    }
+
+    .navbar-nav {
+        flex-wrap: wrap;
     }
 
     .navigation-container {

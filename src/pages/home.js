@@ -89,6 +89,8 @@ class Home extends Component {
                             <Newsletter />
                         </Container>
                     </section>
+                </div>
+                <div className="gradient-reverse-container">
                     <section className="contact-persons" id="contact-persons">
                         <Container>
                             <ContactPersons contactPersons={this.state.contactPersons}/>
