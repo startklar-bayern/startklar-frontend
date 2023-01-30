@@ -55,9 +55,10 @@ export default class Footer extends Component {
                         <div className="small"/>
                         <div className="xsmall"/>
                     </div>
-                    <Navbar id="footer-nav" className="footer-nav d-lg-none" variant="dark" bg="black" >
-                        <NavLinks />
-                    </Navbar>
+                    {window.location.pathname === "/"
+                        ? <Navbar id="footer-nav" className="footer-nav d-lg-none" variant="dark" bg="black" ><NavLinks /></Navbar>
+                        : ""
+                    }
                     <div className="navigation-container">
                         <div className="text-light">© Kolpingjugend im Kolpingwerk Bayern {currentYear}</div>
                         <div className="navigation">
