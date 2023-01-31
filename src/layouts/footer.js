@@ -3,8 +3,6 @@ import {NavLink} from "react-router-dom";
 import {Container} from "react-bootstrap";
 import BjrLogo from './../assets/images/foerderung/BJR.svg';
 import StMasLogo from './../assets/images/foerderung/StMAS.jpg';
-import NavLinks from '../components/nav-links';
-import Navbar from 'react-bootstrap/Navbar';
 import './../assets/styles/footer.scss';
 
 export default class Footer extends Component {
@@ -55,10 +53,6 @@ export default class Footer extends Component {
                         <div className="small"/>
                         <div className="xsmall"/>
                     </div>
-                    {window.location.pathname === "/"
-                        ? <Navbar id="footer-nav" className="footer-nav d-lg-none" variant="dark" bg="black" ><NavLinks /></Navbar>
-                        : ""
-                    }
                     <div className="navigation-container">
                         <div className="text-light">© Kolpingjugend im Kolpingwerk Bayern {currentYear}</div>
                         <div className="navigation">

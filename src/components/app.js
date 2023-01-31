@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import CookieConsent, {getCookieConsentValue} from "react-cookie-consent";
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import {Footer, Header, HeaderWhite} from "../layouts";
+import {Footer} from "../layouts";
 import {Home} from "../pages";
 import Page from "../pages/page";
 import CreateGroup from "../pages/registration/createGroup";
@@ -90,12 +90,6 @@ class App extends Component {
                     >Diese Website verwendet Cookies um die Erfahrung zu verbessern.</CookieConsent>
 
                     <Router>
-                        <div id="home">
-                            {window.location.pathname === "/"
-                                ? <Header/>
-                                : <HeaderWhite/>
-                            }
-                        </div>
                         <ScrollToTop/>
                         <Routes>
                             <Route path="/" element={<Home/>}/>

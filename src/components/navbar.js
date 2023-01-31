@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import NavLinks from '../components/nav-links';
+import { Link } from "react-scroll";
+import {Container, Navbar, Nav} from 'react-bootstrap';
 import './../assets/styles/navbar.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 export default class StartklarNavbar extends Component {
   state = {
-    activeClass: 'main-nav-bottom'
+    activeClass: ''
   }
 
   constructor(props, context) {
@@ -16,10 +17,22 @@ export default class StartklarNavbar extends Component {
 
   render() {
     return (
-      <Navbar id="main-nav" className={`main-nav ${this.state.activeClass}`} variant="dark" bg="black" >
+      <Navbar id="main-nav" className={`main-nav ${this.state.activeClass}`} variant="dark" bg="black" expand="lg" >
         <Container>
+          <Navbar.Toggle>
+            <FontAwesomeIcon icon={faAngleDown} />
+          </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
-            <NavLinks />
+            <Nav>
+              <Link className="nav-link" to="countdown" spy={true} smooth={true} offset={0} duration={50}>Countdown</Link>
+              <Link className="nav-link" to="faq" spy={true} smooth={true} offset={50} duration={50}>FAQs</Link>
+              <Link className="nav-link" to="schedule" spy={true} smooth={true} offset={50} duration={50}>Zeitplan</Link>
+              <Link className="nav-link" to="workshops" spy={true} smooth={true} offset={50} duration={50}>Workshops</Link>
+              <Link className="nav-link" to="sharepics" spy={true} smooth={true} offset={50} duration={50}>Bewerben</Link>
+              <Link className="nav-link" to="news" spy={true} smooth={true} offset={50} duration={50}>News</Link>
+              <Link className="nav-link" to="newsletter" spy={true} smooth={true} offset={50} duration={50}>Newsletter</Link>
+              <Link className="nav-link" to="contact-persons" spy={true} smooth={true} offset={50} duration={50}>AGs</Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
@@ -35,9 +48,9 @@ export default class StartklarNavbar extends Component {
     }
 
     window.addEventListener('scroll', () => {
-      let activeClass = 'main-nav-top';
-      if(window.scrollY < mainNavOffset){
-          activeClass = 'main-nav-bottom';
+      let activeClass = '';
+      if(window.scrollY > mainNavOffset){
+          activeClass = 'main-nav-top';
       }
       this.setState({ activeClass });
     });

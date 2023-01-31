@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Col, Container, Row} from 'react-bootstrap'
 import {Helmet} from "react-helmet-async";
+import {HeaderWhite} from "../layouts";
 
 export default class Page extends Component {
 
@@ -10,7 +11,7 @@ export default class Page extends Component {
                 <Helmet>
                     <title>{this.props.page.title} | STARTKLAR</title>
                 </Helmet>
-
+                <HeaderWhite />
                 <Container>
                     <Row className="align-items-center my-5">
                         <Col>
@@ -22,5 +23,4 @@ export default class Page extends Component {
             </div>
         );
     }
-
 }

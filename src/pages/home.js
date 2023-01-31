@@ -6,6 +6,7 @@ import News from '../components/news';
 import ContactPersons from '../components/contact-persons';
 import FaqAccordion from '../components/faq-accordion';
 import StartklarNavbar from '../components/navbar';
+import {Header} from "../layouts";
 import Schedule from '../components/schedule';
 import FaqQuestion from '../components/faq-question';
 import Newsletter from '../components/newsletter';
@@ -32,27 +33,29 @@ class Home extends Component {
                 <Helmet>
                     <title>STARTKLAR Jugendfestival - Kolpingjugend Bayern</title>
                 </Helmet>
-
-                <section className="home container-fluid">
-                    <picture className="home__background">
-                        <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp" />
-                        <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png" />
-                        <img src={backgroundPng} alt="" className="home__background__image" />
-                    </picture>
-                    <Container>
-                        <Row>
-                            <Col lg={{ span: 8, offset: 2 }}>
-                                <Calendar/>
-                                <div className="text-center mb-5 mt-5">
-                                    <h3>Bist du STARTKLAR?</h3>
-                                    <p>Dann melde jetzt deine Gruppe an!</p>
-                                    <NavLink to="anmeldung-auswahl"><Button>Zur Anmeldung <FontAwesomeIcon icon="arrow-right"/></Button></NavLink>
-                                </div>
-                            </Col>
-                        </Row>
-                    </Container>
-                    <StartklarNavbar />
-                </section>
+                <StartklarNavbar/>
+                <div id="countdown">
+                    <Header/>
+                    <section className="home container-fluid">
+                        <picture className="home__background">
+                            <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp" />
+                            <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png" />
+                            <img src={backgroundPng} alt="" className="home__background__image" />
+                        </picture>
+                        <Container>
+                            <Row>
+                                <Col lg={{ span: 8, offset: 2 }}>
+                                    <Calendar/>
+                                    <div className="text-center mb-5 mt-5">
+                                        <h3>Bist du STARTKLAR?</h3>
+                                        <p>Dann melde jetzt deine Gruppe an!</p>
+                                        <NavLink to="anmeldung-auswahl"><Button>Zur Anmeldung <FontAwesomeIcon icon="arrow-right"/></Button></NavLink>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </section>
+                </div>
                 <div className="gradient-container">
                     <section className="faqs" id="faq">
                         <Container>
