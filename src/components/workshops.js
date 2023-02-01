@@ -15,7 +15,8 @@ class Workshops extends Component {
     this.onFilterChange = this.onFilterChange.bind(this);
 
     this.state = {
-      show: null
+      show: null,
+      active: "*"
     };
   }
 
@@ -36,11 +37,14 @@ class Workshops extends Component {
         layoutMode: "fitRows"
       });
     }
+
     if(newFilter === '*') {
       this.iso.arrange({ filter: `*` });
     } else {
       this.iso.arrange({ filter: `.${newFilter}` });
     }
+
+    this.setState({active: newFilter});
   }
 
   render() {
@@ -57,11 +61,11 @@ class Workshops extends Component {
         </Row>
 
         <ul id="workshop-flters" className="workshop-filter text-light">
-          <li data-filter="*" onClick={() => {this.onFilterChange("*")}}>Alle Workshops</li>
-          <li data-filter="friday_morning" onClick={() => {this.onFilterChange("friday_morning")}}>Freitag vormittag</li>
-          <li data-filter="friday_afternoon" onClick={() => {this.onFilterChange("friday_afternoon")}}>Freitag nachmittag</li>
-          <li data-filter="saturday_morning" onClick={() => {this.onFilterChange("saturday_morning")}}>Samstag vormittag</li>
-          <li data-filter="saturday_afternoon" onClick={() => {this.onFilterChange("saturday_afternoon")}}>Samstag nachmittag</li>
+          <li data-filter="*" className={this.state.active === "*" ? "text-white" : ""} onClick={() => {this.onFilterChange("*")}}>Alle Workshops</li>
+          <li data-filter="friday_morning" className={this.state.active === "friday_morning" ? "text-white" : ""} onClick={() => {this.onFilterChange("friday_morning")}}>Freitag vormittag</li>
+          <li data-filter="friday_afternoon" className={this.state.active === "friday_afternoon" ? "text-white" : ""} onClick={() => {this.onFilterChange("friday_afternoon")}}>Freitag nachmittag</li>
+          <li data-filter="saturday_morning" className={this.state.active === "saturday_morning" ? "text-white" : ""} onClick={() => {this.onFilterChange("saturday_morning")}}>Samstag vormittag</li>
+          <li data-filter="saturday_afternoon" className={this.state.active === "saturday_afternoon" ? "text-white" : ""} onClick={() => {this.onFilterChange("saturday_afternoon")}}>Samstag nachmittag</li>
         </ul>
 
         <Row className="mb-4" id="filter-container">
