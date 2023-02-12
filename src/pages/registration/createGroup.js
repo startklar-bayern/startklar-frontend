@@ -32,8 +32,10 @@ class CreateGroup extends React.Component {
             "privacy_accepted": true,
         };
 
+        const url = `https://backend.startklar.bayern/api/anmeldung/${this.props.isHelfer ? 'helfer' : 'group'}`
+
         axios
-            .post('https://backend.startklar.bayern/api/anmeldung/group', group)
+            .post(url, group)
             .then(response => {
                 console.log(response);
 
@@ -52,10 +54,12 @@ class CreateGroup extends React.Component {
     }
 
     render() {
+        const {isHelfer} = this.props;
+
         return (
             <div className="createGroup">
                 <Helmet>
-                    <title>Gruppen-Anmeldung | STARTKLAR</title>
+                    <title>{isHelfer ? 'Helfer*innen' : 'Gruppen'}-Anmeldung | STARTKLAR</title>
                 </Helmet>
 
                 <ToastContainer className="p-3" position="top-end">
@@ -71,7 +75,7 @@ class CreateGroup extends React.Component {
                 <Container>
                     <Row className="my-4">
                         <Col>
-                            <h1>Gruppen-Anmeldung</h1>
+                            <h1>{isHelfer ? 'Helfer*innen' : 'Gruppen'}-Anmeldung</h1>
                         </Col>
                     </Row>
 
@@ -95,14 +99,14 @@ class CreateGroup extends React.Component {
                                     />
                                 </Form.Group>
 
-                                <Form.Group className="mb-3">
+                                {!isHelfer && <Form.Group className="mb-3">
                                     <Form.Check
                                         type="checkbox"
                                         required
                                         name="weitergabe_daten_akzeptiert"
                                         label="Ich habe das Einverständnis aller Teilnehmenden ihre Daten weiterzugeben *"
                                     />
-                                </Form.Group>
+                                </Form.Group>}
 
 
                                 <Form.Group className="mb-3">
