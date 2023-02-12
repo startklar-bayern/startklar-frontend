@@ -1,0 +1,13 @@
+name: startklar-frontend
+
+tooling:
+  npm:
+    service: node
+
+services:
+  node:
+    type: node:18
+    build:
+     - npm install
+    command: npm start
+    port: 3000
