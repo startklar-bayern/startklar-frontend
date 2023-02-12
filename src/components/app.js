@@ -13,6 +13,7 @@ import AnmeldungSuccess from "../pages/registration/anmeldungSuccess";
 import PageNotFound from "../pages/pageNotFound";
 import {HelmetProvider} from "react-helmet-async";
 import ScrollToTop from "./scrollToTop";
+import AnmeldungHelferInfo from "../pages/registration/anmeldungHelferInfo";
 
 class App extends Component {
     state = {
@@ -100,6 +101,7 @@ class App extends Component {
                             <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
                             <Route path="/anmeldung-auswahl" element={<AnmeldungAuswahl/>}/>
                             <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
+                            <Route path="/anmeldung-helfer-info" element={<AnmeldungHelferInfo/>}/>
                             <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
                             <Route path="*" element={<PageNotFound/>}/>
                         </Routes>
