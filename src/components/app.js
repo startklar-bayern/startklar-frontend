@@ -15,6 +15,8 @@ import {HelmetProvider} from "react-helmet-async";
 import ScrollToTop from "./scrollToTop";
 import AnmeldungHelferInfo from "../pages/registration/anmeldungHelferInfo";
 import CreateHelfer from "../pages/registration/createHelfer";
+import EditHelfer from "../pages/registration/editHelfer";
+import AnmeldungHelferSuccess from "../pages/registration/anmeldungHelferSuccess";
 
 class App extends Component {
     state = {
@@ -98,6 +100,7 @@ class App extends Component {
                             {this.state.pages.map(page => {
                                 return (<Route key={'page-' + page.id} path={page.path} element={<Page page={page}/>}/>)
                             })}
+                            <Route path="/anmeldung/helfer/:helferId" element={<EditHelfer/>}/>
                             <Route path="/anmeldung/:groupId" element={<EditGroup/>}/>
                             <Route path="/anmeldung-gruppe" element={<CreateGroup/>}/>
                             <Route path="/anmeldung-helfer" element={<CreateHelfer/>}/>
@@ -105,6 +108,7 @@ class App extends Component {
                             <Route path="/anmeldung-info" element={<AnmeldungInfo/>}/>
                             <Route path="/anmeldung-helfer-info" element={<AnmeldungHelferInfo/>}/>
                             <Route path="/anmeldung-success" element={<AnmeldungSuccess/>}/>
+                            <Route path="/anmeldung-helfer-success" element={<AnmeldungHelferSuccess/>}/>
                             <Route path="*" element={<PageNotFound/>}/>
                         </Routes>
                         <Footer pages={this.state.pages}/>

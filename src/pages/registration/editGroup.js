@@ -17,6 +17,7 @@ import AnreiseFieldGroup from "./anreiseFieldGroup";
 import Pricing from "./pricing";
 import moment from "moment";
 import {Helmet} from "react-helmet-async";
+import {HeaderWhite} from "../../layouts";
 
 function withParams(Component) {
     return props => <Component {...props}
@@ -83,6 +84,8 @@ class EditGroup extends React.Component {
                 <Helmet>
                     <title>Gruppen-Anmeldung | STARTKLAR</title>
                 </Helmet>
+
+                <HeaderWhite/>
 
                 <Container>
                     <Row>

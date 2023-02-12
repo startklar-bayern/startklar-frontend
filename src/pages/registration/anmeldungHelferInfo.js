@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {NavLink} from "react-router-dom";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {withSupportChat} from "../../hoc/withSupportChat";
+import {HeaderWhite} from "../../layouts";
 
 class AnmeldungHelferInfo extends Component {
     render() {
@@ -13,6 +14,8 @@ class AnmeldungHelferInfo extends Component {
                 <Helmet>
                     <title>Helfer*innen-Anmeldung | STARTKLAR</title>
                 </Helmet>
+
+                <HeaderWhite />
 
                 <Container>
                     <Row className="my-4">

@@ -25,6 +25,7 @@ export default class AnreiseFieldGroup extends React.Component {
             isValid,
             namePrefix,
             isPersonAnreise,
+            isHelfer
         } = this.props
 
         let anreiseMitGruppe = !!values?.mit_gruppe;
@@ -33,7 +34,7 @@ export default class AnreiseFieldGroup extends React.Component {
             <div className="field-object">
                 <h3>Anreise</h3>
 
-                {isPersonAnreise && <Form.Group className="mb-3">
+                {isPersonAnreise && !isHelfer && <Form.Group className="mb-3">
                     <Form.Check
                         type="checkbox"
                         name={namePrefix + ".mit_gruppe"}

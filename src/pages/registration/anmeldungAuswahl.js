@@ -3,15 +3,27 @@ import {Card, Col, Container, Row} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHammer, faPeopleGroup} from '@fortawesome/free-solid-svg-icons'
 import {Helmet} from "react-helmet-async";
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation, useNavigate, useParams} from "react-router-dom";
+import {HeaderWhite} from "../../layouts";
 
-export default class AnmeldungAuswahl extends React.Component {
+function withParams(Component) {
+    return props => <Component {...props}
+                               params={useParams()}
+                               location={useLocation().search}
+                               navigate={useNavigate()}/>;
+}
+
+class AnmeldungAuswahl extends React.Component {
     render() {
+        const disableHelfer = !new URLSearchParams(this.props.location).has("geheimerHelferanmeldungTestLink");
+
         return (
             <div className="anmeldungAuswahl">
                 <Helmet>
                     <title>Anmeldung | STARTKLAR</title>
                 </Helmet>
+
+                <HeaderWhite />
 
                 <Container>
                     <Row className="my-4">
@@ -29,10 +41,11 @@ export default class AnmeldungAuswahl extends React.Component {
                             </Card>
                         </Col>
                         <Col className="text-center">
-                            <Card className="bg-black border-light p-4">
-                                <NavLink to="/anmeldung-helfer-info">
+                            <Card className={'bg-black border-light p-4' + (disableHelfer ? ' opacity-25' : '')}>
+                                <NavLink to={disableHelfer ? false : '/anmeldung-helfer-info'}>
                                     <FontAwesomeIcon icon={faHammer} size="6x" className="text-white my-4"/>
                                     <h2>Als Helfer*in</h2>
+                                    {disableHelfer && <p>Wird bald freigeschaltet</p>}
                                 </NavLink>
                             </Card>
                         </Col>
@@ -51,3 +64,5 @@ export default class AnmeldungAuswahl extends React.Component {
         )
     }
 }
+
+export default withParams(AnmeldungAuswahl);

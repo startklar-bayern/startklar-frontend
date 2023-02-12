@@ -37,6 +37,7 @@ export default class PersonForm extends React.Component {
             termineSchutzkonzept,
             isAufsichtsperson,
             isLeitung,
+            isHelfer,
         } = this.props;
 
         return (
@@ -239,7 +240,7 @@ export default class PersonForm extends React.Component {
                     </Form.Control.Feedback>
                 </Form.Group>}
 
-                {this.personIsUnderage(values) && <PersonSelect
+                {(!isHelfer && this.personIsUnderage(values)) && <PersonSelect
                     name={namePrefix + '.aufsichtsperson'}
                     value={values?.aufsichtsperson}
                     personId={values?.id}
@@ -327,7 +328,7 @@ export default class PersonForm extends React.Component {
                     </Form.Control.Feedback>
                 </Form.Group>
 
-                <div className="field-object">
+                {!isHelfer && <div className="field-object">
                     <h3>Geschwister-Rabatt</h3>
                     <p>Bei Geschwisterkindern zahlt nur eine Person die volle Teilnahmegebühr.<br/>
                         Die anderen Geschwisterkinder zahlen 10 € weniger.<br/>
@@ -347,7 +348,7 @@ export default class PersonForm extends React.Component {
                             <p>Du musst das Geschwisterkind zuerst zu deiner Gruppe hinzufügen bevor du es hier auswählen
                                 kannst.</p>
                         </>}/>
-                </div>
+                </div>}
 
                 <AnreiseFieldGroup
                     isPersonAnreise="true"
@@ -361,9 +362,10 @@ export default class PersonForm extends React.Component {
                     status={status}
                     isValid={isValid}
                     namePrefix={namePrefix + '.anreise'}
+                    isHelfer={isHelfer}
                 />
 
-                {(isLeitung || isAufsichtsperson) && <div className="field-object">
+                {(isLeitung || isAufsichtsperson || isHelfer) && <div className="field-object">
                     <h3>Schutzkonzept</h3>
                     {/*<p>Laut §72a SGB VIII dürfen Träger der Kinder- und Jugendhilfe keine Personen beschäftigen, die*/}
                     {/*    rechtskräftig wegen verschiedener Straftaten (z.B. sexueller Missbrauch) verurteilt worden sind.*/}
@@ -371,7 +373,7 @@ export default class PersonForm extends React.Component {
                     {/*    Führungszeugnisse zu überprüfen. Weitere Informationen dazu findest du in unserem*/}
                     {/*    Schutzkonzept. */}
 
-                    {isLeitung && <p>Als Gruppenleiter*in musst du an einer kurzen Einweisung in die Inhalte des
+                    {(isLeitung || isHelfer) && <p>Als {isLeitung ? 'Gruppenleiter*in' : 'Helfer*in'} musst du an einer kurzen Einweisung in die Inhalte des
                         Schutzkonzepts teilnehmen. Diese wird online durchgeführt und dauert ca. 30 Minuten.</p>}
 
                     {isAufsichtsperson &&
@@ -381,14 +383,14 @@ export default class PersonForm extends React.Component {
 
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Termin Einweisung Schutzkonzept{isLeitung ? " *" : ""}</Form.Label>
+                        <Form.Label>Termin Einweisung Schutzkonzept{(isLeitung || isHelfer) ? " *" : ""}</Form.Label>
                         {termineSchutzkonzept.length !== 0 ? <Form.Select
                             name={namePrefix + ".termin_schutzkonzept"}
                             value={values?.termin_schutzkonzept?.toString()}
                             onChange={handleChange}
                             onBlur={handleBlur}
                             isInvalid={touched?.termin_schutzkonzept && !!errors?.termin_schutzkonzept}>
-                            <option value="">- {isLeitung ? "Auswählen" : "nimmt nicht teil"} -</option>
+                            <option value="">- {(isLeitung || isHelfer) ? "Auswählen" : "nimmt nicht teil"} -</option>
                             {termineSchutzkonzept.map(termin => <option value={termin.id}
                                                                         key={termin.id}>{moment(termin.date).format('dddd, DD.MM.YYYY')} 19:00
                                 Uhr</option>)}

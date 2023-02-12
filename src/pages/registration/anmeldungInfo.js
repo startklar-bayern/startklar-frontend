@@ -6,6 +6,7 @@ import {withSupportChat} from "../../hoc/withSupportChat";
 import '../../assets/styles/anmeldung-info.scss';
 import {Helmet} from "react-helmet-async";
 import {NavLink} from "react-router-dom";
+import {HeaderWhite} from "../../layouts";
 
 class AnmeldungInfo extends React.Component {
     render() {
@@ -14,6 +15,8 @@ class AnmeldungInfo extends React.Component {
                 <Helmet>
                     <title>Gruppen-Anmeldung | STARTKLAR</title>
                 </Helmet>
+
+                <HeaderWhite />
 
                 <Container>
                     <Row className="my-4">

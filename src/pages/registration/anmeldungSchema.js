@@ -119,6 +119,33 @@ const requiredIfLeitung = message => {
     }
 }
 
+const requiredIfHelfer = message => {
+    return {
+        name: 'required-if-helfer',
+        message: message,
+        test: (value, ctx) => {
+            if (isHelfer(value, ctx)) {
+                return value !== null && value !== undefined;
+            } else {
+                return true;
+            }
+        }
+    }
+}
+
+const maxIfHelfer = max => {
+    return {
+        name: 'max-if-leitung',
+        message: 'Diese Gruppenleitung muss mindestens 18 Jahre alt sein',
+        test: (value, ctx) => {
+            if (isHelfer(value, ctx)) {
+                return moment(value).isSameOrBefore(max);
+            }
+            return true;
+        }
+    }
+}
+
 const maxIfLeitung = max => {
     return {
         name: 'max-if-leitung',
@@ -151,6 +178,10 @@ const isLeitung = (value, ctx) => {
     const uuid = ctx.parent?.id;
     const data = getDataFromContext(ctx);
     return data.leitung?.id === uuid;
+}
+
+const isHelfer = (value, ctx) => {
+    return !ctx.parent.hasOwnProperty('leitung');
 }
 
 const getDataFromContext = (ctx) => {
@@ -193,7 +224,8 @@ const personSchema = Yup.object({
         .max('2009-06-08', 'Das Mindestalter für Teilnehmende ist 14 Jahre')
         .min('1923-06-08', 'Bitte gib ein gültiges Geburtsdatum ein')
         .test(maxIfLeitung('2005-06-11'))
-        .test(maxIfAufsichtsperson('2005-06-11')),
+        .test(maxIfAufsichtsperson('2005-06-11'))
+        .test(maxIfHelfer('2005-06-11')),
     geschlecht: Yup.string().required('Geschlecht ist erforderlich').oneOf(['m', 'w', 'd']),
     strasse: Yup.string().required('Straße ist erforderlich'),
     plz: Yup.string()
@@ -227,6 +259,7 @@ const personSchema = Yup.object({
         .integer('Termin Schutzkonzept ist kein erlaubter Wert')
         .typeError('Termin Schutzkonzept ist kein erlaubter Wert')
         .test(requiredIfLeitung('Termin Schutzkonzept ist für die Gruppenleitung erforderlich'))
+        .test(requiredIfHelfer('Termin Schutzkonzept ist für Helfer*innen erforderlich'))
 });
 
 const anmeldungSchema = Yup.object().shape({
@@ -237,6 +270,12 @@ const anmeldungSchema = Yup.object().shape({
     teilnehmer: Yup.array().of(personSchema),
     jugendschutzgesetz_akzeptiert: Yup.boolean().equals([true], 'Dies ist erforderlich').required('Dies ist erforderlich'),
     fuehrungszeugnis: Yup.boolean().equals([true], 'Dies ist erforderlich').required('Dies ist erforderlich'),
+})
+
+export const helferAnmeldungSchema = Yup.object().shape({
+    person: personSchema,
+    unterbringung: Yup.string().nullable(),
+    jobs: Yup.array().ensure().of(Yup.number().integer('Jobs ist kein erlaubter Wert!')).min(1).required('Jobs ist erforderlich'),
 })
 
 export default anmeldungSchema;

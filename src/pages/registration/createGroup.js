@@ -5,6 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import {Helmet} from "react-helmet-async";
+import HeaderWhite from "../../layouts/header-white";
 
 class CreateGroup extends React.Component {
     state = {
@@ -71,6 +72,8 @@ class CreateGroup extends React.Component {
                         </Toast.Body>
                     </Toast>
                 </ToastContainer>
+
+                <HeaderWhite/>
 
                 <Container>
                     <Row className="my-4">

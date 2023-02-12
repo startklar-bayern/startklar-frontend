@@ -15,6 +15,9 @@ export const getReferencingPeople = (values, uuid) => {
 
 export const getAllPeople = (values) => {
     // Get all current people
+    if (!values.hasOwnProperty('leitung')) {
+        return [];
+    }
     let people = [values.leitung];
     people.push(...values.teilnehmer);
 
