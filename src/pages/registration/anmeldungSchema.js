@@ -135,8 +135,8 @@ const requiredIfHelfer = message => {
 
 const maxIfHelfer = max => {
     return {
-        name: 'max-if-leitung',
-        message: 'Diese Gruppenleitung muss mindestens 18 Jahre alt sein',
+        name: 'max-if-helfer',
+        message: 'Helfer müssen mindestens 18 Jahre alt sein',
         test: (value, ctx) => {
             if (isHelfer(value, ctx)) {
                 return moment(value).isSameOrBefore(max);
@@ -181,7 +181,8 @@ const isLeitung = (value, ctx) => {
 }
 
 const isHelfer = (value, ctx) => {
-    return !ctx.parent.hasOwnProperty('leitung');
+    const data = getDataFromContext(ctx);
+    return !data.hasOwnProperty('leitung');
 }
 
 const getDataFromContext = (ctx) => {
