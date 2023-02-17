@@ -194,7 +194,7 @@ class EditHelfer extends Component {
                                             <Col>
                                                 Stelle sicher, dass du alle Pflichtfelder und alle Warnungen behoben
                                                 hast.
-                                                Erst dann kannst du deine Gruppenanmeldung abschließen.
+                                                Erst dann kannst du deine Helfer*innenanmmeldung abschließen.
 
                                                 <details className="small">
                                                     <summary>Technische Details</summary>
