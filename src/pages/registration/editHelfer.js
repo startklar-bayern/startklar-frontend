@@ -13,6 +13,7 @@ import PersonForm from "./personForm";
 import {get} from "underscore";
 import {v4 as uuid} from "uuid";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {HeaderWhite} from "../../layouts";
 
 function withParams(Component) {
     return props => <Component {...props}
@@ -64,10 +65,12 @@ class EditHelfer extends Component {
         }
 
         return (
-            <div className="registration">t
+            <div className="registration">
                 <Helmet>
                     <title>Helfer*innen-Anmeldung | STARTKLAR</title>
                 </Helmet>
+
+                <HeaderWhite/>
 
                 <Container>
                     <Row>
