@@ -15,7 +15,7 @@ function withParams(Component) {
 
 class AnmeldungAuswahl extends React.Component {
     render() {
-        const disableHelfer = !new URLSearchParams(this.props.location).has("geheimerHelferanmeldungTestLink");
+        const disableHelfer = false;
 
         return (
             <div className="anmeldungAuswahl">
