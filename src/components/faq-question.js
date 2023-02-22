@@ -5,6 +5,7 @@ import {faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import {Alert, Col, Collapse, Form, Row, Spinner} from "react-bootstrap";
 import {withFormik} from "formik";
 import * as Yup from "yup";
+import {API_BASE_URL} from "../constants";
 
 class FaqQuestion extends Component {
     state = {
@@ -151,7 +152,7 @@ export default withFormik({
     handleSubmit: (values, {setSubmitting, setStatus}) => {
         setSubmitting(true);
 
-        fetch('https://backend.startklar.bayern/api/faqs/question', {
+        fetch(API_BASE_URL + 'faqs/question', {
             method: 'post',
             body: JSON.stringify({
                 mail: values.email,

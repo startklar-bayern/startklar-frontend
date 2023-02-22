@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import '../assets/styles/newsletter.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowDown, faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import {API_BASE_URL} from "../constants";
 
 
 class Newsletter extends React.Component {
@@ -22,7 +23,7 @@ class Newsletter extends React.Component {
 
 
     componentDidMount() {
-        // fetch('https://backend.startklar.bayern/api/newsletter')
+        // fetch(API_BASE_URL + 'newsletter')
         //     .then(res => res.json())
         //     .then((data) => {
         //         this.setState({subscriberCount: data.subscriber_count})
@@ -159,7 +160,7 @@ export default withFormik({
     handleSubmit: (values, {setSubmitting, setStatus}) => {
         setSubmitting(true);
 
-        fetch('https://backend.startklar.bayern/api/newsletter', {
+        fetch(API_BASE_URL + 'newsletter', {
             method: 'post',
             body: JSON.stringify({
                 mail: values.email,

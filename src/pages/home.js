@@ -20,6 +20,7 @@ import {Helmet} from "react-helmet-async";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {NavLink} from "react-router-dom";
+import {API_BASE_URL} from "../constants";
 
 class Home extends Component {
     constructor(props) {
@@ -122,33 +123,33 @@ class Home extends Component {
     };
 
     componentDidMount() {
-        fetch('https://backend.startklar.bayern/api/sharepics')
+        fetch(API_BASE_URL + 'sharepics')
             .then(res => res.json())
             .then((data) => {
                 this.setState({sharepics: data})
             })
             .catch(console.log)
-        fetch('https://backend.startklar.bayern/api/workshops')
+        fetch(API_BASE_URL + 'workshops')
             .then(res => res.json())
             .then((data) => {
                 this.setState({workshops: data})
             })
             .catch(console.log)
-        fetch('https://backend.startklar.bayern/api/faqs')
+        fetch(API_BASE_URL +'faqs')
             .then(res => res.json())
             .then((data) => {
                 this.setState({faqs: data})
             })
             .catch(console.log)
 
-        fetch('https://backend.startklar.bayern/api/news')
+        fetch(API_BASE_URL + 'news')
             .then(res => res.json())
             .then((data) => {
                 this.setState({news: data})
             })
             .catch(console.log)
 
-        fetch('https://backend.startklar.bayern/api/ags')
+        fetch(API_BASE_URL + 'ags')
             .then(res => res.json())
             .then((data) => {
                 this.setState({contactPersons: data})

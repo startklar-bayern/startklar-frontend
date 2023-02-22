@@ -17,6 +17,7 @@ import AnmeldungHelferInfo from "../pages/registration/anmeldungHelferInfo";
 import CreateHelfer from "../pages/registration/createHelfer";
 import EditHelfer from "../pages/registration/editHelfer";
 import AnmeldungHelferSuccess from "../pages/registration/anmeldungHelferSuccess";
+import {API_BASE_URL} from "../constants";
 
 class App extends Component {
     state = {
@@ -27,7 +28,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        fetch('https://backend.startklar.bayern/api/pages')
+        fetch(API_BASE_URL  + 'pages')
             .then(response => response.json())
             .then(pages => {
                 this.setState({

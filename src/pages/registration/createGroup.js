@@ -6,6 +6,7 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import {Helmet} from "react-helmet-async";
 import HeaderWhite from "../../layouts/header-white";
+import {API_BASE_URL} from "../../constants";
 
 class CreateGroup extends React.Component {
     state = {
@@ -33,7 +34,7 @@ class CreateGroup extends React.Component {
             "privacy_accepted": true,
         };
 
-        const url = `https://backend.startklar.bayern/api/anmeldung/${this.props.isHelfer ? 'helfer' : 'group'}`
+        const url = `${API_BASE_URL}anmeldung/${this.props.isHelfer ? 'helfer' : 'group'}`
 
         axios
             .post(url, group)

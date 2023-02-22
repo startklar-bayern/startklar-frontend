@@ -18,6 +18,7 @@ import Pricing from "./pricing";
 import moment from "moment";
 import {Helmet} from "react-helmet-async";
 import {HeaderWhite} from "../../layouts";
+import {API_BASE_URL} from "../../constants";
 
 function withParams(Component) {
     return props => <Component {...props}
@@ -371,7 +372,7 @@ class EditGroup extends React.Component {
     }
 
     getApiPath(endpoint = "tempStorage") {
-        return 'https://backend.startklar.bayern/api/anmeldung/' + endpoint + '/' + this.props.params.groupId;
+        return API_BASE_URL + 'anmeldung/' + endpoint + '/' + this.props.params.groupId;
     }
 
     initializeLeitung() {
@@ -454,7 +455,7 @@ class EditGroup extends React.Component {
 
     loadSelectData() {
         // Load DVs
-        fetch('https://backend.startklar.bayern/api/anmeldung/dvs')
+        fetch(API_BASE_URL + 'anmeldung/dvs')
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -466,7 +467,7 @@ class EditGroup extends React.Component {
             })
 
         // Load Termine Schutzkonzept
-        fetch('https://backend.startklar.bayern/api/anmeldung/termine-schutzkonzept')
+        fetch(API_BASE_URL + 'anmeldung/termine-schutzkonzept')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -483,7 +484,7 @@ class EditGroup extends React.Component {
             });
 
         // Load T-Shirt Größen
-        fetch('https://backend.startklar.bayern/api/anmeldung/tshirt-groessen')
+        fetch(API_BASE_URL + 'anmeldung/tshirt-groessen')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -691,7 +692,7 @@ export default withSupportChat(withParams(withFormik({
         const token = new URLSearchParams(props.location).get("token");
         const groupId = props.params.groupId;
 
-        fetch('https://backend.startklar.bayern/api/anmeldung/group/' + groupId, {
+        fetch(API_BASE_URL + 'anmeldung/group/' + groupId, {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + token

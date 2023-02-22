@@ -14,6 +14,7 @@ import {get} from "underscore";
 import {v4 as uuid} from "uuid";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {HeaderWhite} from "../../layouts";
+import {API_BASE_URL} from "../../constants";
 
 function withParams(Component) {
     return props => <Component {...props}
@@ -262,7 +263,7 @@ class EditHelfer extends Component {
     }
 
     getApiPath(endpoint = "tempStorage") {
-        return 'https://backend.startklar.bayern/api/anmeldung/' + endpoint + '/' + this.props.params.helferId;
+        return `${API_BASE_URL}anmeldung/${endpoint}/${this.props.params.helferId}`;
     }
 
     initializePerson() {
@@ -295,7 +296,7 @@ class EditHelfer extends Component {
 
     loadSelectData() {
         // Load Jobs
-        fetch('https://backend.startklar.bayern/api/anmeldung/helfer-jobs')
+        fetch(API_BASE_URL + 'anmeldung/helfer-jobs')
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -307,7 +308,7 @@ class EditHelfer extends Component {
             })
 
         // Load Termine Schutzkonzept
-        fetch('https://backend.startklar.bayern/api/anmeldung/termine-schutzkonzept')
+        fetch(API_BASE_URL + 'anmeldung/termine-schutzkonzept')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -324,7 +325,7 @@ class EditHelfer extends Component {
             });
 
         // Load T-Shirt Größen
-        fetch('https://backend.startklar.bayern/api/anmeldung/tshirt-groessen')
+        fetch(API_BASE_URL + 'anmeldung/tshirt-groessen')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -453,7 +454,7 @@ export default withSupportChat(withParams(withFormik({
 
             console.log('test')
 
-            fetch('https://backend.startklar.bayern/api/anmeldung/helfer/' + helferId, {
+            fetch(API_BASE_URL + 'anmeldung/helfer/' + helferId, {
                 method: 'PUT',
                 headers: {
                     'Authorization': 'Bearer ' + token
