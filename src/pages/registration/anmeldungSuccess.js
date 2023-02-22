@@ -5,11 +5,16 @@ import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
 import {HeaderWhite} from "../../layouts";
+import {Helmet} from "react-helmet-async";
 
 class AnmeldungSuccess extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>Gruppen-Anmeldung | STARTKLAR</title>
+                </Helmet>
+
                 <HeaderWhite />
 
                 <Container>

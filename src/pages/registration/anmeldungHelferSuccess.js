@@ -4,11 +4,19 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {withSupportChat} from "../../hoc/withSupportChat";
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet-async";
+import {HeaderWhite} from "../../layouts";
 
 class AnmeldungHelferSuccess extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>Helfer*innen-Anmeldung | STARTKLAR</title>
+                </Helmet>
+
+                <HeaderWhite />
+
                 <Container>
                     <Row className="my-4">
                         <Col>
