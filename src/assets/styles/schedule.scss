@@ -13,3 +13,9 @@ table tr {
     min-width: 50px;
   }
 }
+
+.schedule table thead {
+  tr, th {
+    border: none;
+  }
+}

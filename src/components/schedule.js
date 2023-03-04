@@ -57,7 +57,7 @@ const Schedule = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
+                      <td>07:30 Uhr</td>
                       <td><FontAwesomeIcon icon={faMugSaucer}/>Frühstück</td>
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@ const Schedule = () => {
                       <td><FontAwesomeIcon icon={ faPeopleRoof}/>Workshops II.</td>
                     </tr>
                     <tr>
-                      <td></td>
+                      <td>17:00 Uhr</td>
                       <td><FontAwesomeIcon icon={faUtensils}/>Abendessen</td>
                     </tr>
                     <tr>
@@ -104,7 +104,7 @@ const Schedule = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
+                      <td>07:30 Uhr</td>
                       <td><FontAwesomeIcon icon={faMugSaucer}/>Frühstück</td>
                     </tr>
                     <tr>
@@ -128,7 +128,7 @@ const Schedule = () => {
                       <td><FontAwesomeIcon icon={ faPeopleRoof}/>Workshops IV.</td>
                     </tr>
                     <tr>
-                      <td></td>
+                      <td>17:00 Uhr</td>
                       <td><FontAwesomeIcon icon={faUtensils}/>Abendessen</td>
                     </tr>
                     <tr>
@@ -147,7 +147,7 @@ const Schedule = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td></td>
+                      <td>07:30 Uhr</td>
                       <td><FontAwesomeIcon icon={faMugSaucer}/>Frühstück</td>
                     </tr>
                     <tr>
