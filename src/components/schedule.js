@@ -2,7 +2,7 @@ import React from 'react'
 import {Table, Col, Row} from 'react-bootstrap'
 import './../assets/styles/schedule.scss';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCross, faUserGroup, faFire, faUserCheck, faTrain, faTents, faTentArrowDownToLine, faMusic,  faPeopleRoof, faMugSaucer, faFlag, faUtensils, faFlagCheckered, faHandshake} from '@fortawesome/free-solid-svg-icons'
+import {faCross, faCamera, faUserGroup, faFire, faUserCheck, faTrain, faTents, faTentArrowDownToLine, faMusic,  faPeopleRoof, faMugSaucer, faFlag, faUtensils, faFlagCheckered, faHandshake} from '@fortawesome/free-solid-svg-icons'
 
 
 const Schedule = () => {
@@ -34,6 +34,10 @@ const Schedule = () => {
                     <tr>
                       <td>17:00 Uhr</td>
                       <td><FontAwesomeIcon icon={faHandshake}/>Begrüßung</td>
+                    </tr>
+                    <tr>
+                      <td>17:30 Uhr</td>
+                      <td><FontAwesomeIcon icon={faCamera}/>Gruppenfoto</td>
                     </tr>
                     <tr>
                       <td>18:00 Uhr</td>
