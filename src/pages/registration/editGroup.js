@@ -94,185 +94,201 @@ class EditGroup extends React.Component {
                             <h1 className="text-center">Gruppen-Anmeldung</h1>
                         </Col>
                     </Row>
-                    {(this.state.mode === 'create' || this.state.mode === 'update' )&& <Row className="justify-content-center">
-                        <Col className="field-object align-self-center" lg="7">
-                            <div className={'field-object mt-0 ' + (this.state.mode === 'update' ? 'bg-warning text-black' : '')}>
-                                <Row>
-                                    <Col md="1">
-                                        <FontAwesomeIcon icon={this.state.mode === 'create' ? 'info-circle' : 'warning'}
-                                                         size="xl"></FontAwesomeIcon>
-                                    </Col>
-                                    <Col md="11">
-                                        {this.state.mode === 'create' && <div>
-                                            <p>Alle Änderungen, die du in diesem Formular machst, werden automatisch
-                                                zwischengespeichert.</p>
-                                            <p>Wenn du also noch nicht alle Daten hast, kannst du über den Link aus der
-                                                E-Mail jederzeit hierher zurückkehren und die Anmeldung fortsetzen.</p>
-                                        </div>}
+                    {(this.state.mode === 'create' || this.state.mode === 'update') &&
+                        <Row className="justify-content-center">
+                            <Col className="field-object align-self-center" lg="7">
+                                <div
+                                    className={'field-object mt-0 ' + (this.state.mode === 'update' ? 'bg-warning text-black' : '')}>
+                                    <Row>
+                                        <Col md="1">
+                                            <FontAwesomeIcon
+                                                icon={this.state.mode === 'create' ? 'info-circle' : 'warning'}
+                                                size="xl"></FontAwesomeIcon>
+                                        </Col>
+                                        <Col md="11">
+                                            {this.state.mode === 'create' && <div>
+                                                <p>Alle Änderungen, die du in diesem Formular machst, werden automatisch
+                                                    zwischengespeichert.</p>
+                                                <p>Wenn du also noch nicht alle Daten hast, kannst du über den Link aus
+                                                    der
+                                                    E-Mail jederzeit hierher zurückkehren und die Anmeldung
+                                                    fortsetzen.</p>
+                                            </div>}
 
-                                        {this.state.mode === 'update' && <div>
-                                            Achtung: Deine Änderungen werden erst gespeichert wenn du am Ende des
-                                            Formulars auf speichern klickst.
-                                        </div>}
+                                            {this.state.mode === 'update' && <div>
+                                                Achtung: Deine Änderungen werden erst gespeichert wenn du am Ende des
+                                                Formulars auf speichern klickst.
+                                            </div>}
 
-                                    </Col>
-                                </Row>
-                            </div>
-
-                            <Form noValidate onSubmit={handleSubmit}>
-                                <this.FormObserver/>
-
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Gruppen-Name *</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="name"
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={touched.name && !!errors.name}
-                                        placeholder="Kolpingjugend Musterhausen"/>
-
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.name}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Diözesanverband *</Form.Label>
-                                    {this.state.dvs.length !== 0 ? <Form.Select
-                                        name="dv"
-                                        value={values.dv?.toString()}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={touched.dv && !!errors.dv}>
-                                        <option value="">- Auswählen -</option>
-                                        {this.state.dvs.map(dv => <option value={dv.id} key={dv.id}>{dv.name}</option>)}
-                                    </Form.Select> : <div><Spinner animation="border"/></div>}
-
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.dv}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-
-                                <AnreiseFieldGroup
-                                    touched={touched.anreise}
-                                    handleChange={handleChange}
-                                    handleBlur={handleBlur}
-                                    handleSubmit={handleSubmit}
-                                    values={values.anreise}
-                                    errors={errors.anreise}
-                                    isSubmitting={isSubmitting}
-                                    status={status}
-                                    isValid={isValid}
-                                    namePrefix="anreise"
-                                />
-
-                                <div className="field-object">
-                                    <h3>Gruppenleiter*in</h3>
-                                    <p>Gib hier deine persönlichen Daten an. Du bist Gruppenleiter*in und für deine
-                                        Gruppe verantwortlich. Außerdem sorgst du auch für die Einhaltung des
-                                        Schutzkonzepts, nimmst an der Einweisung dazu teil und bist Ansprechpartner*in
-                                        für Rückfragen.</p>
-                                    {values.leitung && <PersonCard
-                                        key="leitung"
-                                        person={values.leitung}
-                                        allValues={values}
-                                        allowDelete={false}
-                                        errors={errors.leitung}
-                                        onEdit={() => this.showPersonModal('leitung')}/>}
+                                        </Col>
+                                    </Row>
                                 </div>
 
-                                <div className="field-object">
-                                    <h3>Teilnehmende</h3>
-                                    {this.renderTeilnehmer(values.teilnehmer, values)}
-                                    <Button size="sm" onClick={this.addTeilnehmer}><FontAwesomeIcon
-                                        icon="user-plus"/> Teilnehmer*in hinzufügen</Button>
-                                </div>
+                                <Form noValidate onSubmit={handleSubmit}>
+                                    <this.FormObserver/>
 
-                                <Form.Group className="mb-3">
-                                    <Form.Check
-                                        type="checkbox"
-                                        name="jugendschutzgesetz_akzeptiert"
-                                        label="Ich sorge für die Einhaltung des Jugendschutzgesetzes *"
-                                        checked={values.jugendschutzgesetz_akzeptiert}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        isInvalid={touched.jugendschutzgesetz_akzeptiert && !!errors.jugendschutzgesetz_akzeptiert}/>
-
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.jugendschutzgesetz_akzeptiert}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-
-                                <Form.Group className="mb-3">
-                                    <Form.Check
-                                        type="checkbox">
-                                        <Form.Check.Input
-                                            type="checkbox"
-                                            name="fuehrungszeugnis"
-                                            checked={values.fuehrungszeugnis}
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Gruppen-Name *</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            name="name"
+                                            value={values.name}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            isInvalid={touched.fuehrungszeugnis && !!errors.fuehrungszeugnis}
+                                            isInvalid={touched.name && !!errors.name}
+                                            placeholder="Kolpingjugend Musterhausen"/>
+
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.name}
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-3">
+                                        <Form.Label>Diözesanverband *</Form.Label>
+                                        {this.state.dvs.length !== 0 ? <Form.Select
+                                            name="dv"
+                                            value={values.dv?.toString()}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isInvalid={touched.dv && !!errors.dv}>
+                                            <option value="">- Auswählen -</option>
+                                            {this.state.dvs.map(dv => <option value={dv.id}
+                                                                              key={dv.id}>{dv.name}</option>)}
+                                        </Form.Select> : <div><Spinner animation="border"/></div>}
+
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.dv}
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <AnreiseFieldGroup
+                                        touched={touched.anreise}
+                                        handleChange={handleChange}
+                                        handleBlur={handleBlur}
+                                        handleSubmit={handleSubmit}
+                                        values={values.anreise}
+                                        errors={errors.anreise}
+                                        isSubmitting={isSubmitting}
+                                        status={status}
+                                        isValid={isValid}
+                                        namePrefix="anreise"
+                                    />
+
+                                    <div className="field-object">
+                                        <h3>Gruppenleiter*in</h3>
+                                        <p>Gib hier deine persönlichen Daten an. Du bist Gruppenleiter*in und für deine
+                                            Gruppe verantwortlich. Außerdem sorgst du auch für die Einhaltung des
+                                            Schutzkonzepts, nimmst an der Einweisung dazu teil und bist
+                                            Ansprechpartner*in
+                                            für Rückfragen.</p>
+                                        {values.leitung && <PersonCard
+                                            key="leitung"
+                                            person={values.leitung}
+                                            allValues={values}
+                                            allowDelete={false}
+                                            errors={errors.leitung}
+                                            onEdit={() => this.showPersonModal('leitung')}/>}
+                                    </div>
+
+                                    <div className="field-object">
+                                        <h3>Teilnehmende</h3>
+                                        {this.renderTeilnehmer(values.teilnehmer, values)}
+                                        <Button size="sm" onClick={this.addTeilnehmer}><FontAwesomeIcon
+                                            icon="user-plus"/> Teilnehmer*in hinzufügen</Button>
+                                    </div>
+
+                                    <Form.Group className="mb-3">
+                                        <Form.Check type="checkbox">
+                                            <Form.Check.Input
+                                                type="checkbox"
+                                                name="jugendschutzgesetz_akzeptiert"
+                                                checked={values.jugendschutzgesetz_akzeptiert}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                isInvalid={touched.jugendschutzgesetz_akzeptiert && !!errors.jugendschutzgesetz_akzeptiert}/>
+
+                                            <Form.Check.Label>
+                                                Ich habe die <a href="/teilnahmebedingungen" target="_blank">Teilnahmebedingungen</a> gelesen und akzeptiere diese. *
+                                            </Form.Check.Label>
+
+                                        </Form.Check>
+
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.jugendschutzgesetz_akzeptiert}
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-3">
+                                        <Form.Check
+                                            type="checkbox">
+                                            <Form.Check.Input
+                                                type="checkbox"
+                                                name="fuehrungszeugnis"
+                                                checked={values.fuehrungszeugnis}
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                isInvalid={touched.fuehrungszeugnis && !!errors.fuehrungszeugnis}
                                             />
-                                        <Form.Check.Label>
-                                            Ich habe am Festival ein einwandfreies Führungszeugnis und sorge auch dafür dass alle Aufsichtspersonen in meiner Gruppe eines besitzen. *<br/>
-                                            Informationen dazu im <a href="/schutzkonzept" target="_blank">Schutzkonzept</a>.
-                                        </Form.Check.Label>
-                                    </Form.Check>
+                                            <Form.Check.Label>
+                                                Ich habe am Festival ein einwandfreies Führungszeugnis und sorge auch
+                                                dafür dass alle Aufsichtspersonen in meiner Gruppe eines besitzen.
+                                                *<br/>
+                                                Informationen dazu im <a href="/schutzkonzept"
+                                                                         target="_blank">Schutzkonzept</a>.
+                                            </Form.Check.Label>
+                                        </Form.Check>
 
-                                    <Form.Control.Feedback type="invalid">
-                                        {errors.fuehrungszeugnis}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
+                                        <Form.Control.Feedback type="invalid">
+                                            {errors.fuehrungszeugnis}
+                                        </Form.Control.Feedback>
+                                    </Form.Group>
 
-                                <p>Während der Veranstaltung werden Fotos gemacht, die im Zuge der Öffentlichkeitsarbeit
-                                    verwendet werden. Mit der Anmeldung zum Jugendfestival stimmst du dem zu und hast
-                                    auch das Einverständnis aller Teilnehmenden deiner Gruppe.</p>
+                                    <Pricing values={values}/>
 
+                                    <Form.Group>
+                                        <Button type="submit" disabled={!isValid || isSubmitting}>
+                                            {this.state.mode === 'create' ? 'Gruppe kostenpflichtig anmelden' : 'Änderungen speichern'}
+                                            {!isSubmitting && <FontAwesomeIcon icon={faArrowRight}/>}
+                                            {isSubmitting &&
+                                                <Spinner animation="border" size="sm" className="m-2 mt-0 mb-0"/>}
+                                        </Button>
 
-                                <Pricing values={values}/>
+                                        {!isValid && <Row className="text-danger mt-2">
+                                            <Col xs="1"><FontAwesomeIcon icon="warning"/></Col>
+                                            <Col>
+                                                Stelle sicher, dass du alle Pflichtfelder und alle Warnungen behoben
+                                                hast.
+                                                Erst dann kannst du deine Gruppenanmeldung abschließen.
 
-                                <Form.Group>
-                                    <Button type="submit" disabled={!isValid || isSubmitting}>
-                                        {this.state.mode === 'create' ? 'Gruppe kostenpflichtig anmelden' : 'Änderungen speichern'}
-                                        {!isSubmitting && <FontAwesomeIcon icon={faArrowRight}/>}
-                                        {isSubmitting &&
-                                            <Spinner animation="border" size="sm" className="m-2 mt-0 mb-0"/>}
-                                    </Button>
-
-                                    {!isValid && <Row className="text-danger mt-2">
-                                        <Col xs="1"><FontAwesomeIcon icon="warning"/></Col>
-                                        <Col>
-                                            Stelle sicher, dass du alle Pflichtfelder und alle Warnungen behoben hast.
-                                            Erst dann kannst du deine Gruppenanmeldung abschließen.
-
-                                            <details className="small">
-                                                <summary>Technische Details</summary>
-                                                <pre>
+                                                <details className="small">
+                                                    <summary>Technische Details</summary>
+                                                    <pre>
                                                     {JSON.stringify(errors, null, '  ')}
                                                 </pre>
-                                            </details>
-                                        </Col>
-                                    </Row>}
-                                </Form.Group>
-                            </Form>
-                        </Col>
-                    </Row>}
+                                                </details>
+                                            </Col>
+                                        </Row>}
+                                    </Form.Group>
+                                </Form>
+                            </Col>
+                        </Row>}
 
                     {this.state.mode === 'loading' && <Row>
                         <Col className="text-center">
-                            <h3><Spinner animation="border" /> Daten werden geladen...</h3>
+                            <h3><Spinner animation="border"/> Daten werden geladen...</h3>
                         </Col>
                     </Row>}
 
                     {this.state.mode === 'invalidUrl' && <Row>
                         <Col className="text-center">
                             <h3><FontAwesomeIcon icon="warning"/> Ein Fehler ist aufgetreten</h3>
-                            <p>Es gab Probleme beim Laden deiner Daten. Entweder ist der Link, den du verwendet hast, nicht mehr gültig oder unvollständig.</p>
+                            <p>Es gab Probleme beim Laden deiner Daten. Entweder ist der Link, den du verwendet hast,
+                                nicht mehr gültig oder unvollständig.</p>
                             <p>Versuche die Seite neu zu laden und prüfe ob du den richtigen Link verwendet hast.</p>
-                            <p>Solltest du weiterhin Probleme haben, kannst du uns über den Support-Chat oder per E-Mail an <a href="mailto:anmeldung@startklar.bayern">anmeldung@startklar.bayern</a> kontaktieren.</p>
+                            <p>Solltest du weiterhin Probleme haben, kannst du uns über den Support-Chat oder per E-Mail
+                                an <a
+                                    href="mailto:anmeldung@startklar.bayern">anmeldung@startklar.bayern</a> kontaktieren.
+                            </p>
                         </Col>
                     </Row>}
                 </Container>
@@ -545,9 +561,9 @@ class EditGroup extends React.Component {
 
                     this.initializeTempStore();
                 } else if (error.message === 'Unauthorized') {
-                  this.setState({
-                      mode: 'invalidUrl',
-                  })
+                    this.setState({
+                        mode: 'invalidUrl',
+                    })
                 } else if (error.message === 'Group not found') {
                     this.setState({
                         mode: 'invalidUrl',
