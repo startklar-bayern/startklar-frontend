@@ -13,9 +13,13 @@ export default class Page extends Component {
                 </Helmet>
                 <HeaderWhite />
                 <Container>
-                    <Row className="align-items-center my-5">
+                    <Row className="my-4">
                         <Col>
-                            <h1 className="font-weight-light">{this.props.page.title}</h1>
+                            <h1>{this.props.page.title}</h1>
+                        </Col>
+                    </Row>
+                    <Row className="">
+                        <Col className="field-object p-4 fs-6">
                             <div dangerouslySetInnerHTML={{__html: this.props.page.body}}/>
                         </Col>
                     </Row>
