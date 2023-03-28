@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
-import {Container} from "react-bootstrap";
+import {Container, Row, Col} from "react-bootstrap";
 import BjrLogo from './../assets/images/foerderung/BJR.svg';
 import StMasLogo from './../assets/images/foerderung/StMAS.jpg';
+import LigaBankLogo from './../assets/images/foerderung/Liga_Bank_logo.svg';
+import KolpingRecyclingLogo from './../assets/images/foerderung/Kolping_Recycling_Logo.jpg';
 import './../assets/styles/footer.scss';
 
 export default class Footer extends Component {
@@ -69,12 +71,19 @@ export default class Footer extends Component {
                             </nav>
                         </div>
                     </div>
-                    <div className="footer-foerderung text-center text-black bg-white">
-                        <div>Gefördert durch den</div>
-                        <img height="75" src={BjrLogo} alt="BJR Logo" />
-                        <div>aus Mitteln des Kinder- und Jugendprogramms des</div>
-                        <img src={StMasLogo} height="50" alt="StMAS Logo" />
-                    </div>
+                    <Row className="footer-foerderung text-center text-black bg-white p-4 mb-5 align-items-center">
+                        <Col lg={6}>
+                            <div>Gefördert durch den</div>
+                            <img height="75" src={BjrLogo} alt="BJR Logo" />
+                            <div>aus Mitteln des Kinder- und Jugendprogramms des</div>
+                            <img src={StMasLogo} height="50" alt="StMAS Logo" />
+                        </Col>
+                        <Col lg={6}>
+                            <h6 className="my-4 mt-lg-0">Danke für die Spenden:</h6>
+                            <img className="mx-4" src={KolpingRecyclingLogo} height="100" alt="Kolping Recycling Logo" />
+                            <img className="mx-4" src={LigaBankLogo} height="75" alt="Kolping Recycling Logo" />
+                        </Col>
+                    </Row>
                 </footer>
             </Container>
         );
