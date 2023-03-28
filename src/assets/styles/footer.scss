@@ -61,5 +61,9 @@ footer {
         &:hover {
             color: white;
         }
+
+        &.active {
+            color: white !important;
+        }
     }
 }
