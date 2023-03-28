@@ -71,7 +71,7 @@ export default class Footer extends Component {
                             </nav>
                         </div>
                     </div>
-                    <Row className="footer-foerderung text-center text-black bg-white p-4 mb-5">
+                    <Row className="footer-foerderung text-center text-black bg-white p-4 mb-5 align-items-center">
                         <Col lg={6}>
                             <div>Gefördert durch den</div>
                             <img height="75" src={BjrLogo} alt="BJR Logo" />
@@ -79,7 +79,7 @@ export default class Footer extends Component {
                             <img src={StMasLogo} height="50" alt="StMAS Logo" />
                         </Col>
                         <Col lg={6}>
-                            <h6 className="my-4">Danke für die Spenden:</h6>
+                            <h6 className="my-4 mt-lg-0">Danke für die Spenden:</h6>
                             <img className="mx-4" src={KolpingRecyclingLogo} height="100" alt="Kolping Recycling Logo" />
                             <img className="mx-4" src={LigaBankLogo} height="75" alt="Kolping Recycling Logo" />
                         </Col>
