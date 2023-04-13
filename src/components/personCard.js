@@ -38,11 +38,11 @@ class PersonCard extends React.Component {
                     </div>
                 </Card.Header>
                 {(errorMessages || quickFacts) && <Card.Body>
-                    {quickFacts && quickFacts.map(quickFact => <div className="person-card__quickfact text-light">
+                    {quickFacts && quickFacts.map(quickFact => <div className="person-card__quickfact text-light" key={quickFact.text}>
                         <FontAwesomeIcon icon={quickFact.icon} fixedWidth className="text-white" /> {quickFact.text}
                     </div>)}
 
-                    {errorMessages && errorMessages.map(error => <div className="person-card__error">
+                    {errorMessages && errorMessages.map(error => <div className="person-card__error" key={error.toString()}>
                         <FontAwesomeIcon icon="warning" fixedWidth /> {error.toString()}
                     </div>)}
                 </Card.Body>}
