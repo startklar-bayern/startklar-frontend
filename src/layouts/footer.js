@@ -5,6 +5,7 @@ import BjrLogo from './../assets/images/foerderung/BJR.svg';
 import StMasLogo from './../assets/images/foerderung/StMAS.jpg';
 import LigaBankLogo from './../assets/images/foerderung/Liga_Bank_logo.svg';
 import KolpingRecyclingLogo from './../assets/images/foerderung/Kolping_Recycling_Logo.jpg';
+import MayingerLogo from './../assets/images/foerderung/mayinger-logo.png';
 import './../assets/styles/footer.scss';
 
 export default class Footer extends Component {
@@ -80,8 +81,10 @@ export default class Footer extends Component {
                         </Col>
                         <Col lg={6}>
                             <h6 className="my-4 mt-lg-0">Danke für die Spenden:</h6>
-                            <img className="mx-4" src={KolpingRecyclingLogo} height="100" alt="Kolping Recycling Logo" />
-                            <img className="mx-4" src={LigaBankLogo} height="75" alt="Kolping Recycling Logo" />
+
+                            <a href="https://www.kolping-textilrecycling.de" target="_blank"><img className="mx-4 mb-1" src={KolpingRecyclingLogo} height="100" alt="Kolping Recycling Logo" /></a>
+                            <a href="https://www.ligabank.de" target="_blank"><img className="mx-4 mb-1" src={LigaBankLogo} height="75" alt="Liga Bank Logo" /></a>
+                            <a href="https://www.mayinger-bestattungen.de" target="_blank"><img className="mx-4 mb-1" src={MayingerLogo} height="75" alt="Mayinger Bestattungen Logo" /></a>
                         </Col>
                     </Row>
                 </footer>
