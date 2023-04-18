@@ -61,8 +61,8 @@ class Home extends Component {
                                 <p>Liebe Teilnehmer*innen,<br/>
                                     liebe Helfer*innen,<br/>
                                     liebe Engagierte,</p>
-                                <p> wir müssen euch leider schweren Herzens mitteilen, dass wir unser
-                                    Jugendfestival “<strong>STARTKLAR - Spuren hinterlassen</strong>” am 08. - 11. Juni 2023 absagen
+                                <p> wir müssen euch leider schweren Herzens mitteilen, dass wir unser Jugendfestival
+                                    “<strong>STARTKLAR - Spuren hinterlassen</strong>” vom 08. - 11. Juni 2023 absagen
                                     müssen.</p>
 
                                 <p>Es ist der Landesleitung sehr schwer gefallen, diese Entscheidung zu treffen, aber
@@ -71,18 +71,21 @@ class Home extends Component {
                                     Wir bedauern sehr, dass wir euch diese Nachricht überbringen müssen und verstehen,
                                     wenn ihr enttäuscht seid.</p>
 
-                                <p>Trotzdem wollen wir uns bei euch dafür <strong>bedanken</strong>, dass ihr dabei gewesen wärt.
-                                    Außerdem ein <strong>riesiges Dankeschön</strong> an alle, die sich im Vorfeld engagiert und Einsatz
-                                    gezeigt haben, um das Jugendfestival auf die Beine zu stellen.</p>
+                                <p>Trotzdem wollen wir uns bei euch dafür <strong>bedanken</strong>, dass ihr dabei
+                                    gewesen wärt. Außerdem ein <strong>riesiges Dankeschön</strong> an alle, die sich im
+                                    Vorfeld engagiert und Einsatz gezeigt haben, um das Jugendfestival auf die Beine zu
+                                    stellen.</p>
 
                                 <p>Wir hoffen, dass ihr auch bei zukünftigen Veranstaltungen der Kolpingjugend Bayern
-                                    wieder <strong>#STARTKLAR</strong> seid und euch der <strong>#KolpingSpirit</strong> weiterhin antreibt.</p>
+                                    wieder <strong>#STARTKLAR</strong> seid und euch
+                                    der <strong>#KolpingSpirit</strong> weiterhin antreibt.</p>
 
                                 <p><strong>Treu Kolping und bis bald</strong><br/>
                                     <em>Die Landesleitung und die Projektgruppe “STARTKLAR”</em><br/><br/></p>
 
-                                <p><small>P.S.: Eventuell findet ihr ja an diesem Wochenende eine spannende Alternative, bei
-                                    der ihr mit eurer Gruppe <strong>Spuren hinterlassen</strong> und <strong>das Leben genießen</strong> könnt.</small></p>
+                                <p><small>P.S.: Eventuell findet ihr ja an diesem Wochenende eine spannende Alternative,
+                                    bei der ihr mit eurer Gruppe <strong>Spuren hinterlassen</strong> und <strong>das
+                                        Leben genießen</strong> könnt.</small></p>
                             </Col>
                         </Row>
 
