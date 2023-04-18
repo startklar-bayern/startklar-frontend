@@ -25,7 +25,6 @@ import {API_BASE_URL} from "../constants";
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.closeToast = this.closeToast.bind(this);
     }
 
     render() {
@@ -34,144 +33,63 @@ class Home extends Component {
                 <Helmet>
                     <title>STARTKLAR Jugendfestival - Kolpingjugend Bayern</title>
                 </Helmet>
-                <StartklarNavbar/>
                 <div id="countdown">
                     <Header/>
                     <section className="home container-fluid">
                         <picture className="home__background">
-                            <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp" />
-                            <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png" />
-                            <img src={backgroundPng} alt="" className="home__background__image" />
+                            <source srcSet={backgroundWebP + " 1x, " + backgroundWebP2x + " 2x"} type="image/webp"/>
+                            <source srcSet={backgroundPng + " 1x, " + backgroundPng2x + " 2x"} type="image/png"/>
+                            <img src={backgroundPng} alt="" className="home__background__image"/>
                         </picture>
                         <Container>
                             <Row>
-                                <Col lg={{ span: 8, offset: 2 }}>
-                                    <Calendar/>
-                                    <div className="text-center mb-5 mt-5">
-                                        <h3>Bist du STARTKLAR?</h3>
-                                        <p>Dann melde jetzt deine Gruppe an!</p>
-                                        <NavLink to="anmeldung-auswahl"><Button>Zur Anmeldung <FontAwesomeIcon icon="arrow-right"/></Button></NavLink>
+                                <Col lg={{span: 8, offset: 2}}>
+                                    <div className="text-center" style={{marginTop: '20%', marginBottom: '20%'}}>
+                                        <h3>Das Jugendfestival wurde leider abgesagt</h3>
+                                        <a href="#absage"><Button className="mt-3">Mehr Infos <FontAwesomeIcon
+                                            icon="arrow-down"/></Button></a>
                                     </div>
                                 </Col>
                             </Row>
                         </Container>
                     </section>
                 </div>
-                <div className="gradient-container">
-                    <section className="faqs" id="faq">
-                        <Container>
-                            <FaqAccordion faqs={this.state.faqs}/>
-                            <FaqQuestion/>
-                        </Container>
-                    </section>
-                    <section className="schedule" id="schedule">
-                        <Container>
-                            <Schedule />
-                        </Container>
-                    </section>
-                </div>
-                <div className="gradient-reverse-container">
-                    <section className="workshops" id="workshops">
-                        <Container>
-                            <Workshops workshops={this.state.workshops}/>
-                        </Container>
-                    </section>
-                    <section className="sharepics" id="sharepics">
-                        <Container>
-                            <Sharepics sharepics={this.state.sharepics}/>
-                        </Container>
-                    </section>
-                </div>
-                <div className="gradient-container">
-                    <section className="news" id="news">
-                        <Container>
-                            <News news={this.state.news}/>
-                        </Container>
-                    </section>
-                    <section className="newsletter" id="newsletter">
-                        <Container>
-                            <Newsletter />
-                        </Container>
-                    </section>
-                </div>
-                <div className="gradient-reverse-container">
-                    <section className="contact-persons" id="contact-persons">
-                        <Container>
-                            <ContactPersons contactPersons={this.state.contactPersons}/>
-                        </Container>
-                    </section>
-                </div>
-                <Toast show={this.state.showEmailConfirmed} style={{top: '1em', right: '1em', position: 'absolute', zIndex: 10000}} onClose={this.closeToast}>
-                    <Toast.Header>
-                        <strong className="me-auto">E-Mail bestätigt</strong>
-                    </Toast.Header>
-                    <Toast.Body>
-                        Du erhältst in Zukunft alle Neuigkeiten zu STARTKLAR.
-                    </Toast.Body>
-                </Toast>
+                <section className="absage" id="absage" style={{paddingTop: 0}}>
+                    <Container>
+                        <Row className="">
+                            <Col className="field-object p-4 fs-6">
+                                <p>Liebe Teilnehmer*innen,<br/>
+                                    liebe Helfer*innen,<br/>
+                                    liebe Engagierte,</p>
+                                <p> wir müssen euch leider schweren Herzens mitteilen, dass wir unser
+                                    Jugendfestival “<strong>STARTKLAR - Spuren hinterlassen</strong>” am 08. - 11. Juni 2023 absagen
+                                    müssen.</p>
+
+                                <p>Es ist der Landesleitung sehr schwer gefallen, diese Entscheidung zu treffen, aber
+                                    aufgrund der zu geringen Anzahl von Teilnehmenden kann das Jugendfestival leider
+                                    nicht stattfinden.<br/>
+                                    Wir bedauern sehr, dass wir euch diese Nachricht überbringen müssen und verstehen,
+                                    wenn ihr enttäuscht seid.</p>
+
+                                <p>Trotzdem wollen wir uns bei euch dafür <strong>bedanken</strong>, dass ihr dabei gewesen wärt.
+                                    Außerdem ein <strong>riesiges Dankeschön</strong> an alle, die sich im Vorfeld engagiert und Einsatz
+                                    gezeigt haben, um das Jugendfestival auf die Beine zu stellen.</p>
+
+                                <p>Wir hoffen, dass ihr auch bei zukünftigen Veranstaltungen der Kolpingjugend Bayern
+                                    wieder <strong>#STARTKLAR</strong> seid und euch der <strong>#KolpingSpirit</strong> weiterhin antreibt.</p>
+
+                                <p><strong>Treu Kolping und bis bald</strong><br/>
+                                    <em>Die Landesleitung und die Projektgruppe “STARTKLAR”</em><br/><br/></p>
+
+                                <p><small>P.S.: Eventuell findet ihr ja an diesem Wochenende eine spannende Alternative, bei
+                                    der ihr mit eurer Gruppe <strong>Spuren hinterlassen</strong> und <strong>das Leben genießen</strong> könnt.</small></p>
+                            </Col>
+                        </Row>
+
+                    </Container>
+                </section>
             </div>
         )
-    }
-
-    state = {
-        sharepics: [],
-        workshops: [],
-        faqs: [],
-        news: [],
-        contactPersons: [],
-        showEmailConfirmed: false,
-    };
-
-    componentDidMount() {
-        fetch(API_BASE_URL + 'sharepics')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({sharepics: data})
-            })
-            .catch(console.log)
-        fetch(API_BASE_URL + 'workshops')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({workshops: data})
-            })
-            .catch(console.log)
-        fetch(API_BASE_URL +'faqs')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({faqs: data})
-            })
-            .catch(console.log)
-
-        fetch(API_BASE_URL + 'news')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({news: data})
-            })
-            .catch(console.log)
-
-        fetch(API_BASE_URL + 'ags')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({contactPersons: data})
-            })
-            .catch(console.log)
-
-        // Display toast when email was confirmed.
-        const currentUrl = new URL(window.location);
-        if (currentUrl.search.indexOf('emailConfirmed') !== -1) {
-            this.setState({
-                showEmailConfirmed: true,
-            });
-        }
-    }
-
-    closeToast() {
-        this.setState({showEmailConfirmed: false});
-
-        const url = new URL(window.location);
-        url.searchParams.delete('emailConfirmed');
-
-        window.history.pushState({}, document.title, url.toString());
     }
 }
 
